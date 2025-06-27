@@ -2,7 +2,7 @@
     "Name": "Legacy",
     "Path": "Assets/SPUM/Resources/Addons",
     "Version": "",
-    "CreationDate": "2025-06-26 08:01:48",
+    "CreationDate": "2024-09-20 16:37:48",
     "SpumAnimationData": [
         {
             "index": 0,
@@ -1492,14 +1492,6 @@
             "Name": "F_SR_Cloth",
             "UnitType": "Unit",
             "PartType": "Cloth",
-            "SubType": "Right",
-            "PartSubType": "",
-            "Path": "Addons/Legacy/0_Unit/0_Sprite/2_Cloth/F_SR_Cloth"
-        },
-        {
-            "Name": "F_SR_Cloth",
-            "UnitType": "Unit",
-            "PartType": "Cloth",
             "SubType": "Body",
             "PartSubType": "",
             "Path": "Addons/Legacy/0_Unit/0_Sprite/2_Cloth/F_SR_Cloth"
@@ -1513,10 +1505,18 @@
             "Path": "Addons/Legacy/0_Unit/0_Sprite/2_Cloth/F_SR_Cloth"
         },
         {
+            "Name": "F_SR_Cloth",
+            "UnitType": "Unit",
+            "PartType": "Cloth",
+            "SubType": "Right",
+            "PartSubType": "",
+            "Path": "Addons/Legacy/0_Unit/0_Sprite/2_Cloth/F_SR_Cloth"
+        },
+        {
             "Name": "F_SR_Pants",
             "UnitType": "Unit",
             "PartType": "Pant",
-            "SubType": "Right",
+            "SubType": "Left",
             "PartSubType": "",
             "Path": "Addons/Legacy/0_Unit/0_Sprite/3_Pant/F_SR_Pants"
         },
@@ -1524,7 +1524,7 @@
             "Name": "F_SR_Pants",
             "UnitType": "Unit",
             "PartType": "Pant",
-            "SubType": "Left",
+            "SubType": "Right",
             "PartSubType": "",
             "Path": "Addons/Legacy/0_Unit/0_Sprite/3_Pant/F_SR_Pants"
         },

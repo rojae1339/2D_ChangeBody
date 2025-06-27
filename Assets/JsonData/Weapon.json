@@ -1,0 +1,213 @@
+{
+  "noWeapon": [
+    {
+      "tier": "Legendary",
+      "attackDamage": "4",
+      "attackSpeed": "0.1f",
+      "upgradeFleshCount": "100",
+      "partDropProbability": "1f"
+    },
+    {
+      "tier": "Unique",
+      "attackDamage": "8",
+      "attackSpeed": "0.5f",
+      "upgradeFleshCount": "50",
+      "partDropProbability": "5f"
+    },
+    {
+      "tier": "Rare",
+      "attackDamage": "3",
+      "attackSpeed": "0.9f",
+      "upgradeFleshCount": "25",
+      "partDropProbability": "30f"
+    },
+    {
+      "tier": "Common",
+      "attackDamage": "2",
+      "attackSpeed": "0.9f",
+      "upgradeFleshCount": "10",
+      "partDropProbability": "60f"
+    }
+  ],
+  "shortSword": [
+    {
+      "tier": "Legendary",
+      "attackDamage": "3",
+      "attackSpeed": "0.1f",
+      "isDoubleAttack": "true",
+      "upgradeFleshCount": "120",
+      "partDropProbability": "1.0f"
+    },
+    {
+      "tier": "Unique",
+      "attackDamage": "1",
+      "attackSpeed": "0.1f",
+      "isDoubleAttack": "true",
+      "upgradeFleshCount": "60",
+      "partDropProbability": "4.17f"
+    },
+    {
+      "tier": "Rare",
+      "attackDamage": "1",
+      "attackSpeed": "0.1f",
+      "isDoubleAttack": "false",
+      "upgradeFleshCount": "30",
+      "partDropProbability": "25.0f"
+    },
+    {
+      "tier": "Common",
+      "attackDamage": "1",
+      "attackSpeed": "0.3f",
+      "isDoubleAttack": "false",
+      "upgradeFleshCount": "12",
+      "partDropProbability": "50.0f"
+    }
+  ],
+  "longSword": [
+    {
+      "tier": "Legendary",
+      "attackDamage": "6",
+      "attackSpeed": "0.7f",
+      "isDoubleAttack": "true",
+      "upgradeFleshCount": "140",
+      "partDropProbability": "1.0f"
+    },
+    {
+      "tier": "Unique",
+      "attackDamage": "6",
+      "attackSpeed": "1.1f",
+      "isDoubleAttack": "false",
+      "upgradeFleshCount": "70",
+      "partDropProbability": "3.57f"
+    },
+    {
+      "tier": "Rare",
+      "attackDamage": "5",
+      "attackSpeed": "1.1f",
+      "isDoubleAttack": "false",
+      "upgradeFleshCount": "35",
+      "partDropProbability": "21.43f"
+    },
+    {
+      "tier": "Common",
+      "attackDamage": "4",
+      "attackSpeed": "1.1f",
+      "isDoubleAttack": "false",
+      "upgradeFleshCount": "14",
+      "partDropProbability": "42.86f"
+    }
+  ],
+  "bow": [
+    {
+      "tier": "Legendary",
+      "attackDamage": "15",
+      "attackSpeed": "0.5f",
+      "bulletSpeed": "0.1f",
+      "upgradeFleshCount": "160",
+      "partDropProbability": "1.0f"
+    },
+    {
+      "tier": "Unique",
+      "attackDamage": "15",
+      "attackSpeed": "1f",
+      "bulletSpeed": "0.1f",
+      "upgradeFleshCount": "80",
+      "partDropProbability": "3.12f"
+    },
+    {
+      "tier": "Rare",
+      "attackDamage": "10",
+      "attackSpeed": "1.25f",
+      "bulletSpeed": "0.1f",
+      "upgradeFleshCount": "40",
+      "partDropProbability": "18.75f"
+    },
+    {
+      "tier": "Common",
+      "attackDamage": "10",
+      "attackSpeed": "1.5f",
+      "bulletSpeed": "0.2f",
+      "upgradeFleshCount": "16",
+      "partDropProbability": "37.5f"
+    }
+  ],
+  "pistol": [
+    {
+      "tier": "Legendary",
+      "attackDamage": "22",
+      "attackSpeed": "1f",
+      "bulletSpeed": "0.1f",
+      "isDoubleAttack": "true",
+      "upgradeFleshCount": "180",
+      "partDropProbability": "1.0f"
+    },
+    {
+      "tier": "Unique",
+      "attackDamage": "20",
+      "attackSpeed": "1f",
+      "bulletSpeed": "0.1f",
+      "isDoubleAttack": "true",
+      "upgradeFleshCount": "90",
+      "partDropProbability": "2.78f"
+    },
+    {
+      "tier": "Rare",
+      "attackDamage": "20",
+      "attackSpeed": "1.5f",
+      "bulletSpeed": "0.1f",
+      "isDoubleAttack": "true",
+      "upgradeFleshCount": "45",
+      "partDropProbability": "16.67f"
+    },
+    {
+      "tier": "Common",
+      "attackDamage": "20",
+      "attackSpeed": "1.5f",
+      "bulletSpeed": "0.1f",
+      "isDoubleAttack": "false",
+      "upgradeFleshCount": "18",
+      "partDropProbability": "33.33f"
+    }
+  ],
+  "rifle": [
+    {
+      "tier": "Legendary",
+      "attackDamage": "22",
+      "attackSpeed": "1f",
+      "reloadSpeed": "0f",
+      "maxBulletCount": "int.MaxValue",
+      "upgradeFleshCount": "200",
+      "partDropProbability": "1.0f"
+    },
+    {
+      "tier": "Unique",
+      "attackDamage": "30",
+      "attackSpeed": "1f",
+      "bulletSpeed": "0.5f",
+      "reloadSpeed": "0.8f",
+      "maxBulletCount": "50",
+      "upgradeFleshCount": "100",
+      "partDropProbability": "2.5f"
+    },
+    {
+      "tier": "Rare",
+      "attackDamage": "20",
+      "attackSpeed": "0.5f",
+      "bulletSpeed": "0.1f",
+      "reloadSpeed": "1f",
+      "maxBulletCount": "50",
+      "upgradeFleshCount": "50",
+      "partDropProbability": "15.0f"
+    },
+    {
+      "tier": "Common",
+      "attackDamage": "25",
+      "attackSpeed": "0.5f",
+      "bulletSpeed": "0.1f",
+      "reloadSpeed": "1.1f",
+      "maxBulletCount": "30",
+      "upgradeFleshCount": "20",
+      "partDropProbability": "30.0f"
+    }
+  ]
+}
