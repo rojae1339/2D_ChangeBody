@@ -137,3 +137,11 @@ Also, each json format has its own variable.
 
 ## mini boss
 // todo
+
+## Json to each parts
+
+use DTO to convert a part.
+
+`/Assets/Constants/EnumTypes.cs` => for use public Enum types
+
+`/Assets\Scripts\Player\Weapon/WeaponDTOSpec.cs` => DTO specifications for convert to parts.
