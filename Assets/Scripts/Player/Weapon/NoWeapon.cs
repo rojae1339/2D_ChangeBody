@@ -1,5 +1,4 @@
 using UnityEngine;
-using static IParts.IUpgradable;
 
 public class NoWeapon : IWeapon
 {
