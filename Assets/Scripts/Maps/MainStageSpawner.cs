@@ -10,6 +10,7 @@ namespace Maps
         public void SpawnParts(DifficultyType? difficulty)
         {
             //todo instantiate logic with addressable
+            Debug.Log(startPosition);
         }
     }
 }

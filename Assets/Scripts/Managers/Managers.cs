@@ -29,7 +29,16 @@ namespace Managers
         
         public static PlayerManager Player { get => Instance._player; }
 
-        void Start() { Init(); }
+        void Awake()
+        {
+            Init();
+        }
+
+        void Start()
+        {
+            // 자동 스테이지 진입 예시
+            Map.ChangeStage(MapManager.StageType.Main);
+        }
 
         static void Init()
         {
