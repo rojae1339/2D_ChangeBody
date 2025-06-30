@@ -6,8 +6,13 @@ using UnityEngine;
 public class PartsManager
 {
     public WeaponDatabase WeaponDB { get; set; }
+
+    public void Init()
+    {
+        LoadWeaponData();
+    }
     
-    public void LoadWeaponData()
+    private void LoadWeaponData()
     {
         var rawData = JsonUtil.LoadWeaponRawJson();
 
@@ -21,15 +26,12 @@ public class PartsManager
         List<NoWeaponDTO> noWeaponDtos = ParseNoWeapons(rawData);
         
         WeaponDB.Initialize(noWeaponDtos); // 여기에 필요한 무기들 계속 추가
-        
-        FieldInfo[] fields = noWeaponDtos.GetType().GetFields();
-        
-        foreach (FieldInfo field in fields)
-        {
-            object value = field.GetValue(noWeaponDtos);
-            Console.WriteLine($"{field.Name} = {value}");
-        }
+
+        WeaponDB.NoWeaponDB.ForEach(i => Debug.Log($"{i.Tier}, {i.AttackDamage}, {i.WeaponHandType}"));
     }
+
+
+    #region ParsingWeapon
 
     private List<NoWeaponDTO> ParseNoWeapons(Dictionary<string, List<Dictionary<string, object>>> rawData)
     {
@@ -50,4 +52,6 @@ public class PartsManager
 
         return list;
     }
+
+    #endregion
 }

@@ -27,15 +27,27 @@ public class JsonUtil
 
     public static Dictionary<string, List<Dictionary<string, object>>> LoadWeaponRawJson()
     {
-        if (!File.Exists(_weaponJsonPath))
+        try
         {
-            Debug.LogError($"Weapon.json 파일을 찾을 수 없습니다. 경로: {_weaponJsonPath}");
+            if (!File.Exists(_weaponJsonPath))
+            {
+                Debug.LogError($"Weapon.json 파일을 찾을 수 없습니다. 경로: {_weaponJsonPath}");
+                return null;
+            }
+
+            string json = File.ReadAllText(_weaponJsonPath);
+
+            var fromJsonToDictionaryList = FromJsonToDictionaryList(json);
+            
+            return fromJsonToDictionaryList;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("JSON 파싱 중 예외 발생: " + e);
             return null;
         }
-
-        string json = File.ReadAllText(_weaponJsonPath);
-        return FromJsonToDictionaryList(json);
     }
+
 
     
 }

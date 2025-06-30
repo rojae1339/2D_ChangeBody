@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Managers : MonoBehaviour
@@ -25,12 +26,6 @@ public class Managers : MonoBehaviour
     void Start()
     {
         Init();
-        _parts.LoadWeaponData();
-    }
-
-    void Update()
-    {
-        
     }
     
     static void Init()
@@ -48,5 +43,6 @@ public class Managers : MonoBehaviour
             DontDestroyOnLoad(go);
             s_Instance = go.GetComponent<Managers>();
         }
+        s_Instance._parts.Init();
     }
 }
