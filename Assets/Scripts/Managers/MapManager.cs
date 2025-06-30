@@ -1,37 +1,56 @@
 using System.Collections.Generic;
+using Maps;
 using UnityEngine;
 
-public class MapManager
+namespace Managers
 {
-    public enum StageType
+    public class MapManager
     {
-        Main,
-        Stage1,
-        Stage2
-    }
+        public enum StageType
+        {
+            Main,
+            Stage1,
+            Stage2
+        }
 
-    public enum Difficulty
-    {
-        Easy,
-        Normal,
-        Hard
-    }
+        private class StageData
+        {
+            public StageType StageType;
+            public DifficultyType? Difficulty; // Nullable
 
-    public class StageData
-    {
-        public StageType stageType;
-        public Difficulty difficulty;
-        //todo 슬더스 map add
-        
-    }
+            public StageData(MapManager.StageType stageType, DifficultyType? difficulty = null)
+            {
+                StageType = stageType;
+                Difficulty = difficulty;
+            }
+        }
     
-    void Start()
-    {
-        
-    }
+        private readonly Dictionary<StageType, IStagePartSpawner> _spawnerMap = new()
+        {
+            { StageType.Main, new MainStageSpawner() },
+            { StageType.Stage1, new Stage1Spawner() },
+            //todo 스테이지 마다 추가
+        };
 
-    void Update()
-    {
-        
+
+        #region 맵 변경시 오브젝트 생성 메서드
+
+        private StageData _currentStage;
+
+        public void ChangeStage(StageType stageType, DifficultyType? difficulty = null)
+        {
+            _currentStage = new StageData(stageType, difficulty);
+            CreateParts(_currentStage);
+        }
+    
+        private void CreateParts(StageData data)
+        {
+            if (_spawnerMap.TryGetValue(data.StageType, out var spawner))
+            {
+                spawner.SpawnParts(data.Difficulty);
+            }
+        }
+
+        #endregion
     }
 }
