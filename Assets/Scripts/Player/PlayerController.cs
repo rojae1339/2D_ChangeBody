@@ -7,9 +7,9 @@ public class PlayerController : MonoBehaviour
     private PlayerMove _playerMove;
     private Vector2 _moveInput = Vector2.zero;
 
-    private void Awake()
+    public void Init(PlayerMove move)
     {
-        _playerMove = gameObject.AddComponent<PlayerMove>();
+        _playerMove = move;
     }
 
     private void Update()

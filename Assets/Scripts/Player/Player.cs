@@ -1,18 +1,20 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
     private PlayerMove _playerMove;
     private PlayerController _playerController;
     
-    void Start()
+    void Awake()
     {
-        _playerMove = GetComponent<PlayerMove>();
-        _playerController = GetComponent<PlayerController>();
+        _playerMove = gameObject.AddComponent<PlayerMove>();
+        _playerController = gameObject.AddComponent<PlayerController>();
+        _playerController.Init(_playerMove);
     }
 
-    void Update()
+    public void OnMove(InputAction.CallbackContext callback)
     {
-        
+        _playerController.OnMove(callback);
     }
 }
