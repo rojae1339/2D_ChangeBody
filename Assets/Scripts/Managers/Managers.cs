@@ -15,12 +15,17 @@ public class Managers : MonoBehaviour
     }
 
     private MapManager _map = new MapManager();
+
+    private PartsManager _parts = new PartsManager();
     
-    public static MapManager Map {get { return Instance._map; }}
+    public static MapManager Map { get => Instance._map; }
+    
+    public static PartsManager Parts { get => Instance._parts; }
     
     void Start()
     {
         Init();
+        _parts.LoadWeaponData();
     }
 
     void Update()

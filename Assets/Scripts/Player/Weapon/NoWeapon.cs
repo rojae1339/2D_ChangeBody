@@ -1,8 +1,9 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NoWeapon : IWeapon
 {
-//todo 퍼플렉시티 답변 참고
 
     #region Fields
 
@@ -22,57 +23,57 @@ public class NoWeapon : IWeapon
     private float _partDropProbability;
 
     [SerializeField]
+    private WeaponHandType _weaponHandType;
+
+    [SerializeField]
     private Player _owner;
 
     #endregion
 
     #region Properties
 
-    public float AttackDamage
-    {
-        get { return _attDmg; }
-        set { _attDmg = value; }
-    }
+    public float AttackDamage { get => _attDmg; private set => _attDmg = value; }
 
-    public float AttackSpeed
-    {
-        get { return _attSpeed; }
-        set { _attSpeed = value; }
-    }
+    public float AttackSpeed { get => _attSpeed; private set => _attSpeed = value; }
 
-    public TierType Tier
-    {
-        get { return _tier; }
-        set { _tier = value; }
-    }
+    public TierType Tier { get => _tier; private set => _tier = value; }
 
-    public int UpgradeFleshCount
-    {
-        get { return _upgradeFleshCount; }
-        private set { }
-    }
+    public int UpgradeFleshCount { get => _upgradeFleshCount; private set => _upgradeFleshCount = value; }
 
-    public float PartDropProbability
-    {
-        get { return _partDropProbability; }
-        private set { }
-    }
+    public float PartDropProbability { get => _partDropProbability; private set => _partDropProbability = value; }
+    
+    public WeaponHandType WeaponHandType { get => _weaponHandType; private set => _weaponHandType = value; }
 
-    public Player Owner
-    {
-        get { return _owner; }
-        set { _owner = value; }
-    }
+    public Player Owner { get => _owner; private set => _owner = value; }
 
     #endregion
 
-    public void Attack(IParts.IDamageable damageable, float dmg) { }
+    #region implimented methods
+
+    public void Attack(IParts.IDamageable damageable, float dmg) { damageable.TakeDamage(dmg); }
 
     public void Upgrade(float status) { }
 
-    public void BindPlayer(Player owner) { }
+    public void BindPlayer(Player owner)
+    {
+        UnBindPlayer();
 
-    public void UnBindPlayer() { }
+        _owner = owner;
+    }
+
+    public void UnBindPlayer() { _owner = null; }
+
+    #endregion
+
+    public void Init(NoWeaponDTO noWeapon)
+    {
+        _attDmg = noWeapon.AttackDamage;
+        _tier = noWeapon.Tier;
+        _attSpeed = noWeapon.AttackSpeed;
+        _upgradeFleshCount = noWeapon.UpgradeFleshCount;
+        _partDropProbability = noWeapon.PartDropProbability;
+        _weaponHandType = noWeapon.WeaponHandType;
+    }
     
-    //todo file IO
+    
 }
