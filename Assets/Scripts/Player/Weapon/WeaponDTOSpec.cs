@@ -167,7 +167,6 @@ public class BowDTO : BaseShootWeaponDTO
                   float attackSpeed,
                   int upgradeFleshCount,
                   float partDropProbability,
-                  WeaponHandType weaponHandType,
                   float bulletSpeed)
         : base(tier, attackDamage, attackSpeed, upgradeFleshCount, partDropProbability, WeaponHandType.TwoHanded,
             bulletSpeed)
@@ -191,7 +190,6 @@ public class PistolDTO : BaseGunDTO
                      float attackSpeed,
                      int upgradeFleshCount,
                      float partDropProbability,
-                     WeaponHandType weaponHandType,
                      float bulletSpeed,
                      AttackType attackType,
                      float reloadSpeed)
@@ -214,7 +212,6 @@ public class RifleDTO : BaseGunDTO
                     float attackSpeed,
                     int upgradeFleshCount,
                     float partDropProbability,
-                    WeaponHandType weaponHandType,
                     float bulletSpeed,
                     float reloadSpeed,
                     int maxBulletCount)
@@ -262,18 +259,18 @@ public class WeaponDatabase
         get => _rifleDB;
     }
     
-    public void Initialize(List<NoWeaponDTO> noWeapons
-                           /*List<ShortSwordDTO> shortSwords,
+    public void Initialize(List<NoWeaponDTO> noWeapons,
+                           List<ShortSwordDTO> shortSwords,
                            List<LongSwordDTO> longSwords,
                            List<BowDTO> bows,
                            List<PistolDTO> pistols,
-                           List<RifleDTO> rifles*/)
+                           List<RifleDTO> rifles)
     {
         _noWeaponDB = noWeapons;
-        /*_shortSwordDB = shortSwords;
+        _shortSwordDB = shortSwords;
         _longSwordDB = longSwords;
         _bowDB = bows;
         _pistolDB = pistols;
-        _rifleDB = rifles;*/
+        _rifleDB = rifles;
     }
 }

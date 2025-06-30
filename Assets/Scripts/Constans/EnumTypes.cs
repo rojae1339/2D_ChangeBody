@@ -18,3 +18,10 @@ public enum WeaponHandType
     OneHanded,
     TwoHanded,
 }
+
+public enum DifficultyType
+{
+    Easy,
+    Normal,
+    Hard
+}
