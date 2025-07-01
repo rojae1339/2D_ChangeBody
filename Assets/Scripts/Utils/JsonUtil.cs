@@ -6,9 +6,9 @@ using UnityEngine;
 
 public class JsonUtil
 {
-    private static readonly string _weaponJsonPath = "Assets/JsonData/Weapon.json";
-    private static readonly string _bodyJsonPath = "Assets/JsonData/Body.json";
-    private static readonly string _legJsonPath = "Assets/JsonData/Leg.json";
+    private static readonly string _weaponJsonPath = "Assets/JsonDatas/Weapon.json";
+    private static readonly string _bodyJsonPath = "Assets/JsonDatas/Body.json";
+    private static readonly string _legJsonPath = "Assets/JsonDatas/Leg.json";
 
     public enum WeaponCategory
     {
@@ -27,15 +27,30 @@ public class JsonUtil
 
     public static Dictionary<string, List<Dictionary<string, object>>> LoadWeaponRawJson()
     {
+        return LoadPartsWithPath(_weaponJsonPath);
+    }
+    
+    public static Dictionary<string, List<Dictionary<string, object>>> LoadBodyRawJson()
+    {
+        return LoadPartsWithPath(_bodyJsonPath);
+    }
+    
+    public static Dictionary<string, List<Dictionary<string, object>>> LoadLegRawJson()
+    {
+        return LoadPartsWithPath(_legJsonPath);
+    }
+
+    private static Dictionary<string, List<Dictionary<string, object>>> LoadPartsWithPath(string partsPath)
+    {
         try
         {
-            if (!File.Exists(_weaponJsonPath))
+            if (!File.Exists(partsPath))
             {
-                Debug.LogError($"Weapon.json 파일을 찾을 수 없습니다. 경로: {_weaponJsonPath}");
+                Debug.LogError($"Weapon.json 파일을 찾을 수 없습니다. 경로: {partsPath}");
                 return null;
             }
 
-            string json = File.ReadAllText(_weaponJsonPath);
+            string json = File.ReadAllText(partsPath);
 
             var fromJsonToDictionaryList = FromJsonToDictionaryList(json);
             

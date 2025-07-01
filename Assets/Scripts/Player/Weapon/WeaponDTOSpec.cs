@@ -18,7 +18,8 @@ public abstract class BaseWeaponDTO
     public float AttackDamage { get => _attackDamage; set => _attackDamage = value; }
     public float AttackSpeed { get => _attackSpeed; set => _attackSpeed = value; }
     public int UpgradeFleshCount { get => _upgradeFleshCount; set => _upgradeFleshCount = value; }
-    public float PartDropProbability { get => _partDropProbability; set => _partDropProbability = value; }
+    public float PartDropProbability { get => _partDropProbability; }
+
     public WeaponHandType WeaponHandType { get => _weaponHandType; private set { } }
 
     //빌더는 안씀
@@ -57,7 +58,7 @@ public abstract class BaseSwordDTO : BaseWeaponDTO
                         float partDropProbability,
                         WeaponHandType weaponHandType,
                         AttackType attackType)
-        : base(tier, attackDamage, attackSpeed, upgradeFleshCount, partDropProbability, weaponHandType)
+        : base(tier, attackDamage, attackSpeed, upgradeFleshCount, partDropProbability,  weaponHandType)
     {
         _attackType = attackType;
     }

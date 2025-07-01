@@ -25,13 +25,14 @@ namespace Managers
                 item => new NoWeaponDTO(Enum.Parse<TierType>(item[WeaponKeys.Tier].ToString()),
                     Convert.ToSingle(item[WeaponKeys.AttackDamage]), Convert.ToSingle(item[WeaponKeys.AttackSpeed]),
                     Convert.ToInt32(item[WeaponKeys.UpgradeFleshCount]),
-                    Convert.ToSingle(item[WeaponKeys.PartDropProbability])));
+                     Convert.ToSingle(item[WeaponKeys.PartDropProbability])));
 
             List<ShortSwordDTO> shortSwordDtos = ParseWeapon(rawData, WeaponNames.ShortSword,
                 item => new ShortSwordDTO(Enum.Parse<TierType>(item[WeaponKeys.Tier].ToString()),
                     Convert.ToSingle(item[WeaponKeys.AttackDamage]), Convert.ToSingle(item[WeaponKeys.AttackSpeed]),
                     Convert.ToInt32(item[WeaponKeys.UpgradeFleshCount]),
                     Convert.ToSingle(item[WeaponKeys.PartDropProbability]),
+                    
                     Enum.Parse<AttackType>(item[WeaponKeys.AttackType].ToString())));
 
             List<LongSwordDTO> longSwordDtos = ParseWeapon(rawData, WeaponNames.LongSword,
@@ -39,6 +40,7 @@ namespace Managers
                     Convert.ToSingle(item[WeaponKeys.AttackDamage]), Convert.ToSingle(item[WeaponKeys.AttackSpeed]),
                     Convert.ToInt32(item[WeaponKeys.UpgradeFleshCount]),
                     Convert.ToSingle(item[WeaponKeys.PartDropProbability]),
+                    
                     Enum.Parse<AttackType>(item[WeaponKeys.AttackType].ToString())));
 
             List<BowDTO> bowDtos = ParseWeapon(rawData, WeaponNames.Bow,
@@ -46,6 +48,7 @@ namespace Managers
                     Convert.ToSingle(item[WeaponKeys.AttackDamage]), Convert.ToSingle(item[WeaponKeys.AttackSpeed]),
                     Convert.ToInt32(item[WeaponKeys.UpgradeFleshCount]),
                     Convert.ToSingle(item[WeaponKeys.PartDropProbability]),
+                    
                     Convert.ToSingle(item[WeaponKeys.BulletSpeed])));
 
             List<PistolDTO> pistolDtos = ParseWeapon(rawData, WeaponNames.Pistol,
@@ -54,7 +57,9 @@ namespace Managers
                     Convert.ToInt32(item[WeaponKeys.UpgradeFleshCount]),
                     Convert.ToSingle(item[WeaponKeys.PartDropProbability]),
                     Convert.ToSingle(item[WeaponKeys.BulletSpeed]),
+                    
                     Enum.Parse<AttackType>(item[WeaponKeys.AttackType].ToString()),
+                    
                     Convert.ToSingle(item[WeaponKeys.ReloadSpeed])));
 
             List<RifleDTO> rifleDtos = ParseWeapon(rawData, WeaponNames.Rifle,
@@ -63,6 +68,7 @@ namespace Managers
                     Convert.ToInt32(item[WeaponKeys.UpgradeFleshCount]),
                     Convert.ToSingle(item[WeaponKeys.PartDropProbability]),
                     Convert.ToSingle(item[WeaponKeys.BulletSpeed]), Convert.ToSingle(item[WeaponKeys.ReloadSpeed]),
+                    
                     Convert.ToInt32(item[WeaponKeys.MaxBulletCount])));
 
             WeaponDB.Initialize(noWeaponDtos, shortSwordDtos, longSwordDtos, bowDtos, pistolDtos, rifleDtos);

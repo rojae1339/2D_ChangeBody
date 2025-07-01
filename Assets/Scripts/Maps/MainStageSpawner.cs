@@ -10,7 +10,15 @@ namespace Maps
         public void SpawnParts(DifficultyType? difficulty)
         {
             //todo instantiate logic with addressable
-            Debug.Log(startPosition);
+            var keysByLabel = Managers.Managers.Addressable.GetKeysByGroup(AddressableLabelGroup.PlayerGroup);
+
+            
+            for (int i = 0; i < keysByLabel.Count; i++)
+            {
+                string s = keysByLabel[i];
+                GameObject go = Managers.Managers.Addressable.Instantiate(s);
+                go.transform.position = startPosition + new Vector2(i, 0);
+            }
         }
     }
 }

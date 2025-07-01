@@ -42,6 +42,7 @@ public class NoWeapon : IWeapon
 
     public float PartDropProbability { get => _partDropProbability; private set => _partDropProbability = value; }
     
+    
     public WeaponHandType WeaponHandType { get => _weaponHandType; private set => _weaponHandType = value; }
 
     public Player Owner { get => _owner; private set => _owner = value; }

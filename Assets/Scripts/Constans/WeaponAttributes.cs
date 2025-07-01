@@ -9,6 +9,7 @@ public static class WeaponKeys
     public const string ReloadSpeed = "reloadSpeed";
     public const string MaxBulletCount = "maxBulletCount";
     public const string BulletSpeed = "bulletSpeed";
+    public const string Name = "name";
 }
 
 public static class WeaponNames
