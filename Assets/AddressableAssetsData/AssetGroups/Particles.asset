@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Particles
+  m_EditorClassIdentifier: 
+  m_GroupName: Particles
+  m_GUID: 20cadd8ebbe062946987ebf8b653d5f0
+  m_SerializeEntries:
+  - m_GUID: 591741796edae3345996f1188ec85f03
+    m_Address: CommonParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Particle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6b3bbde3e3be60448b8b0b48ce3df5b6
+    m_Address: UniqueParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Particle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 70c34971e8b3d7f468aaf33fa73948db
+    m_Address: LegendaryParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Particle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e83d67772ed4fe64ea35030346538382
+    m_Address: RareParticle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Particle
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: f927782f01b69a5408b7614f77e0617f, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: e6eb7773a03ed4442b18c89ad6500c99, type: 2}
+    - {fileID: 11400000, guid: 2b9053e44f4e22548981dfd7097bce5f, type: 2}

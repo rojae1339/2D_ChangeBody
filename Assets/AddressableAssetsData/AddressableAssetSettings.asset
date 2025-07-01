@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 468a46d0ae32c3544b7d98094e6448a9, type: 3}
   m_Name: AddressableAssetSettings
   m_EditorClassIdentifier: 
-  m_DefaultGroup: c55b862be9c84124190ea216616738c5
+  m_DefaultGroup: 5809209370d09744787594d3ee1785ab
   m_currentHash:
     serializedVersion: 2
-    Hash: 7bb7ea6ed595f01c06f552d3f6e786e5
+    Hash: 721eea36c0e6fc5c191182db68061671
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 1
   m_CatalogRequestsTimeout: 0
@@ -59,7 +59,10 @@ MonoBehaviour:
   m_BuildAddressablesWithPlayerBuild: 0
   m_overridePlayerVersion: '[UnityEditor.PlayerSettings.bundleVersion]'
   m_GroupAssets:
+  - {fileID: 11400000, guid: 831eadfdf6b6b204f92228c474d57c00, type: 2}
   - {fileID: 11400000, guid: 6e533f33d8f23e44ab79ec5ea001c5e2, type: 2}
+  - {fileID: 11400000, guid: 7011b068b4f78aa498d31e90ac85288b, type: 2}
+  - {fileID: 11400000, guid: dde13144a5df809448aaf7b98bdcf6fa, type: 2}
   m_BuildSettings:
     m_LogResourceManagerExceptions: 1
     m_BundleBuildPath: Temp/com.unity.addressables/AssetBundles
@@ -70,7 +73,7 @@ MonoBehaviour:
       m_ProfileName: Default
       m_Values:
       - m_Id: 01d5bd598fb1cf649a47debc09132802
-        m_Value: <undefined>
+        m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
       - m_Id: 141a138418cf4104e95295ab92332bc1
         m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
       - m_Id: 6a1d8ee1f7597be4c8efb5d3365304b0
@@ -78,7 +81,7 @@ MonoBehaviour:
       - m_Id: e41ce27f013588a40a6036d55eb81f9f
         m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
       - m_Id: edf814435cd7ebd48b555c86df05825c
-        m_Value: 'ServerData/[BuildTarget]'
+        m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
     m_ProfileEntryNames:
     - m_Id: 01d5bd598fb1cf649a47debc09132802
       m_Name: Remote.LoadPath
@@ -99,6 +102,13 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - Weapon
+    - Body
+    - Leg
+    - Particle
+    - Enemy
+    - Boss
+    - All_Parts
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 07762ac03c657064ea4c6ef0a906d50d, type: 2}

@@ -10,14 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Packed Assets
+  m_Name: Materials
   m_EditorClassIdentifier: 
-  m_GroupName: Packed Assets
-  m_GUID: c55b862be9c84124190ea216616738c5
-  m_SerializeEntries: []
+  m_GroupName: Materials
+  m_GUID: 8e885e7db7e32a94a9cb1ecd417bb85b
+  m_SerializeEntries:
+  - m_GUID: c5a65547d1edf4a9d882bd6cff83eda8
+    m_Address: Assets/SPUM/Basic_Resources/Materials/SpriteDiffuse.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f927782f01b69a5408b7614f77e0617f, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: f23843ce8f082d94083ac22e48d46600, type: 2}
-    - {fileID: 11400000, guid: be2df5d9412ec934a807f6a28d3db62d, type: 2}
+    - {fileID: 11400000, guid: bfc51d05ff986044681d8129b36292bf, type: 2}
+    - {fileID: 11400000, guid: 02b9141e68e79ff4c9a1cc244c297511, type: 2}
