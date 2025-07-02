@@ -48,7 +48,7 @@ interface IAttackable
 
 using Unity's package called
 
-`JsonUtility`.
+`JsonUtility`, `NewtonJson`.
 
 Comparison with `NewtonJson`, and this game doesn't need complex and complicated json data type.
 
@@ -145,3 +145,16 @@ use DTO to convert a part.
 `/Assets/Constants/EnumTypes.cs` => for use public Enum types
 
 `/Assets\Scripts\Player\Weapon/WeaponDTOSpec.cs` => DTO specifications for convert to parts.
+
+//todo
+
+# Player Management
+
+- Player data(for example, gold, fleshCount) -> PlayerManager
+
+- Player State(for example, move, animation etc)
+    - PlayerController -> key input processing
+    - PlayerMove -> move player role
+    - PlayerAnimation -> change player animations with CurrentAnimationState
+    - Player -> All player related components' container role (for example, throw animationState to PlayerAnimation, throw move to PlayerMove, container of InputKeySystem's event.)
+        - ![container of InputKeySystem](image.png)
