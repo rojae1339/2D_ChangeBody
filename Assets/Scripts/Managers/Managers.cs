@@ -36,38 +36,26 @@ namespace Managers
 
         private static void Init()
         {
-            if (s_Instance == null)
+            if (s_Instance != null) return;
+            
+            GameObject go = GameObject.Find("@Managers");
+
+            if (go == null)
             {
-                GameObject go = GameObject.Find("@Managers");
-
-                if (go == null)
-                {
-                    go = new GameObject() { name = "@Managers" };
-                    go.AddComponent<Managers>();
-                }
-
-                DontDestroyOnLoad(go);
-                s_Instance = go.GetComponent<Managers>();
-
-                s_Instance._parts.Init();
-                /*s_Instance._addressable.LoadAllAsync<GameObject>(AddressableLabelConstants.Weapon,
-                    (key, count, totalCount) =>
-                    {
-                        //비동기 로딩 다 끝난후 stage변경
-                        Debug.Log($"{key}: {count}, {totalCount}");
-
-                        if (count == totalCount)
-                        {
-                            s_Instance._map.ChangeStage(MapManager.StageType.Main);
-                        }
-                    });*/
-                
-                s_Instance._addressable.LoadAllByLabels<GameObject>(AddressableLabelGroup.PlayerGroup,
-                    () => {
-                        // 모든 label의 로딩이 끝난 후에만 stage 변경
-                        Managers.Map.ChangeStage(MapManager.StageType.Main);
-                    });
+                go = new GameObject() { name = "@Managers" };
+                go.AddComponent<Managers>();
             }
+
+            DontDestroyOnLoad(go);
+            s_Instance = go.GetComponent<Managers>();
+
+            s_Instance._parts.Init();
+                
+            s_Instance._addressable.LoadAllByLabels<GameObject>(AddressableLabelGroup.PlayerGroup,
+                () => {
+                    // 모든 label의 로딩이 끝난 후에만 stage 변경
+                    Managers.Map.ChangeStage(MapManager.StageType.Main);
+                });
         }
     }
 }

@@ -4,24 +4,32 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    private PlayerMove _playerMove;
-    private Vector2 _moveInput = Vector2.zero;
+    private Player _player;
 
-    public void Init(PlayerMove move)
+    public void Init(Player player)
     {
-        _playerMove = move;
+        _player = player;
     }
 
-    private void Update()
+    public void OnMove(InputAction.CallbackContext ctx)
     {
-        _playerMove.MoveDirection= _moveInput;
-    }
-
-    public void OnMove(InputAction.CallbackContext callback)
-    {
-        if (callback.performed || callback.canceled)
+        if (ctx.performed || ctx.canceled)
         {
-            _moveInput = callback.ReadValue<Vector2>();
+            Vector2 input = ctx.ReadValue<Vector2>();
+            _player.SetMoveInput(input);
         }
     }
+
+    public void OnAttack(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+            _player.Attack();
+    }
+
+    public void OnJump(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+            _player.Jump();
+    }
 }
+

@@ -18,6 +18,10 @@ namespace Maps
                 string s = keysByLabel[i];
                 GameObject go = Managers.Managers.Addressable.Instantiate(s);
                 go.transform.position = startPosition + new Vector2(i, 0);
+                go.transform.localScale = new Vector2(1.5f, 1.5f);
+                
+                
+                //todo parts별로 data initialize해주기
             }
         }
     }
