@@ -18,13 +18,10 @@ namespace Managers
         }
 
         private readonly MapManager _map = new MapManager();
-        private readonly PartsManager _parts = new PartsManager();
         private readonly PlayerManager _player = new PlayerManager();
         private readonly AddressableManager _addressable = new AddressableManager();
 
         public static MapManager Map { get => Instance._map; }
-
-        public static PartsManager Parts { get => Instance._parts; }
 
         public static PlayerManager Player { get => Instance._player; }
 
@@ -48,8 +45,6 @@ namespace Managers
 
             DontDestroyOnLoad(go);
             s_Instance = go.GetComponent<Managers>();
-
-            s_Instance._parts.Init();
                 
             s_Instance._addressable.LoadAllByLabels<GameObject>(AddressableLabelGroup.PlayerGroup,
                 () => {

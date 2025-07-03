@@ -1,36 +1,15 @@
-using UnityEngine;
-
 public class Rifle : BaseWeapon
 {
-    private float _reloadSpeed;
-    public float ReloadSpeed { get => _reloadSpeed; }
+    public Rifle(WeaponDTO dto) : base(dto) { }
 
-    private int _maxBulletCount;
-    public int MaxBulletCount { get => _maxBulletCount; }
-
-    private float _bulletSpeed;
-    public float BulletSpeed { get => _bulletSpeed; }
-
-    public override void Attack(IParts.IDamageable damageable, float dmg)
+    public override void Attack(IParts.IDamageable target, float damage)
     {
-        // Rifle-specific attack logic
-        damageable.TakeDamage(dmg);
+        // 일반적으로 연사 처리 또는 한 발 발사
+        target?.TakeDamage(damage);
     }
 
-    public override void Upgrade(float status)
+    public void Reload()
     {
-        // Rifle-specific upgrade logic
-    }
-
-    public override BaseWeapon Init(BaseWeaponDTO data)
-    {
-        base.Init(data);
-        if (data is RifleDTO rifleData)
-        {
-            _bulletSpeed = rifleData.BulletSpeed;
-            _reloadSpeed = rifleData.ReloadSpeed;
-            _maxBulletCount = rifleData.MaxBulletCount;
-        }
-        return this;
+        // 탄약 장전 처리
     }
 }

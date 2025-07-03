@@ -1,21 +1,17 @@
 public class ShortSword : BaseWeapon
 {
-    private AttackType _attackType;
-    
-    public AttackType AttackType { get => _attackType; }
+    public ShortSword(WeaponDTO dto) : base(dto) { }
 
-    public override void Upgrade(float status)
+    public override void Attack(IParts.IDamageable target, float damage)
     {
-        
-    }
-
-    public override BaseWeapon Init(BaseWeaponDTO data)
-    {
-        base.Init(data);
-        if (data is ShortSwordDTO shortSwordData)
+        if (WeaponAttackType == AttackType.DoubleAttack)
         {
-            _attackType = shortSwordData.AttackType;
+            target?.TakeDamage(damage / 2f);
+            target?.TakeDamage(damage / 2f);
         }
-        return this;
+        else
+        {
+            target?.TakeDamage(damage);
+        }
     }
 }

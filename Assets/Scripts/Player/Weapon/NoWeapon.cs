@@ -1,15 +1,9 @@
-using UnityEngine;
-
 public class NoWeapon : BaseWeapon
 {
-    public override void Attack(IParts.IDamageable damageable, float dmg)
-    {
-        damageable.TakeDamage(dmg);
-    }
+    public NoWeapon(WeaponDTO dto) : base(dto) { }
 
-    public override void Upgrade(float status)
+    public override void Attack(IParts.IDamageable target, float damage)
     {
-        // NoWeapon does not upgrade.
+        target.TakeDamage(damage);
     }
 }
-

@@ -29,21 +29,21 @@ public class IParts
     //todo
     public interface IDamageable
     {
+        float Hp { get; }
         bool IsDead { get; }
         void TakeDamage(float damage);
         void Dead();
-
-    }
-
-    public interface IMoveable
-    {
     }
 
     public interface IJumpable
     {
+        int JumpCount { get; set; }
+        void Jump();
     }
 
     public interface IDodgeable : IJumpable
     {
+        int DodgeCount { get; set; }
+        void Dodge();
     }
 }

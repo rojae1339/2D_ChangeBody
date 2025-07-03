@@ -4,33 +4,49 @@
       "tier": "Legendary",
       "attackDamage": 4.0,
       "attackSpeed": 0.1,
+      "attackType": null,
+      "bulletSpeed": null,
+      "reloadSpeed": null,
+      "maxBulletCount": null,
       "upgradeFleshCount": 100,
       "partDropProbability": 1.0,
-      "weaponHandType" : "OneHanded"
+      "weaponHandType": "OneHanded"
     },
     {
       "tier": "Unique",
       "attackDamage": 8.0,
       "attackSpeed": 0.5,
+      "attackType": null,
+      "bulletSpeed": null,
+      "reloadSpeed": null,
+      "maxBulletCount": null,
       "upgradeFleshCount": 50,
       "partDropProbability": 5.0,
-      "weaponHandType" : "OneHanded"
+      "weaponHandType": "OneHanded"
     },
     {
       "tier": "Rare",
       "attackDamage": 3.0,
       "attackSpeed": 0.9,
+      "attackType": null,
+      "bulletSpeed": null,
+      "reloadSpeed": null,
+      "maxBulletCount": null,
       "upgradeFleshCount": 25,
       "partDropProbability": 30.0,
-      "weaponHandType" : "OneHanded"
+      "weaponHandType": "OneHanded"
     },
     {
       "tier": "Common",
       "attackDamage": 2.0,
       "attackSpeed": 0.9,
+      "attackType": null,
+      "bulletSpeed": null,
+      "reloadSpeed": null,
+      "maxBulletCount": null,
       "upgradeFleshCount": 10,
       "partDropProbability": 60.0,
-      "weaponHandType" : "OneHanded"
+      "weaponHandType": "OneHanded"
     }
   ],
   "shortSword": [
@@ -39,36 +55,48 @@
       "attackDamage": 3.0,
       "attackSpeed": 0.1,
       "attackType": "DoubleAttack",
+      "bulletSpeed": null,
+      "reloadSpeed": null,
+      "maxBulletCount": null,
       "upgradeFleshCount": 120,
       "partDropProbability": 1.0,
-      "weaponHandType" : "OneHanded"
+      "weaponHandType": "OneHanded"
     },
     {
       "tier": "Unique",
       "attackDamage": 1.0,
       "attackSpeed": 0.1,
       "attackType": "DoubleAttack",
+      "bulletSpeed": null,
+      "reloadSpeed": null,
+      "maxBulletCount": null,
       "upgradeFleshCount": 60.0,
       "partDropProbability": 4.17,
-      "weaponHandType" : "OneHanded"
+      "weaponHandType": "OneHanded"
     },
     {
       "tier": "Rare",
       "attackDamage": 1.0,
       "attackSpeed": 0.1,
       "attackType": "SingleAttack",
+      "bulletSpeed": null,
+      "reloadSpeed": null,
+      "maxBulletCount": null,
       "upgradeFleshCount": 30.0,
       "partDropProbability": 25.0,
-      "weaponHandType" : "OneHanded"
+      "weaponHandType": "OneHanded"
     },
     {
       "tier": "Common",
       "attackDamage": 1.0,
       "attackSpeed": 0.3,
       "attackType": "SingleAttack",
+      "bulletSpeed": null,
+      "reloadSpeed": null,
+      "maxBulletCount": null,
       "upgradeFleshCount": 12,
       "partDropProbability": 50.0,
-      "weaponHandType" : "OneHanded"
+      "weaponHandType": "OneHanded"
     }
   ],
   "longSword": [
@@ -77,36 +105,48 @@
       "attackDamage": 6.0,
       "attackSpeed": 0.7,
       "attackType": "DoubleAttack",
+      "bulletSpeed": null,
+      "reloadSpeed": null,
+      "maxBulletCount": null,
       "upgradeFleshCount": 140,
       "partDropProbability": 1.0,
-      "weaponHandType" : "TwoHanded"
+      "weaponHandType": "TwoHanded"
     },
     {
       "tier": "Unique",
       "attackDamage": 6.0,
       "attackSpeed": 1.1,
       "attackType": "SingleAttack",
+      "bulletSpeed": null,
+      "reloadSpeed": null,
+      "maxBulletCount": null,
       "upgradeFleshCount": 70,
       "partDropProbability": 3.57,
-      "weaponHandType" : "TwoHanded"
+      "weaponHandType": "TwoHanded"
     },
     {
       "tier": "Rare",
       "attackDamage": 5.0,
       "attackSpeed": 1.1,
       "attackType": "SingleAttack",
+      "bulletSpeed": null,
+      "reloadSpeed": null,
+      "maxBulletCount": null,
       "upgradeFleshCount": 35,
       "partDropProbability": 21.43,
-      "weaponHandType" : "TwoHanded"
+      "weaponHandType": "TwoHanded"
     },
     {
       "tier": "Common",
       "attackDamage": 4.0,
       "attackSpeed": 1.1,
       "attackType": "SingleAttack",
+      "bulletSpeed": null,
+      "reloadSpeed": null,
+      "maxBulletCount": null,
       "upgradeFleshCount": 14,
       "partDropProbability": 42.86,
-      "weaponHandType" : "TwoHanded"
+      "weaponHandType": "TwoHanded"
     }
   ],
   "bow": [
@@ -114,37 +154,49 @@
       "tier": "Legendary",
       "attackDamage": 15.0,
       "attackSpeed": 0.5,
+      "attackType": null,
       "bulletSpeed": 0.1,
+      "reloadSpeed": null,
+      "maxBulletCount": null,
       "upgradeFleshCount": 160,
       "partDropProbability": 1.0,
-      "weaponHandType" : "twoHanded"
+      "weaponHandType": "TwoHanded"
     },
     {
       "tier": "Unique",
       "attackDamage": 15.0,
       "attackSpeed": 1,
+      "attackType": null,
       "bulletSpeed": 0.1,
+      "reloadSpeed": null,
+      "maxBulletCount": null,
       "upgradeFleshCount": 80,
       "partDropProbability": 3.12,
-      "weaponHandType" : "TwoHanded"
+      "weaponHandType": "TwoHanded"
     },
     {
       "tier": "Rare",
       "attackDamage": 10.0,
       "attackSpeed": 1.25,
+      "attackType": null,
       "bulletSpeed": 0.1,
+      "reloadSpeed": null,
+      "maxBulletCount": null,
       "upgradeFleshCount": 40,
       "partDropProbability": 18.75,
-      "weaponHandType" : "TwoHanded"
+      "weaponHandType": "TwoHanded"
     },
     {
       "tier": "Common",
       "attackDamage": 10.0,
       "attackSpeed": 1.5,
+      "attackType": null,
       "bulletSpeed": 0.2,
+      "reloadSpeed": null,
+      "maxBulletCount": null,
       "upgradeFleshCount": 16,
       "partDropProbability": 37.5,
-      "weaponHandType" : "TwoHanded"
+      "weaponHandType": "TwoHanded"
     }
   ],
   "pistol": [
@@ -152,45 +204,49 @@
       "tier": "Legendary",
       "attackDamage": 22.0,
       "attackSpeed": 1,
+      "attackType": "DoubleAttack",
       "bulletSpeed": 0.1,
       "reloadSpeed": 0.5,
-      "attackType": "DoubleAttack",
+      "maxBulletCount": null,
       "upgradeFleshCount": 180,
       "partDropProbability": 1.0,
-      "weaponHandType" : "OneHanded"
+      "weaponHandType": "OneHanded"
     },
     {
       "tier": "Unique",
       "attackDamage": 20.0,
       "attackSpeed": 1,
+      "attackType": "DoubleAttack",
       "bulletSpeed": 0.1,
       "reloadSpeed": 0.5,
-      "attackType": "DoubleAttack",
+      "maxBulletCount": null,
       "upgradeFleshCount": 90,
       "partDropProbability": 2.78,
-      "weaponHandType" : "OneHanded"
+      "weaponHandType": "OneHanded"
     },
     {
       "tier": "Rare",
       "attackDamage": 20.0,
       "attackSpeed": 1.5,
-      "bulletSpeed": 0.1,
       "attackType": "DoubleAttack",
+      "bulletSpeed": 0.1,
       "reloadSpeed": 0.5,
+      "maxBulletCount": null,
       "upgradeFleshCount": 45,
       "partDropProbability": 16.67,
-      "weaponHandType" : "OneHanded"
+      "weaponHandType": "OneHanded"
     },
     {
       "tier": "Common",
       "attackDamage": 20.0,
       "attackSpeed": 1.5,
+      "attackType": "SingleAttack",
       "bulletSpeed": 0.1,
       "reloadSpeed": 0.5,
-      "attackType": "SingleAttack",
+      "maxBulletCount": null,
       "upgradeFleshCount": 18,
       "partDropProbability": 33.33,
-      "weaponHandType" : "OneHanded"
+      "weaponHandType": "OneHanded"
     }
   ],
   "rifle": [
@@ -198,45 +254,49 @@
       "tier": "Legendary",
       "attackDamage": 22.0,
       "attackSpeed": 1.0,
-      "reloadSpeed": 0.0,
+      "attackType": null,
       "bulletSpeed": 0.1,
+      "reloadSpeed": 0.0,
       "maxBulletCount": 999999999,
       "upgradeFleshCount": 200,
       "partDropProbability": 1.0,
-      "weaponHandType" : "TwoHanded"
+      "weaponHandType": "TwoHanded"
     },
     {
       "tier": "Unique",
       "attackDamage": 30.0,
       "attackSpeed": 1.0,
+      "attackType": null,
       "bulletSpeed": 0.5,
       "reloadSpeed": 0.8,
       "maxBulletCount": 50,
       "upgradeFleshCount": 100,
       "partDropProbability": 2.5,
-      "weaponHandType" : "TwoHanded"
+      "weaponHandType": "TwoHanded"
     },
     {
       "tier": "Rare",
       "attackDamage": 20.0,
       "attackSpeed": 0.5,
+      "attackType": null,
       "bulletSpeed": 0.1,
       "reloadSpeed": 1.0,
       "maxBulletCount": 50,
       "upgradeFleshCount": 50,
       "partDropProbability": 15.0,
-      "weaponHandType" : "TwoHanded"
+      "weaponHandType": "TwoHanded"
     },
     {
       "tier": "Common",
       "attackDamage": 25.0,
       "attackSpeed": 0.5,
+      "attackType": null,
       "bulletSpeed": 0.1,
       "reloadSpeed": 1.1,
       "maxBulletCount": 30,
       "upgradeFleshCount": 20,
       "partDropProbability": 30.0,
-      "weaponHandType" : "TwoHanded"
+      "weaponHandType": "TwoHanded"
     }
   ]
 }

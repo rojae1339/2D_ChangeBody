@@ -1,0 +1,154 @@
+{
+  "fatBody": [
+    {
+      "tier": "Legendary",
+      "heartCount": 150,
+      "shieldCount": 0,
+      "isDead": false,
+      "isDmgHalf": true,
+      "upgradeFleshCount": 4,
+      "partDropProbability": 0.45
+    },
+    {
+      "tier": "Unique",
+      "heartCount": 120,
+      "shieldCount": 0,
+      "isDead": false,
+      "isDmgHalf": true,
+      "upgradeFleshCount": 3,
+      "partDropProbability": 0.35
+    },
+    {
+      "tier": "Rare",
+      "heartCount": 100,
+      "shieldCount": 0,
+      "isDead": false,
+      "isDmgHalf": true,
+      "upgradeFleshCount": 2,
+      "partDropProbability": 0.25
+    },
+    {
+      "tier": "Common",
+      "heartCount": 80,
+      "shieldCount": 0,
+      "isDead": false,
+      "isDmgHalf": true,
+      "upgradeFleshCount": 1,
+      "partDropProbability": 0.15
+    }
+  ],
+  "normalBody": [
+    {
+      "tier": "Legendary",
+      "heartCount": 80,
+      "shieldCount": 0,
+      "isDead": false,
+      "isDmgHalf": false,
+      "upgradeFleshCount": 4,
+      "partDropProbability": 0.4
+    },
+    {
+      "tier": "Unique",
+      "heartCount": 70,
+      "shieldCount": 0,
+      "isDead": false,
+      "isDmgHalf": false,
+      "upgradeFleshCount": 3,
+      "partDropProbability": 0.3
+    },
+    {
+      "tier": "Rare",
+      "heartCount": 60,
+      "shieldCount": 0,
+      "isDead": false,
+      "isDmgHalf": false,
+      "upgradeFleshCount": 2,
+      "partDropProbability": 0.2
+    },
+    {
+      "tier": "Common",
+      "heartCount": 50,
+      "shieldCount": 0,
+      "isDead": false,
+      "isDmgHalf": false,
+      "upgradeFleshCount": 1,
+      "partDropProbability": 0.1
+    }
+  ],
+  "muscleBody": [
+    {
+      "tier": "Legendary",
+      "heartCount": 80,
+      "shieldCount": 0.5,
+      "isDead": false,
+      "isDmgHalf": false,
+      "upgradeFleshCount": 4,
+      "partDropProbability": 0.42
+    },
+    {
+      "tier": "Unique",
+      "heartCount": 70,
+      "shieldCount": 0.5,
+      "isDead": false,
+      "isDmgHalf": false,
+      "upgradeFleshCount": 3,
+      "partDropProbability": 0.33
+    },
+    {
+      "tier": "Rare",
+      "heartCount": 70,
+      "shieldCount": 0,
+      "isDead": false,
+      "isDmgHalf": false,
+      "upgradeFleshCount": 2,
+      "partDropProbability": 0.24
+    },
+    {
+      "tier": "Common",
+      "heartCount": 60,
+      "shieldCount": 0,
+      "isDead": false,
+      "isDmgHalf": false,
+      "upgradeFleshCount": 1,
+      "partDropProbability": 0.15
+    }
+  ],
+  "slimBody": [
+    {
+      "tier": "Legendary",
+      "heartCount": 50,
+      "shieldCount": 0,
+      "isDead": false,
+      "isDmgHalf": false,
+      "upgradeFleshCount": 4,
+      "partDropProbability": 0.35
+    },
+    {
+      "tier": "Unique",
+      "heartCount": 50,
+      "shieldCount": 0,
+      "isDead": false,
+      "isDmgHalf": false,
+      "upgradeFleshCount": 3,
+      "partDropProbability": 0.25
+    },
+    {
+      "tier": "Rare",
+      "heartCount": 40,
+      "shieldCount": 0,
+      "isDead": false,
+      "isDmgHalf": false,
+      "upgradeFleshCount": 2,
+      "partDropProbability": 0.17
+    },
+    {
+      "tier": "Common",
+      "heartCount": 30,
+      "shieldCount": 0,
+      "isDead": false,
+      "isDmgHalf": false,
+      "upgradeFleshCount": 1,
+      "partDropProbability": 0.1
+    }
+  ]
+}

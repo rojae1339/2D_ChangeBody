@@ -1,23 +1,10 @@
-using UnityEngine;
-
 public class Bow : BaseWeapon
 {
-    private float _bulletSpeed;
-    public float BulletSpeed { get => _bulletSpeed; }
+    public Bow(WeaponDTO dto) : base(dto) { }
 
-
-    public override void Upgrade(float status)
+    public override void Attack(IParts.IDamageable target, float damage)
     {
-        // Bow-specific upgrade logic
-    }
-
-    public override BaseWeapon Init(BaseWeaponDTO data)
-    {
-        base.Init(data);
-        if (data is BowDTO bowData)
-        {
-            _bulletSpeed = bowData.BulletSpeed;
-        }
-        return this;
+        // 원거리 화살 발사 로직 (예: 화살 프리팹 발사 등)
+        target?.TakeDamage(damage);
     }
 }

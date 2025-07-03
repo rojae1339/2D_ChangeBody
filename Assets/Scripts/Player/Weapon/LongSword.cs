@@ -1,23 +1,17 @@
-using UnityEngine;
-
 public class LongSword : BaseWeapon
 {
-    private AttackType _attackType;
-    public AttackType AttackType { get => _attackType; }
+    public LongSword(WeaponDTO dto) : base(dto) { }
 
-
-    public override void Upgrade(float status)
+    public override void Attack(IParts.IDamageable target, float damage)
     {
-        // LongSword-specific upgrade logic
-    }
-
-    public override BaseWeapon Init(BaseWeaponDTO data)
-    {
-        base.Init(data);
-        if (data is LongSwordDTO longSwordData)
+        if (WeaponAttackType == AttackType.DoubleAttack)
         {
-            _attackType = longSwordData.AttackType;
+            target?.TakeDamage(damage / 2f);
+            target?.TakeDamage(damage / 2f);
         }
-        return this;
+        else
+        {
+            target?.TakeDamage(damage);
+        }
     }
 }

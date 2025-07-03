@@ -108,7 +108,6 @@ public class Player : MonoBehaviour
     {
         _currentAnimationType = AnimationType.Attack;
         _playerAnimation.TriggerAttack();
-        
         // todo
     }
 
