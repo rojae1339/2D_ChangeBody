@@ -1,13 +1,14 @@
-using System;
+using System;using UnityEngine;
 
-public abstract class BaseBody : IBody
+public abstract class BaseBody : MonoBehaviour, IBody
 {
     public TierType Tier { get; protected set; }
-    public float Hp { get; protected set; }
-    public float Shield { get; protected set; }
+    public int Hp { get; protected set; }
+    public int Shield { get; protected set; }
     public bool IsDead { get; protected set; }
     public bool IsDmgHalf { get; protected set; }
-
+    
+    public string WeaponName { get; set; }      
     public int UpgradeFleshCount { get; protected set; }
     public float PartDropProbability { get; protected set; }
 
@@ -27,7 +28,7 @@ public abstract class BaseBody : IBody
 
         if (Shield > 0)
         {
-            float absorbed = Math.Min(Shield, finalDamage);
+            int absorbed = (int)Math.Min(Shield, finalDamage);
             Shield -= absorbed;
             finalDamage -= absorbed;
         }
@@ -56,9 +57,10 @@ public abstract class BaseBody : IBody
 
     protected BaseBody(BodyDTO dto)
     {
+        WeaponName = dto.BodyName;
         Tier = dto.Tier;
-        Hp = dto.HeartCount;
-        Shield = dto.ShieldCount;
+        Hp = dto.Hp;
+        Shield = dto.Shield;
         IsDead = dto.IsDead;
         IsDmgHalf = dto.IsDmgHalf;
         UpgradeFleshCount = dto.UpgradeFleshCount;

@@ -20,12 +20,15 @@ namespace Managers
         private readonly MapManager _map = new MapManager();
         private readonly PlayerManager _player = new PlayerManager();
         private readonly AddressableManager _addressable = new AddressableManager();
+        private readonly PartsDataManager _partsData = new PartsDataManager();
 
         public static MapManager Map { get => Instance._map; }
 
         public static PlayerManager Player { get => Instance._player; }
 
         public static AddressableManager Addressable { get => Instance._addressable; }
+        
+        public static PartsDataManager PartsData { get => Instance._partsData; }
 
         void Awake() { Init(); }
 
@@ -45,11 +48,13 @@ namespace Managers
 
             DontDestroyOnLoad(go);
             s_Instance = go.GetComponent<Managers>();
-                
+            
+            
+            s_Instance._partsData.Init();    
             s_Instance._addressable.LoadAllByLabels<GameObject>(AddressableLabelGroup.PlayerGroup,
                 () => {
                     // 모든 label의 로딩이 끝난 후에만 stage 변경
-                    Managers.Map.ChangeStage(MapManager.StageType.Main);
+                    Map.ChangeStage(MapManager.StageType.Main);
                 });
         }
     }

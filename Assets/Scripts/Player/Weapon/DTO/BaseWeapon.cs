@@ -20,13 +20,13 @@ using UnityEngine;public abstract class BaseWeapon : MonoBehaviour, IWeapon
         Tier = dto.Tier;
         AttackDamage = (float)dto.AttackDamage;
         AttackSpeed = (float)dto.AttackSpeed;
-        WeaponAttackType = dto.AttackType;
+        WeaponAttackType = dto.WeaponAttackType;
         BulletSpeed = (float?)dto.BulletSpeed;
         ReloadSpeed = (float?)dto.ReloadSpeed;
         MaxBulletCount = dto.MaxBulletCount;
         UpgradeFleshCount = dto.UpgradeFleshCount;
         PartDropProbability = (float)dto.PartDropProbability;
-        HandType = dto.WeaponHandType;
+        HandType = dto.HandType;
     }
 
     public abstract void Attack(IParts.IDamageable target, float damage);

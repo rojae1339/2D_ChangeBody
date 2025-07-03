@@ -2,8 +2,8 @@
   "fatBody": [
     {
       "tier": "Legendary",
-      "heartCount": 150,
-      "shieldCount": 0,
+      "hp": 150,
+      "shield": 0,
       "isDead": false,
       "isDmgHalf": true,
       "upgradeFleshCount": 4,
@@ -11,8 +11,8 @@
     },
     {
       "tier": "Unique",
-      "heartCount": 120,
-      "shieldCount": 0,
+      "hp": 120,
+      "shield": 0,
       "isDead": false,
       "isDmgHalf": true,
       "upgradeFleshCount": 3,
@@ -20,8 +20,8 @@
     },
     {
       "tier": "Rare",
-      "heartCount": 100,
-      "shieldCount": 0,
+      "hp": 100,
+      "shield": 0,
       "isDead": false,
       "isDmgHalf": true,
       "upgradeFleshCount": 2,
@@ -29,8 +29,8 @@
     },
     {
       "tier": "Common",
-      "heartCount": 80,
-      "shieldCount": 0,
+      "hp": 80,
+      "shield": 0,
       "isDead": false,
       "isDmgHalf": true,
       "upgradeFleshCount": 1,
@@ -40,8 +40,8 @@
   "normalBody": [
     {
       "tier": "Legendary",
-      "heartCount": 80,
-      "shieldCount": 0,
+      "hp": 80,
+      "shield": 0,
       "isDead": false,
       "isDmgHalf": false,
       "upgradeFleshCount": 4,
@@ -49,8 +49,8 @@
     },
     {
       "tier": "Unique",
-      "heartCount": 70,
-      "shieldCount": 0,
+      "hp": 70,
+      "shield": 0,
       "isDead": false,
       "isDmgHalf": false,
       "upgradeFleshCount": 3,
@@ -58,8 +58,8 @@
     },
     {
       "tier": "Rare",
-      "heartCount": 60,
-      "shieldCount": 0,
+      "hp": 60,
+      "shield": 0,
       "isDead": false,
       "isDmgHalf": false,
       "upgradeFleshCount": 2,
@@ -67,8 +67,8 @@
     },
     {
       "tier": "Common",
-      "heartCount": 50,
-      "shieldCount": 0,
+      "hp": 50,
+      "shield": 0,
       "isDead": false,
       "isDmgHalf": false,
       "upgradeFleshCount": 1,
@@ -78,8 +78,8 @@
   "muscleBody": [
     {
       "tier": "Legendary",
-      "heartCount": 80,
-      "shieldCount": 0.5,
+      "hp": 80,
+      "shield": 0.5,
       "isDead": false,
       "isDmgHalf": false,
       "upgradeFleshCount": 4,
@@ -87,8 +87,8 @@
     },
     {
       "tier": "Unique",
-      "heartCount": 70,
-      "shieldCount": 0.5,
+      "hp": 70,
+      "shield": 0.5,
       "isDead": false,
       "isDmgHalf": false,
       "upgradeFleshCount": 3,
@@ -96,8 +96,8 @@
     },
     {
       "tier": "Rare",
-      "heartCount": 70,
-      "shieldCount": 0,
+      "hp": 70,
+      "shield": 0,
       "isDead": false,
       "isDmgHalf": false,
       "upgradeFleshCount": 2,
@@ -105,8 +105,8 @@
     },
     {
       "tier": "Common",
-      "heartCount": 60,
-      "shieldCount": 0,
+      "hp": 60,
+      "shield": 0,
       "isDead": false,
       "isDmgHalf": false,
       "upgradeFleshCount": 1,
@@ -116,8 +116,8 @@
   "slimBody": [
     {
       "tier": "Legendary",
-      "heartCount": 50,
-      "shieldCount": 0,
+      "hp": 50,
+      "shield": 0,
       "isDead": false,
       "isDmgHalf": false,
       "upgradeFleshCount": 4,
@@ -125,8 +125,8 @@
     },
     {
       "tier": "Unique",
-      "heartCount": 50,
-      "shieldCount": 0,
+      "hp": 50,
+      "shield": 0,
       "isDead": false,
       "isDmgHalf": false,
       "upgradeFleshCount": 3,
@@ -134,8 +134,8 @@
     },
     {
       "tier": "Rare",
-      "heartCount": 40,
-      "shieldCount": 0,
+      "hp": 40,
+      "shield": 0,
       "isDead": false,
       "isDmgHalf": false,
       "upgradeFleshCount": 2,
@@ -143,8 +143,8 @@
     },
     {
       "tier": "Common",
-      "heartCount": 30,
-      "shieldCount": 0,
+      "hp": 30,
+      "shield": 0,
       "isDead": false,
       "isDmgHalf": false,
       "upgradeFleshCount": 1,

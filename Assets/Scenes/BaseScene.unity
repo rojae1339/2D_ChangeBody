@@ -2721,7 +2721,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_Origin: {x: -19, y: -36, z: 0}
   m_Size: {x: 38, y: 49, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -3240,8 +3240,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   l_Weapon: {fileID: 489558606}
   r_Weapon: {fileID: 1486622572}
-  l_Leg: {fileID: 1152197273}
-  r_Leg: {fileID: 860578206}
+  l_Leg: {fileID: 0}
+  r_Leg: {fileID: 0}
   body: {fileID: 376951057}
 --- !u!224 &185730590 stripped
 RectTransform:
@@ -3423,11 +3423,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 185730590}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &860578206 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6834607563535652575, guid: a88378fbb3befab489a643b6b663d7f6, type: 3}
-  m_PrefabInstance: {fileID: 146241112}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1067249595
 GameObject:
   m_ObjectHideFlags: 0
@@ -3472,11 +3467,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1152197273 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8257460167188705896, guid: a88378fbb3befab489a643b6b663d7f6, type: 3}
-  m_PrefabInstance: {fileID: 146241112}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1154697137
 GameObject:
   m_ObjectHideFlags: 0

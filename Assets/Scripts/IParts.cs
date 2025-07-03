@@ -29,7 +29,7 @@ public class IParts
     //todo
     public interface IDamageable
     {
-        float Hp { get; }
+        int Hp { get; }
         bool IsDead { get; }
         void TakeDamage(float damage);
         void Dead();
