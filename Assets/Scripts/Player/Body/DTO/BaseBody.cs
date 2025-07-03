@@ -2,14 +2,21 @@ using System;using UnityEngine;
 
 public abstract class BaseBody : MonoBehaviour, IBody
 {
+    [field: SerializeField]
+    public string BodyName { get; set; }   
+    [field: SerializeField]
     public TierType Tier { get; protected set; }
+    [field: SerializeField]
     public int Hp { get; protected set; }
+    [field: SerializeField]
     public int Shield { get; protected set; }
+    [field: SerializeField]
     public bool IsDead { get; protected set; }
+    [field: SerializeField]
     public bool IsDmgHalf { get; protected set; }
-    
-    public string WeaponName { get; set; }      
+    [field: SerializeField]
     public int UpgradeFleshCount { get; protected set; }
+    [field: SerializeField]
     public float PartDropProbability { get; protected set; }
 
     public Player Owner { get; private set; }
@@ -57,7 +64,7 @@ public abstract class BaseBody : MonoBehaviour, IBody
 
     protected BaseBody(BodyDTO dto)
     {
-        WeaponName = dto.BodyName;
+        BodyName = dto.BodyName;
         Tier = dto.Tier;
         Hp = dto.Hp;
         Shield = dto.Shield;
@@ -65,5 +72,18 @@ public abstract class BaseBody : MonoBehaviour, IBody
         IsDmgHalf = dto.IsDmgHalf;
         UpgradeFleshCount = dto.UpgradeFleshCount;
         PartDropProbability = dto.PartDropProbability;
+    }
+
+    public BaseBody Init(BodyDTO dto)
+    {
+        BodyName = dto.BodyName;
+        Tier = dto.Tier;
+        Hp = dto.Hp;
+        Shield = dto.Shield;
+        IsDead = dto.IsDead;
+        IsDmgHalf = dto.IsDmgHalf;
+        UpgradeFleshCount = dto.UpgradeFleshCount;
+        PartDropProbability = dto.PartDropProbability;
+        return this;
     }
 }

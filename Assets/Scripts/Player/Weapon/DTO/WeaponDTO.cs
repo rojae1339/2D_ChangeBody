@@ -4,7 +4,7 @@ public class WeaponDTO
     public TierType Tier { get; set; }                   
     public double AttackDamage { get; set; }           
     public double AttackSpeed { get; set; }            
-    public AttackType? WeaponAttackType { get; set; }            
+    public AttackType WeaponAttackType { get; set; }            
     public double? BulletSpeed { get; set; }           
     public double? ReloadSpeed { get; set; }           
     public int? MaxBulletCount { get; set; }           

@@ -15,12 +15,6 @@ MonoBehaviour:
   m_GroupName: Player
   m_GUID: 5809209370d09744787594d3ee1785ab
   m_SerializeEntries:
-  - m_GUID: 0484925254cf7c846a96bc8f636a76b4
-    m_Address: L_ShortSword
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Weapon
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 620fbde7cfb06d24a8b88519233f124b
     m_Address: SlimBody
     m_ReadOnly: 0
@@ -28,13 +22,19 @@ MonoBehaviour:
     - Body
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 65ea24232cfd4954283066e734a78e5e
-    m_Address: R_ShortSword
+    m_Address: ShortSword
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Weapon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 71d80dd23ca9beb4db72d0a8d80b7dc2
+    m_Address: NoWeapon
     m_ReadOnly: 0
     m_SerializedLabels:
     - Weapon
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 75d0afc198196124787f162a9ddc10d7
-    m_Address: LR_LongSword
+    m_Address: LongSword
     m_ReadOnly: 0
     m_SerializedLabels:
     - Weapon
@@ -51,12 +51,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Body
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ce82887267adaaf4583f85e96faf0953
-    m_Address: L_NoWeapon
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Weapon
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e007369e336d320489107686379164d5
     m_Address: NormalBody
     m_ReadOnly: 0
@@ -64,31 +58,19 @@ MonoBehaviour:
     - Body
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e4c274ec4c567d648b0e57ac5ec533b5
-    m_Address: R_Pistol
+    m_Address: Pistol
     m_ReadOnly: 0
     m_SerializedLabels:
     - Weapon
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e9b1e426a911fce4f9b5588a62d5bee7
-    m_Address: LR_Rifle
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Weapon
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: eaf84e8e6d7f3ed488224d32a21f84f3
-    m_Address: R_NoWeapon
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Weapon
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ec24712bc9ef7f045aadbf699fdf5db7
-    m_Address: L_Pistol
+    m_Address: Rifle
     m_ReadOnly: 0
     m_SerializedLabels:
     - Weapon
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f244884ab5fe8ce4aafef8379a207f82
-    m_Address: LR_Bow
+    m_Address: Bow
     m_ReadOnly: 0
     m_SerializedLabels:
     - Weapon

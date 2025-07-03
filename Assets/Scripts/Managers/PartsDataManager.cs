@@ -12,7 +12,7 @@ namespace Managers
         private Dictionary<string, List<Dictionary<string, object>>> _bodyData = new();
         
         public Dictionary<string, List<Dictionary<string, object>>> WeaponData { get => _weaponData; }
-        public Dictionary<string, List<Dictionary<string, object>>> BodyDate { get => _bodyData; }
+        public Dictionary<string, List<Dictionary<string, object>>> BodyData { get => _bodyData; }
 
         public void Init()
         {
@@ -74,11 +74,11 @@ namespace Managers
                     Tier = (TierType)Enum.Parse(typeof(TierType), dict[WeaponKeys.Tier].ToString()),
                     AttackDamage = Convert.ToDouble(dict[WeaponKeys.AttackDamage]),
                     AttackSpeed = Convert.ToDouble(dict[WeaponKeys.AttackSpeed]),
-                    BulletSpeed = Convert.ToDouble(dict[WeaponKeys.BulletSpeed]),
+                    BulletSpeed = dict.TryGetValue(WeaponKeys.BulletSpeed, out var value) ? Convert.ToDouble(value) : (double?)null,
                     HandType = (WeaponHandType)Enum.Parse(typeof(WeaponHandType), dict[WeaponKeys.WeaponHandType].ToString()),
                     WeaponAttackType = (AttackType)Enum.Parse(typeof(AttackType), dict[WeaponKeys.AttackType].ToString()),
-                    MaxBulletCount = Convert.ToInt32(dict[WeaponKeys.MaxBulletCount]),
-                    ReloadSpeed = Convert.ToDouble(dict[WeaponKeys.ReloadSpeed]),
+                    MaxBulletCount = dict.TryGetValue(WeaponKeys.MaxBulletCount, out var value1) ? Convert.ToInt32(value1) : (int?)null,
+                    ReloadSpeed = dict.TryGetValue(WeaponKeys.ReloadSpeed, out var value2) ? Convert.ToDouble(value2) : (double?)null,
                     PartDropProbability = Convert.ToDouble(dict[WeaponKeys.PartDropProbability]),
                     UpgradeFleshCount = Convert.ToInt32(dict[WeaponKeys.UpgradeFleshCount])
                 });
