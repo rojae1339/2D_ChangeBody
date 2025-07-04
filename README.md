@@ -25,7 +25,9 @@
 
 ## DTO로 파싱하는 이유
 클라이언트, 서버, 데이터베이스로 크게 분리가 가능한 생태계에서, 클라이언트측의 혹은 서버측의 정보 중, 서로에게 노출되면 안되는 정보들이 존재할 수 있다. 
+
 예를들어, 서버에서는 유저 객체에 DB정보, 토큰 등의 보안과 연결된 문제가 있을수 있는데, 이러한 정보들이 단순한 데이터정보(공격력, 경험치등)과 연관이 없음에도 불구하고, 엮이게 된다.
+
 따라서, 플레이어 단순 DTO에는 공격력, 경험치 등의 단순한 정보만 넣어두고, 데이터베이스에서 정보를 꺼내, DTO로 파싱한 후, 유저에게 주게되면, 불필요한 정보의 노출이나 엮임이 없이 보호, 수정, 획득 할 수 있게된다.
 
 # Interface
@@ -57,6 +59,7 @@ interface IAttackable
 `JsonUtility`, `NewtonJson`.
 
 [Weapon.json](https://github.com/rojae1339/2D_ChangeBody/blob/main/Assets/JsonDatas/Weapon.json)
+
 [Body.json](https://github.com/rojae1339/2D_ChangeBody/blob/main/Assets/JsonDatas/Body.json)
 
 ## json parsing
@@ -105,10 +108,14 @@ Dictionary형식은 Dictionary<partsname, List<Dictionary<attribute, value>>> �
 
 ## AddressableMAanager
 기본적으로 Addressable시스템에 저장되어있는 무기와 몸통의 이름은 다음형식과 같다
+
 `NoWeapon, PascalCase..." 처럼 파스칼케이스로 무기의 이름이 정의되어 있다.
 
+
 기존 Addressable의 불편한 점이 있다면, InstantiateAsync로 비동기 오브젝트 생성을 하게되면, 원하는 순서대로 오브젝트가 생성이 안될 수 있다는 것이다.
+
 또, LoadAsync나 InstantiateAsync등과 같이, 모두 비동기로 실행되는 메서드로, 지연로딩 문제가 발생될 수 있고, callback을 통해 메서드가 실행되므로, 코드 순서가 복잡해진다는 단점이 존재한다.
+
 
 따라서, Addressable을 통해 게임시작후, 비동기로 에셋을 로딩한 후에는, 이 데이터들을 캐싱을 해두고, 필요할때는 캐싱된 데이터에서 꺼내어 사용할 수 있도록 했다.
 
@@ -258,6 +265,7 @@ public class AddressableManager
 ```
 
 `Managers`스크립트의 Init부분을 보면, 게임 시작후, Managers오브젝트가 메모리에 올라가고, AddressableManager의 LoadAllByLabels를 통해, 그룹의 라벨별로 데이터를 비동기 로드 한 후,
+
 로드가 끝나면 MapManager의 ChangeStage를 통해 IStageSpawner의 CreateParts를 통해, 각 스테이지에 맞는 파츠들을 생성하도록 했다.
 
 
@@ -379,9 +387,13 @@ namespace Managers
 ## Player
 
 플레이어는, 유니티6에서 제공되는 NIS(New Input System)을 통해, 키를 이벤트로 입력받아서, 해당키에 맞는 콜백을 호출하도록 했다.
+
 `PlayerController`에서는 NIS와 동기화되어 키 인풋만 담당하도록 하였다.
+
 `PlayerMove`에서는 Player에서 MoveDir를 입력받아, 플레이어가 해당 방향으로 움직이도록 구현하였다.
+
 `PlayerAnimation`에서는 Player에서 현재 플레이어의 행동상태에 따라 애니메이터의 parameter를 호출하여, 애니메이션이 변화되도록 하였다.
+
 `Player`는 총괄 스크립트로, 플레이어의 행동에 관련된 것들을 담당한다.
 //todo
 
