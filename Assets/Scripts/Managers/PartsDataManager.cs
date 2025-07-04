@@ -21,23 +21,6 @@ namespace Managers
         }
 
         #region 파츠 이름으로 데이터 리스트 가져오기
-
-        public List<Dictionary<string, object>> GetPartsInfoListByPartsName(string partsName)
-        {
-            var weaponList = GetWeaponInfoListByWeaponName(partsName);
-            var bodyList = GetBodyInfoListByBodyName(partsName);
-
-            if (weaponList.Count > 0)
-            {
-                return weaponList;
-            }
-            if (bodyList.Count > 0)
-            {
-                return weaponList;
-            }
-
-            return new List<Dictionary<string, object>>();
-        }
         
         private List<Dictionary<string, object>> GetWeaponInfoListByWeaponName(string name)
         {
