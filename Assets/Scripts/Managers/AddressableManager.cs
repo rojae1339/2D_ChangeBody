@@ -127,7 +127,7 @@ public class AddressableManager
                 {
                     finishedLabelCount++;
 
-                    Debug.Log($"label: {label}, {totalLabelCount} : total, {finishedLabelCount} : finished");
+                    //Debug.Log($"label: {label}, {totalLabelCount} : total, {finishedLabelCount} : finished");
 
                     if (finishedLabelCount == totalLabelCount)
                     {

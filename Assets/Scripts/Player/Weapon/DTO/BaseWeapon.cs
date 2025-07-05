@@ -25,6 +25,7 @@ using UnityEngine;public abstract class BaseWeapon : MonoBehaviour, IWeapon
 
     public PartsTierFeatureSO so;
 
+
     public Player Owner { get; private set; }
 
     protected BaseWeapon(WeaponDTO dto)

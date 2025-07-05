@@ -60,6 +60,7 @@ MonoBehaviour:
   m_overridePlayerVersion: '[UnityEditor.PlayerSettings.bundleVersion]'
   m_GroupAssets:
   - {fileID: 11400000, guid: 831eadfdf6b6b204f92228c474d57c00, type: 2}
+  - {fileID: 11400000, guid: ade9cd4851f794e40a3031e7f0142c8d, type: 2}
   - {fileID: 11400000, guid: 6e533f33d8f23e44ab79ec5ea001c5e2, type: 2}
   - {fileID: 11400000, guid: 38a28200f362ff34b9cffe81dd5a38f4, type: 2}
   - {fileID: 11400000, guid: 7011b068b4f78aa498d31e90ac85288b, type: 2}
@@ -110,6 +111,7 @@ MonoBehaviour:
     - Enemy
     - Boss
     - SO
+    - UI
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 07762ac03c657064ea4c6ef0a906d50d, type: 2}

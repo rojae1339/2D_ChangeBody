@@ -26,8 +26,10 @@ public class Player : MonoBehaviour
     private PlayerMove _playerMove;
     private PlayerController _playerController;
     private PlayerAnimation _playerAnimation;
+    private PlayerTrigger _playerTrigger;
     private AnimationType _currentAnimationType;
     private AnimationType _previousAnimationType; // 추가
+    
     
     private Vector2 _moveInput;
 
@@ -36,6 +38,7 @@ public class Player : MonoBehaviour
         _playerMove = gameObject.AddComponent<PlayerMove>();
         _playerAnimation = gameObject.AddComponent<PlayerAnimation>();
         _playerController = gameObject.AddComponent<PlayerController>();
+        _playerTrigger = gameObject.AddComponent<PlayerTrigger>();
 
         _playerController.Init(this);
         _currentAnimationType = AnimationType.Idle;
@@ -117,7 +120,13 @@ public class Player : MonoBehaviour
     }
 
     //파츠에 있을때 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log(other.gameObject.name);
+        _playerTrigger.TriggerObject(other.gameObject);
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
     {
         
     }

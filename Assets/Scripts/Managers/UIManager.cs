@@ -1,18 +1,33 @@
 using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+
 
 public class UIManager
 {
-    public delegate void OnPickupUIRequest<T>(T t, Action onEquip, Action onIgnore);
-    public event OnPickupUIRequest<BaseWeapon> WeaponPickupUIRequested;
-    public event OnPickupUIRequest<BaseBody> BodyPickupUIRequested;
-    
-    public void RequestWeaponPickupUI(BaseWeapon weapon, Action onEquip, Action onIgnore)
+    public delegate string OnShowUI();
+    public event OnShowUI ShowUI;
+
+    public void ShowPopupTrigger(GameObject go)
     {
-        WeaponPickupUIRequested?.Invoke(weapon, onEquip, onIgnore);
+        GameObject uiObj = Managers.Managers.Addressable.Instantiate("PopupCanvas");
+
+        // UI의 부모를 Canvas로 설정 (중요!)
+        uiObj.transform.SetParent(GameObject.Find("Canvas").transform, false);
+
+        PopupUI popup = uiObj.GetComponent<PopupUI>();
+
+        if (popup != null)
+        {
+            string description = ShowUI?.Invoke() ?? "기본 메시지";
+            popup.Setup(description);
+            popup.FollowTarget(go.transform); // 계속 따라가게
+        }
     }
 
-    public void RequestBodyPickupUI(BaseBody body, Action onWear, Action onIgnore)
+    public void OffPopupTrigger(GameObject go)
     {
-        BodyPickupUIRequested?.Invoke(body, onWear, onIgnore);
+        
     }
 }
