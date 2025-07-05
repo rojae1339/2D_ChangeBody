@@ -1,3 +1,4 @@
+using System;
 using Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -18,10 +19,6 @@ public class Player : MonoBehaviour
     private GameObject l_Weapon;
     [SerializeField]
     private GameObject r_Weapon;
-    [SerializeField]
-    private GameObject l_Leg;
-    [SerializeField]
-    private GameObject r_Leg;
     [SerializeField]
     private GameObject body;
     
@@ -117,6 +114,12 @@ public class Player : MonoBehaviour
         _playerAnimation.TriggerJump();
         
         // todo
+    }
+
+    //파츠에 있을때 
+    private void OnTriggerStay(Collider other)
+    {
+        
     }
 
     // InputSystem 전달만 함

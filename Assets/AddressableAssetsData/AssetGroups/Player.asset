@@ -15,6 +15,18 @@ MonoBehaviour:
   m_GroupName: Player
   m_GUID: 5809209370d09744787594d3ee1785ab
   m_SerializeEntries:
+  - m_GUID: 0c3264508fe97b9469fcf312793cbf39
+    m_Address: Pistol
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Weapon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 42bde0a3273ef5347b74983ce3b908ea
+    m_Address: NoWeapon
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Weapon
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 620fbde7cfb06d24a8b88519233f124b
     m_Address: SlimBody
     m_ReadOnly: 0
@@ -27,14 +39,14 @@ MonoBehaviour:
     m_SerializedLabels:
     - Weapon
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 71d80dd23ca9beb4db72d0a8d80b7dc2
-    m_Address: NoWeapon
+  - m_GUID: 75d0afc198196124787f162a9ddc10d7
+    m_Address: LongSword
     m_ReadOnly: 0
     m_SerializedLabels:
     - Weapon
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 75d0afc198196124787f162a9ddc10d7
-    m_Address: LongSword
+  - m_GUID: a44cf978b1267b6458fef0ce89451181
+    m_Address: Rifle
     m_ReadOnly: 0
     m_SerializedLabels:
     - Weapon
@@ -56,18 +68,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Body
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e4c274ec4c567d648b0e57ac5ec533b5
-    m_Address: Pistol
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Weapon
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e9b1e426a911fce4f9b5588a62d5bee7
-    m_Address: Rifle
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Weapon
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f244884ab5fe8ce4aafef8379a207f82
     m_Address: Bow

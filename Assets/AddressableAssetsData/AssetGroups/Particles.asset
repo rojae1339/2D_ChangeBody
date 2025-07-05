@@ -16,25 +16,25 @@ MonoBehaviour:
   m_GUID: 20cadd8ebbe062946987ebf8b653d5f0
   m_SerializeEntries:
   - m_GUID: 591741796edae3345996f1188ec85f03
-    m_Address: CommonParticle
+    m_Address: CommonParticle.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Particle
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6b3bbde3e3be60448b8b0b48ce3df5b6
-    m_Address: UniqueParticle
+    m_Address: UniqueParticle.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Particle
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 70c34971e8b3d7f468aaf33fa73948db
-    m_Address: LegendaryParticle
+    m_Address: LegendaryParticle.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Particle
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e83d67772ed4fe64ea35030346538382
-    m_Address: RareParticle
+    m_Address: RareParticle.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Particle

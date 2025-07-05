@@ -17,6 +17,7 @@ public class AddressableManager
     {
         if (_resources.TryGetValue(key, out Object obj)) return obj as T;
 
+        Debug.Log($"{key} is not founded");
         return null;
     }
 
@@ -112,7 +113,7 @@ public class AddressableManager
     }
     
     //그룹의 모든 라벨을 순회하며 로드 하기(LoadAllAsync래핑 메서드)
-    public void LoadAllByLabels<T>(string[] labels, Action onComplete) where T : Object
+    public void LoadAllByLabelsAsync<T>(string[] labels, Action onComplete) where T : Object
     {
         int totalLabelCount = labels.Length;
         int finishedLabelCount = 0;
@@ -125,6 +126,8 @@ public class AddressableManager
                 if (count == totalCount)
                 {
                     finishedLabelCount++;
+
+                    Debug.Log($"label: {label}, {totalLabelCount} : total, {finishedLabelCount} : finished");
 
                     if (finishedLabelCount == totalLabelCount)
                     {

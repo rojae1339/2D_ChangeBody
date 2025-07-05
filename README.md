@@ -269,6 +269,11 @@ public class AddressableManager
 로드가 끝나면 MapManager의 ChangeStage를 통해 IStageSpawner의 CreateParts를 통해, 각 스테이지에 맞는 파츠들을 생성하도록 했다.
 
 
+하지만 비동기 처리시, 모든 비동기 호출이 끝날때 무언가가 되어야하는 상황이 있다면, //todo
+
+### Coroutine
+//todo
+
 ## PartsDataManager (json to DTO, DTO to Object)
 PartsDataManager에서 모든 데이터를 관리하게 된다.
 

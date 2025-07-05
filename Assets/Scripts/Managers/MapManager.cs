@@ -6,19 +6,14 @@ namespace Managers
 {
     public class MapManager
     {
-        public enum StageType
-        {
-            Main,
-            Stage1,
-            Stage2
-        }
+        
 
         private class StageData
         {
             public StageType StageType;
             public DifficultyType? Difficulty; // Nullable
 
-            public StageData(MapManager.StageType stageType, DifficultyType? difficulty = null)
+            public StageData(StageType stageType, DifficultyType? difficulty = null)
             {
                 StageType = stageType;
                 Difficulty = difficulty;

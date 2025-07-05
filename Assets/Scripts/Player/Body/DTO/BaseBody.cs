@@ -19,6 +19,8 @@ public abstract class BaseBody : MonoBehaviour, IBody
     [field: SerializeField]
     public float PartDropProbability { get; protected set; }
 
+    public PartsTierFeatureSO so;
+    
     public Player Owner { get; private set; }
 
     public void BindPlayer(Player owner) => Owner = owner;

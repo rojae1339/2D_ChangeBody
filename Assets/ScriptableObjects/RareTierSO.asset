@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae53651267afd4e40bc08832af86d984, type: 3}
   m_Name: RareTierSO
   m_EditorClassIdentifier: 
-  tier: Rare
+  tier: 2
   particleGameObject: {fileID: 3848387348145648085, guid: e83d67772ed4fe64ea35030346538382, type: 3}

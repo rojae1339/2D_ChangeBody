@@ -4,8 +4,8 @@ using UnityEngine;
 public class PartsTierFeatureSO : ScriptableObject
 {
     [SerializeField]
-    private string tier;
+    private TierType tier;
 
     [SerializeField]
-    private GameObject particleGameObject;
+    public GameObject particleGameObject;
 }

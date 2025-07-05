@@ -23,6 +23,8 @@ using UnityEngine;public abstract class BaseWeapon : MonoBehaviour, IWeapon
     [field: SerializeField]
     public WeaponHandType HandType { get; private set; }
 
+    public PartsTierFeatureSO so;
+
     public Player Owner { get; private set; }
 
     protected BaseWeapon(WeaponDTO dto)

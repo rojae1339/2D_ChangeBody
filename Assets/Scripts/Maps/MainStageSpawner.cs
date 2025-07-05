@@ -39,7 +39,7 @@ namespace Maps
                 foreach (var dto in weaponDTOs)
                 {
                     GameObject go = Managers.Managers.Addressable.Instantiate(upperName);
-                    var script = go.GetComponent(upperName) as BaseWeapon; // 예: ShortSword, NoWeapon 등
+                    var script = go.GetComponent<BaseWeapon>(); // 예: ShortSword, NoWeapon 등
                     if (script != null)
                     {
                         script.Init(dto);
@@ -47,6 +47,17 @@ namespace Maps
                     //todo 오브젝트마다 붙일 것들 여기서 붙이기
                     go.transform.position = currentSpawnPos;
                     go.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+                    
+                    TierType tier = script.Tier;
+                    PartsTierFeatureSO so = Managers.Managers.Addressable.Load<PartsTierFeatureSO>($"{tier.ToString()}SO");
+                        GameObject game = Managers.Managers.Addressable.Instantiate($"{tier.ToString()}Particle.prefab", go.transform);
+                    var ps = game.GetComponent<ParticleSystem>();
+                    if (ps != null)
+                    {
+                        ps.Play();
+                    }
+                    game.transform.position += new Vector3(0.3f, 0, 0);
+                    script.so = so;
                     
                     // 다음 스폰 위치 계산
                     UpdateSpawnPosition();
@@ -62,7 +73,7 @@ namespace Maps
                 foreach (var dto in bodyDTOs)
                 {
                     GameObject go = Managers.Managers.Addressable.Instantiate(upperName);
-                    var script = go.GetComponent(upperName) as BaseBody; // 예: FatBody, NormalBody 등
+                    var script = go.GetComponent<BaseBody>(); // 예: FatBody, NormalBody 등
                     if (script != null)
                     {
                         script.Init(dto);
@@ -70,6 +81,18 @@ namespace Maps
                     //todo 오브젝트마다 붙일 것들 여기서 붙이기
                     go.transform.position = currentSpawnPos;
                     go.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+                    
+                    TierType tier = script.Tier;
+                    PartsTierFeatureSO so = Managers.Managers.Addressable.Load<PartsTierFeatureSO>($"{tier.ToString()}SO");
+                        GameObject game = Managers.Managers.Addressable.Instantiate($"{tier.ToString()}Particle.prefab", go.transform);
+                        var ps = game.GetComponent<ParticleSystem>();
+                        if (ps != null)
+                        {
+                            ps.Play();
+                        }
+
+                        game.transform.position += new Vector3(0.3f, 0, 0);
+                    script.so = so;
                     
                     // 다음 스폰 위치 계산
                     UpdateSpawnPosition();

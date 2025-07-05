@@ -11,4 +11,5 @@ public static class AddressableLabelConstants
 public static class AddressableLabelGroup
 {
     public static readonly string[] PlayerGroup = new[] { "Weapon", "Body"  };
+    public static readonly string[] StartGroup = new[] { "Weapon", "Body", "Particle", "Enemy", "Boss" };
 }

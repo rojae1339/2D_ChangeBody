@@ -26,3 +26,10 @@ public enum DifficultyType
     Hard
 }
 
+public enum StageType
+{
+    Main,
+    Stage1,
+    Stage2
+}
+
