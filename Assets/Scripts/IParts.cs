@@ -24,6 +24,7 @@ public class IParts
 
     public interface IEquipable : IUpgradable, IChangeable
     {
+        
     }
 
     //todo

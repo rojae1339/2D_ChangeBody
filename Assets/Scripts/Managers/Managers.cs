@@ -20,7 +20,6 @@ namespace Managers
         private readonly PlayerManager _player = new PlayerManager();
         private readonly AddressableManager _addressable = new AddressableManager();
         private readonly PartsDataManager _partsData = new PartsDataManager();
-        private readonly UIManager _ui = new UIManager();
 
         public static MapManager Map { get => Instance._map; }
 
@@ -29,7 +28,6 @@ namespace Managers
         public static AddressableManager Addressable { get => Instance._addressable; }
         
         public static PartsDataManager PartsData { get => Instance._partsData; }
-        public static UIManager UI { get => Instance._ui; }
 
         void Awake() { Init(); }
 
@@ -74,6 +72,7 @@ namespace Managers
 
             // 둘 다 로딩될 때까지 기다림
             yield return new WaitUntil(() => isPartsDataLoaded && isStartGroupLoaded);
+            
 
             _map.ChangeStage(StageType.Main);
         }

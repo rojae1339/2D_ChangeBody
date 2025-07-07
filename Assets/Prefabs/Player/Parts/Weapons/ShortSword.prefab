@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7223118440504192828}
   - component: {fileID: 2142313389819464163}
   - component: {fileID: -594217107159108892}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShortSword
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,6 +109,7 @@ MonoBehaviour:
   <UpgradeFleshCount>k__BackingField: 0
   <PartDropProbability>k__BackingField: 0
   <HandType>k__BackingField: 0
+  so: {fileID: 0}
 --- !u!58 &-594217107159108892
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -144,4 +145,4 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: -0.015625, y: 0.09375}
-  m_Radius: 0.8
+  m_Radius: 0.19

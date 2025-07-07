@@ -33,3 +33,10 @@ public enum StageType
     Stage2
 }
 
+public enum TagType
+{
+    Player,
+    Weapon,
+    Body
+}
+

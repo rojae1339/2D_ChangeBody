@@ -4,28 +4,26 @@ using TMPro; // 예시용 텍스트 컴포넌트
 
 public class PopupUI : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI descriptionText;
+    [SerializeField]
+    private float upUI = 100f;
 
-    public void Setup(string description)
+    [SerializeField]
+    private RectTransform cover;
+    
+    [SerializeField]
+    private TextMeshProUGUI popupText;
+
+    public void OpenPopup(string desc) 
     {
-        descriptionText.text = description;
+        popupText.text = desc;
+        gameObject.SetActive(true);
     }
-
-    public void FollowTarget(Transform target)
+    
+    
+    
+    public PopupUI SetPosition(Vector3 worldPos)
     {
-        StartCoroutine(UpdatePosition(target));
-    }
-
-    private IEnumerator UpdatePosition(Transform target)
-    {
-        while (target != null)
-        {
-            // 화면 공간으로 변환
-            Vector3 worldPos = target.position + Vector3.up * 2.0f; // 위쪽 오프셋
-            Vector3 screenPos = Camera.main.WorldToScreenPoint(worldPos);
-            transform.position = screenPos;
-
-            yield return null;
-        }
+        cover.anchoredPosition = new Vector2(0, 85); // 고정된 위치로 설정
+        return this;
     }
 }
