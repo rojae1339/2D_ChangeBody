@@ -26,12 +26,10 @@ public class Player : MonoBehaviour
     private PlayerMove _playerMove;
     private PlayerController _playerController;
     private PlayerAnimation _playerAnimation;
+    private PlayerUIView _playerUIView;
     private AnimationType _currentAnimationType;
     private AnimationType _previousAnimationType; // 추가
     
-    private PlayerTrigger _playerTrigger;
-
-
     private Vector2 _moveInput;
 
     void Awake()
@@ -39,17 +37,23 @@ public class Player : MonoBehaviour
         _playerMove = gameObject.AddComponent<PlayerMove>();
         _playerAnimation = gameObject.AddComponent<PlayerAnimation>();
         _playerController = gameObject.AddComponent<PlayerController>();
-        _playerTrigger = GetComponent<PlayerTrigger>();
+        _playerUIView = GetComponent<PlayerUIView>();
 
         _playerController.Init(this);
         _currentAnimationType = AnimationType.Idle;
-        _previousAnimationType = AnimationType.Idle; // 추가
+        _previousAnimationType = AnimationType.Idle;
     }
 
     void Update()
     {
         _playerMove.MoveDirection = _moveInput;
 
+        UpdatePlayerAnimation();
+    }
+
+    //업데이트 플레이어 애니메이션
+    private void UpdatePlayerAnimation()
+    {
         // Attack, Jump, Dead 상태가 아닐 때만 이동 상태 업데이트
         if (_currentAnimationType != AnimationType.Attack && 
             _currentAnimationType != AnimationType.Jump && 
@@ -72,8 +76,8 @@ public class Player : MonoBehaviour
             _playerAnimation.UpdateMove(_moveInput.magnitude);
         }
     }
-    
-    public void UpdateAnimationState()
+
+    private void UpdateAnimationState()
     {
         switch (_currentAnimationType)
         {

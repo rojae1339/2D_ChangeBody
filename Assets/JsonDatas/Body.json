@@ -6,8 +6,8 @@
       "shield": 0,
       "isDead": false,
       "isDmgHalf": true,
-      "upgradeFleshCount": 4,
-      "partDropProbability": 0.45
+      "upgradeFleshCount": 999999999,
+      "partDropProbability": 0.1
     },
     {
       "tier": "Unique",
@@ -44,8 +44,8 @@
       "shield": 0,
       "isDead": false,
       "isDmgHalf": false,
-      "upgradeFleshCount": 4,
-      "partDropProbability": 0.4
+      "upgradeFleshCount": 999999999,
+      "partDropProbability": 0.1
     },
     {
       "tier": "Unique",
@@ -82,8 +82,8 @@
       "shield": 0.5,
       "isDead": false,
       "isDmgHalf": false,
-      "upgradeFleshCount": 4,
-      "partDropProbability": 0.42
+      "upgradeFleshCount": 999999999,
+      "partDropProbability": 0.1
     },
     {
       "tier": "Unique",
@@ -120,8 +120,8 @@
       "shield": 0,
       "isDead": false,
       "isDmgHalf": false,
-      "upgradeFleshCount": 4,
-      "partDropProbability": 0.35
+      "upgradeFleshCount": 999999999,
+      "partDropProbability": 0.1
     },
     {
       "tier": "Unique",

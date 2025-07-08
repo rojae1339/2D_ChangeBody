@@ -15,8 +15,8 @@ MonoBehaviour:
   m_GroupName: UI
   m_GUID: 4582036abbf931f428fcefda72542f20
   m_SerializeEntries:
-  - m_GUID: b3d2aac2a89595f45ba53b03a71e4018
-    m_Address: PopupCanvas
+  - m_GUID: 25f9c046efd469e41b4f48ec40752f6b
+    m_Address: DropPartsUIPanel
     m_ReadOnly: 0
     m_SerializedLabels:
     - UI
