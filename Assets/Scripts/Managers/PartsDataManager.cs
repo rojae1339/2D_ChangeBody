@@ -52,21 +52,26 @@ namespace Managers
             var result = new List<WeaponDTO>();
             foreach (var dict in dictList)
             {
-                result.Add(new WeaponDTO() {
-                    WeaponName = name,
-                    Tier = (TierType)Enum.Parse(typeof(TierType), dict[WeaponKeys.Tier].ToString()),
-                    AttackDamage = Convert.ToDouble(dict[WeaponKeys.AttackDamage]),
-                    AttackSpeed = Convert.ToDouble(dict[WeaponKeys.AttackSpeed]),
-                    BulletSpeed = dict.TryGetValue(WeaponKeys.BulletSpeed, out var value) ? Convert.ToDouble(value) : (double?)null,
-                    HandType = (WeaponHandType)Enum.Parse(typeof(WeaponHandType), dict[WeaponKeys.WeaponHandType].ToString()),
-                    WeaponAttackType = (AttackType)Enum.Parse(typeof(AttackType), dict[WeaponKeys.AttackType].ToString()),
-                    MaxBulletCount = dict.TryGetValue(WeaponKeys.MaxBulletCount, out var value1) ? Convert.ToInt32(value1) : (int?)null,
-                    ReloadSpeed = dict.TryGetValue(WeaponKeys.ReloadSpeed, out var value2) ? Convert.ToDouble(value2) : (double?)null,
-                    PartDropProbability = Convert.ToDouble(dict[WeaponKeys.PartDropProbability]),
-                    UpgradeFleshCount = Convert.ToInt32(dict[WeaponKeys.UpgradeFleshCount])
-                });
+                result.Add(MakeWeaponDTO(name, dict));
             }
             return result;
+        }
+
+        public WeaponDTO MakeWeaponDTO(string name, Dictionary<string, object> dict)
+        {
+            return new WeaponDTO() {
+                WeaponName = name,
+                Tier = (TierType)Enum.Parse(typeof(TierType), dict[WeaponKeys.Tier].ToString()),
+                AttackDamage = Convert.ToDouble(dict[WeaponKeys.AttackDamage]),
+                AttackSpeed = Convert.ToDouble(dict[WeaponKeys.AttackSpeed]),
+                BulletSpeed = dict.TryGetValue(WeaponKeys.BulletSpeed, out var value) ? Convert.ToDouble(value) : (double?)null,
+                HandType = (WeaponHandType)Enum.Parse(typeof(WeaponHandType), dict[WeaponKeys.WeaponHandType].ToString()),
+                WeaponAttackType = (AttackType)Enum.Parse(typeof(AttackType), dict[WeaponKeys.AttackType].ToString()),
+                MaxBulletCount = dict.TryGetValue(WeaponKeys.MaxBulletCount, out var value1) ? Convert.ToInt32(value1) : (int?)null,
+                ReloadSpeed = dict.TryGetValue(WeaponKeys.ReloadSpeed, out var value2) ? Convert.ToDouble(value2) : (double?)null,
+                PartDropProbability = Convert.ToDouble(dict[WeaponKeys.PartDropProbability]),
+                UpgradeFleshCount = Convert.ToInt32(dict[WeaponKeys.UpgradeFleshCount])
+            };
         }
 
 
@@ -76,18 +81,23 @@ namespace Managers
             var result = new List<BodyDTO>();
             foreach (var dict in dictList)
             {
-                result.Add(new BodyDTO {
-                    BodyName = name,
-                    Tier = (TierType)Enum.Parse(typeof(TierType), dict[BodyKeys.Tier].ToString()),
-                    Hp = Convert.ToInt32(dict[BodyKeys.Hp]),
-                    Shield = Convert.ToInt32(dict[BodyKeys.Shield]),
-                    IsDead = Convert.ToBoolean(dict[BodyKeys.IsDead]),
-                    IsDmgHalf = Convert.ToBoolean(dict[BodyKeys.IsDmgHalf]),
-                    UpgradeFleshCount = Convert.ToInt32(dict[BodyKeys.UpgradeFleshCount]),
-                    PartDropProbability = Convert.ToSingle(dict[BodyKeys.PartDropProbability])
-                });
+                result.Add(MakeBodyDTO(name, dict));
             }
             return result;
+        }
+
+        public BodyDTO MakeBodyDTO(string name, Dictionary<string, object> dict)
+        {
+            return new BodyDTO {
+                BodyName = name,
+                Tier = (TierType)Enum.Parse(typeof(TierType), dict[BodyKeys.Tier].ToString()),
+                Hp = Convert.ToInt32(dict[BodyKeys.Hp]),
+                Shield = Convert.ToInt32(dict[BodyKeys.Shield]),
+                IsDead = Convert.ToBoolean(dict[BodyKeys.IsDead]),
+                IsDmgHalf = Convert.ToBoolean(dict[BodyKeys.IsDmgHalf]),
+                UpgradeFleshCount = Convert.ToInt32(dict[BodyKeys.UpgradeFleshCount]),
+                PartDropProbability = Convert.ToSingle(dict[BodyKeys.PartDropProbability])
+            };
         }
 
         #endregion

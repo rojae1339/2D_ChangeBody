@@ -24,10 +24,8 @@ public class WeaponUIPresenter
 
     private void OnWeaponDetected(BaseWeapon dropWeapon)
     {
-        Debug.Log($"{dropWeapon.WeaponName}, {dropWeapon.Tier}");
-
         ChangeDropWeapon(dropWeapon);
-        //ChangePlayerWeapon(_modelPlayer);
+        ChangePlayerWeapon(_modelPlayer);
         _view.SetPartUIActive(true);
         // 파츠 정보 업데이트
     }

@@ -24,9 +24,8 @@ public class BodyUIPresenter
 
     private void OnBodyDetected(BaseBody body)
     {
-        Debug.Log($"{body.BodyName}, {body.Tier}");
         ChangeDropBody(body);
-        //ChangePlayerBody(_modelPlayer);
+        ChangePlayerBody(_modelPlayer);
         _view.SetPartUIActive(true);
         // 파츠 정보 업데이트
     }
@@ -50,7 +49,6 @@ public class BodyUIPresenter
         _view.ChangeDropPartInfo(null, dropBody.Tier, title, finalText);
     }
 
-    //todo 수정 + 런하면 null값이 됨
     private void ChangePlayerBody(BaseBody modelBody)
     {
         dropSB.Clear();
@@ -68,7 +66,7 @@ public class BodyUIPresenter
 
         string finalText = dropSB.ToString();
 
-        _view.ChangeDropPartInfo(null, modelBody.Tier, title, finalText);
+        _view.ChangePlayerPartInfo(true, null, modelBody.Tier, title, finalText);
     }
 
     private void OnPartNotDetected() { _view.SetPartUIActive(false); }

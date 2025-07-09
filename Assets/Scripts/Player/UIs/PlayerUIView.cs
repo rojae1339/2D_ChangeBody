@@ -31,12 +31,48 @@ public class PlayerUIView : MonoBehaviour
 
     private void Start()
     {
-        _player = gameObject.GetComponent<Player>();
-        _l_weaponPresenter = new WeaponUIPresenter(this, _player.L_Weapon.GetComponent<BaseWeapon>());
-        _r_weaponPresenter = new WeaponUIPresenter(this, _player.L_Weapon.GetComponent<BaseWeapon>());
-        _bodyPresenter = new BodyUIPresenter(this, _player.L_Weapon.GetComponent<BaseBody>());
+        Managers.Managers.OnManagerLoadInitialized += Init;
     }
 
+    private void Init()
+    {
+        if (this == null) return;
+        
+        _player = gameObject.GetComponent<Player>();
+
+        var lWeapon = _player.L_Weapon.transform.GetChild(0).GetComponent<BaseWeapon>();
+        var rWeapon = _player.R_Weapon.transform.GetChild(0).GetComponent<BaseWeapon>();;
+        var body = _player.Body.GetComponent<BaseBody>();
+        
+        string MakeName(string name)
+        {
+            string n = name.Split(" (")[1].Split(')')[0];
+            var makeName = n.Substring(0, 1).ToLower() + n.Substring(1);
+            return makeName;
+        }
+
+        // 무기/바디 이름 기준으로 CommonTier DTO 추출
+        var l = Managers.Managers.PartsData.WeaponData[MakeName(lWeapon.ToString())][3];
+        var r = Managers.Managers.PartsData.WeaponData[MakeName(rWeapon.ToString())][3];
+        var b = Managers.Managers.PartsData.BodyData[MakeName(body.ToString())][3];
+
+        WeaponDTO lW = Managers.Managers.PartsData.MakeWeaponDTO(MakeName(lWeapon.ToString()), l);
+        WeaponDTO rW = Managers.Managers.PartsData.MakeWeaponDTO(MakeName(rWeapon.ToString()), r);
+        BodyDTO bB = Managers.Managers.PartsData.MakeBodyDTO(MakeName(body.ToString()), b);
+
+        lWeapon.Init(lW);
+        rWeapon.Init(rW);
+        body.Init(bB);
+        
+
+        _l_weaponPresenter = new WeaponUIPresenter(this, lWeapon);
+        _r_weaponPresenter = new WeaponUIPresenter(this, rWeapon);
+        _bodyPresenter = new BodyUIPresenter(this, body);
+
+        Managers.Managers.OnManagerLoadInitialized -= Init;
+    }
+
+    //todo 줄에 맞춰 글자크기 조정
     public void ChangeDropPartInfo(Image img, TierType tier, string title, string desc)
     {
         _dropPartsImg = img;
@@ -45,10 +81,10 @@ public class PlayerUIView : MonoBehaviour
         _dropPartsDescText.text = desc;
     }
 
-    //todo 유저가 무기 2개 들고있을때 추가하기
-    public void ChangePlayerPartInfo(bool isWeaponOnly, Image img, TierType tier, string title, string desc)
+    //todo 유저가 무기 2개 들고있을때 추가하기 + 줄에 맞춰 글자크기 조정
+    public void ChangePlayerPartInfo(bool isPartsOnlyOne, Image img, TierType tier, string title, string desc)
     {
-        if (isWeaponOnly)
+        if (isPartsOnlyOne)
         {
             _playerPartsImg = img;
             _playerPartsTitleText.color = ChangeTextColorByTier(tier);

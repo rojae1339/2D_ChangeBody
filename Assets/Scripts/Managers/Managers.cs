@@ -51,10 +51,9 @@ namespace Managers
 
             DontDestroyOnLoad(go);
             s_Instance = go.GetComponent<Managers>();
-
+            s_Instance._partsData.Init();   
+            
             OnManagerLoadInitialized += OnInitComplete;
-            s_Instance._partsData.Init();    
-
             s_Instance.StartCoroutine(s_Instance.WaitForManagersInit());
         }
         
