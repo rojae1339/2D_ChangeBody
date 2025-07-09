@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6438394916751165156}
   - component: {fileID: 2939882175397364222}
   - component: {fileID: 1894382418867374222}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Pistol
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4379379725296028338}
   - component: {fileID: 9000085906603238715}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: R_Weapon (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

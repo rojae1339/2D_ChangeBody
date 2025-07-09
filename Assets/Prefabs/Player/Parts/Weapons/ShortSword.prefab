@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7223118440504192828}
   - component: {fileID: 2142313389819464163}
   - component: {fileID: -594217107159108892}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: ShortSword
   m_TagString: Weapon
   m_Icon: {fileID: 0}

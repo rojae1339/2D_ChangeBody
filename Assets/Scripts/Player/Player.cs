@@ -22,21 +22,26 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject body;
     
-    
     private PlayerMove _playerMove;
     private PlayerController _playerController;
     private PlayerAnimation _playerAnimation;
     private PlayerUIView _playerUIView;
+    private PartDetector _partDetector;
     private AnimationType _currentAnimationType;
     private AnimationType _previousAnimationType; // 추가
     
     private Vector2 _moveInput;
+    
+    public GameObject L_Weapon { get => l_Weapon; private set => l_Weapon = value; }
+    public GameObject R_Weapon { get => r_Weapon; private set => r_Weapon = value; }
+    public GameObject Body { get => body; private set => body = value; }
 
     void Awake()
     {
         _playerMove = gameObject.AddComponent<PlayerMove>();
         _playerAnimation = gameObject.AddComponent<PlayerAnimation>();
         _playerController = gameObject.AddComponent<PlayerController>();
+        _partDetector = gameObject.GetComponent<PartDetector>();
         _playerUIView = GetComponent<PlayerUIView>();
 
         _playerController.Init(this);

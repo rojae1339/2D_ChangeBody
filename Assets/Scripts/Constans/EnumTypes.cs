@@ -9,6 +9,7 @@ public enum TierType
 
 public enum AttackType
 {
+    None,
     SingleAttack,
     DoubleAttack,
 }

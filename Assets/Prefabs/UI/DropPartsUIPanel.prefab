@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 6465088390335037758}
   - component: {fileID: 6501610305763625821}
   m_Layer: 5
-  m_Name: PlayerPartImg
+  m_Name: PlayerPartsImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1503,7 +1503,7 @@ GameObject:
   - component: {fileID: 7090381703968124481}
   - component: {fileID: 9034021629981403670}
   m_Layer: 5
-  m_Name: DropPartImg
+  m_Name: DropPartsImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
