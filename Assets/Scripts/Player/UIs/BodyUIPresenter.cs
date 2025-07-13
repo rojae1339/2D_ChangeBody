@@ -30,6 +30,7 @@ public class BodyUIPresenter
         // 파츠 정보 업데이트
     }
     
+    //todo 게임오브젝트 ui로 img에 넣기
     private void ChangeDropBody(BaseBody dropBody)
     {
         dropSB.Clear();
@@ -49,6 +50,7 @@ public class BodyUIPresenter
         _view.ChangeDropPartInfo(null, dropBody.Tier, title, finalText);
     }
 
+    //todo 게임오브젝트 ui로 img에 넣기
     private void ChangePlayerBody(BaseBody modelBody)
     {
         dropSB.Clear();

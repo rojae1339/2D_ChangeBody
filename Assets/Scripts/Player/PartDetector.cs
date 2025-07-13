@@ -21,6 +21,10 @@ public class PartDetector : MonoBehaviour
         //IParts.IEquipable가 detected되면, 실행
         foreach (Collider2D hit in hits)
         {
+            if (hit == null)
+            {
+                continue;
+            }
             if (hit.tag == "Player") continue; 
 
             if (hit.tag != "Weapon" && hit.tag != "Body") continue;

@@ -30,6 +30,7 @@ public class WeaponUIPresenter
         // 파츠 정보 업데이트
     }
 
+    //todo 게임오브젝트 ui로 img에 넣기
     private void ChangeDropWeapon(BaseWeapon dropWeapon)
     {
         dropSB.Clear();
@@ -63,7 +64,7 @@ public class WeaponUIPresenter
         _view.ChangeDropPartInfo(null, dropWeapon.Tier, title, finalText);
     }
 
-    //todo 수정 + 런하면 null값이 됨 + 무기 한손
+    //todo 게임오브젝트 ui로 img에 넣기 + 무기 한손/양손 ui조정
     private void ChangePlayerWeapon(BaseWeapon playerWeapon)
     {
         playerSB.Clear();
