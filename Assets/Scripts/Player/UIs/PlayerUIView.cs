@@ -23,11 +23,8 @@ public class PlayerUIView : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _playerPartsDescText;
 
-    private WeaponUIPresenter _l_weaponPresenter;
-    private WeaponUIPresenter _r_weaponPresenter;
-    private BodyUIPresenter _bodyPresenter;
-
-    private Player _player;
+    private WeaponUIPresenter _weaponPresenter = new WeaponUIPresenter();
+    private BodyUIPresenter _bodyPresenter = new BodyUIPresenter();
 
     private void Start()
     {
@@ -38,36 +35,8 @@ public class PlayerUIView : MonoBehaviour
     {
         if (this == null) return;
         
-        _player = gameObject.GetComponent<Player>();
-
-        var lWeapon = _player.L_Weapon.transform.GetChild(0).GetComponent<BaseWeapon>();
-        var rWeapon = _player.R_Weapon.transform.GetChild(0).GetComponent<BaseWeapon>();;
-        var body = _player.Body.GetComponent<BaseBody>();
-        
-        string MakeName(string name)
-        {
-            string n = name.Split(" (")[1].Split(')')[0];
-            var makeName = n.Substring(0, 1).ToLower() + n.Substring(1);
-            return makeName;
-        }
-
-        // 무기/바디 이름 기준으로 CommonTier DTO 추출
-        var l = Managers.Managers.PartsData.WeaponData[MakeName(lWeapon.ToString())][3];
-        var r = Managers.Managers.PartsData.WeaponData[MakeName(rWeapon.ToString())][3];
-        var b = Managers.Managers.PartsData.BodyData[MakeName(body.ToString())][3];
-
-        WeaponDTO lW = Managers.Managers.PartsData.MakeWeaponDTO(MakeName(lWeapon.ToString()), l);
-        WeaponDTO rW = Managers.Managers.PartsData.MakeWeaponDTO(MakeName(rWeapon.ToString()), r);
-        BodyDTO bB = Managers.Managers.PartsData.MakeBodyDTO(MakeName(body.ToString()), b);
-
-        lWeapon.Init(lW);
-        rWeapon.Init(rW);
-        body.Init(bB);
-        
-
-        _l_weaponPresenter = new WeaponUIPresenter(this, lWeapon);
-        _r_weaponPresenter = new WeaponUIPresenter(this, rWeapon);
-        _bodyPresenter = new BodyUIPresenter(this, body);
+        _weaponPresenter.Init(this);
+        _bodyPresenter.Init(this);
 
         Managers.Managers.OnManagerLoadInitialized -= Init;
     }
@@ -83,6 +52,20 @@ public class PlayerUIView : MonoBehaviour
 
     //todo 유저가 무기 2개 들고있을때 추가하기 + 줄에 맞춰 글자크기 조정
     public void ChangePlayerPartInfo(bool isPartsOnlyOne, Image img, TierType tier, string title, string desc)
+    {
+        if (isPartsOnlyOne)
+        {
+            _playerPartsImg = img;
+            _playerPartsTitleText.color = ChangeTextColorByTier(tier);
+            _playerPartsTitleText.text = title;
+            _playerPartsDescText.text = desc;
+            return;
+        }
+        
+        //todo 무기나  2개일때
+    }
+    
+    public void ChangePlayerPart(bool isPartsOnlyOne, Image img, TierType tier, string title, string desc)
     {
         if (isPartsOnlyOne)
         {
