@@ -7,8 +7,6 @@ using UnityEngine.UI;
 
 public class PlayerUIView : MonoBehaviour
 {
-    public event Action OnMoveDropUIPosition; 
-    
     [SerializeField]
     private Canvas _mainCanvas;
     [SerializeField]
@@ -31,10 +29,11 @@ public class PlayerUIView : MonoBehaviour
 
     private RectTransform _rootRect;
     private RectTransform _dropUIRect;
-    private readonly Vector3 _rootBasePosition = new Vector2(0, -250);
-    private readonly Vector3 _rootInteractPosition = new Vector2(0, -500);
-    private readonly Vector3 _dropUILeftPosition;
-    private readonly Vector3 _dropUIRightPosition;
+    private Vector2 _rootBasePosition;
+    private readonly Vector2 _rootInteractPosition = new Vector2(0, -500);
+    private Vector2 _dropUIBasePosition;
+    private readonly Vector2 _dropUILeftPosition = new Vector2(282.5f, -240);
+    private readonly Vector2 _dropUIRightPosition = new Vector2(917.5f, -240);
     
     private void Start()
     {
@@ -53,7 +52,9 @@ public class PlayerUIView : MonoBehaviour
         _bodyBaseCover = _playerBodyPartsPanel.GetComponentInChildren<BasePartsPanel>();
 
         _rootRect = _partsRootPanel.GetComponent<RectTransform>();
+        _rootBasePosition = _rootRect.anchoredPosition;
         _dropUIRect = _dropPartsCover.GetComponent<RectTransform>();
+        _dropUIBasePosition = _dropUIRect.anchoredPosition;
         
         Managers.Managers.OnManagerLoadInitialized -= Init;
     }
@@ -111,6 +112,7 @@ public class PlayerUIView : MonoBehaviour
     public void QuitInteractUI()
     {
         _rootRect.anchoredPosition = _rootBasePosition;
+        _dropUIRect.anchoredPosition = _dropUIBasePosition;
         SetBodyUIActive(false);
         SetWeaponUIActive(false);
         SetInteractUIActive(false);
@@ -118,9 +120,44 @@ public class PlayerUIView : MonoBehaviour
     public void Undetected()
     {
         _rootRect.anchoredPosition = _rootBasePosition;
+        _dropUIRect.anchoredPosition = _dropUIBasePosition;
         SetBodyUIActive(false);
         SetWeaponUIActive(false);
         SetInteractUIActive(false);
         SetPartUIActive(false);
+    }
+
+    public void ChangeDropUIPositionLeft()
+    {
+        if (_playerBodyPartsPanel.activeSelf == true)
+        {
+            return;
+        }
+        
+        if (_dropUIRect.anchoredPosition.Equals(_dropUILeftPosition))
+        {
+            _dropUIRect.anchoredPosition = _dropUIRightPosition;
+        }
+        else
+        {
+            _dropUIRect.anchoredPosition = _dropUILeftPosition;
+        }
+    }
+    
+    public void ChangeDropUIPositionRight()
+    {
+        if (_playerBodyPartsPanel.activeSelf == true)
+        {
+            return;
+        }
+        
+        if (_dropUIRect.anchoredPosition.Equals(_dropUIRightPosition))
+        {
+            _dropUIRect.anchoredPosition = _dropUILeftPosition;
+        }
+        else
+        {
+            _dropUIRect.anchoredPosition = _dropUIRightPosition;
+        }
     }
 }

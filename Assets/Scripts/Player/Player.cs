@@ -135,4 +135,8 @@ public class Player : MonoBehaviour
     public void OnJump(InputAction.CallbackContext ctx) => _playerController.OnJump(ctx);
     public void OnInteractUI(InputAction.CallbackContext ctx) => _playerController.OnInteractDropUI(ctx);
     public void OnPressESC(InputAction.CallbackContext ctx) => _playerController.OnCloseUIOrOpenSetting(ctx);
+    public void OnPressLeftWhileUIInteracted(InputAction.CallbackContext ctx) =>
+        _playerController.OnInteractUIChangeLeft(ctx);
+    public void OnPressRightWhileUIInteracted(InputAction.CallbackContext ctx) =>
+        _playerController.OnInteractUIChangeRight(ctx);
 }

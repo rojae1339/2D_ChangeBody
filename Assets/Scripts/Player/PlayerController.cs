@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     {
         _player = player;
         _detector = det;
-        _view = _view;
+        _view = view;
     }
 
     public void OnMove(InputAction.CallbackContext ctx)
@@ -49,11 +49,16 @@ public class PlayerController : MonoBehaviour
         if (ctx.performed)
         {
             _detector.ToggleInteractUI();
+            _player.SetMoveInput(Vector2.zero);
+            
+            //todo 아무 ui도 없을때 E누르면 true가 됨
             _inputLocked = true;  // <- 나중에 View 이벤트와 연동해서 세팅
         }
     }
+    
+    //todo InteractUI열린후 무기는 원하는 손, 바디는 그냥 E키 누르면 변경되게 하기, 변경 후 가지고 있던 파츠는 땅에 떨구기
 
-    public void OnInteractUIChangeAOrD(InputAction.CallbackContext ctx)
+    public void OnInteractUIChangeLeft(InputAction.CallbackContext ctx)
     {
         if (!_inputLocked)
         {
@@ -63,21 +68,37 @@ public class PlayerController : MonoBehaviour
         if (ctx.performed)
         {
             
+            _view.ChangeDropUIPositionLeft();   
+        }
+    }
+    
+    public void OnInteractUIChangeRight(InputAction.CallbackContext ctx)
+    {
+        if (!_inputLocked)
+        {
+            return;
+        }
+
+        if (ctx.performed)
+        {
+            
+            _view.ChangeDropUIPositionRight();   
         }
     }
 
     public void OnCloseUIOrOpenSetting(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed)
+        if (_inputLocked)
         {
-            if (_inputLocked)
+            if (ctx.performed)
             {
                 _detector.CancelDetect();
                 _inputLocked = false;
+
             }
         }
-        
-        //todo ui안열린상태에서는 setting opne
+
+        //todo ui안열린상태에서는 setting창 열기
         
     }
 }

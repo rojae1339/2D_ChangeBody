@@ -93,6 +93,5 @@ public class PartDetector : MonoBehaviour
     public void CancelDetect()
     {
         OnCancelDetect?.Invoke();
-        
     }
 }
