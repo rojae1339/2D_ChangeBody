@@ -2,14 +2,29 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
+public enum DetectedPartType
+{
+    None,
+    Weapon,
+    Body
+}
+
 public class PartDetector : MonoBehaviour
 {
     public event Action<BaseWeapon> OnWeaponDetected;
     public event Action<BaseBody> OnBodyDetected;
+    public event Action OnInteractWeaponUIToggle;
+    public event Action OnInteractBodyUIToggle;
     public event Action OnPartNotDetected;
+    public event Action OnCancelDetect;
 
     [SerializeField]
     private float rad = 2f;
+    
+    // 현재 감지 상태
+    public DetectedPartType CurrentDetectedType { get; private set; } = DetectedPartType.None;
+    public BaseWeapon CurrentWeapon { get; private set; }
+    public BaseBody CurrentBody { get; private set; }
 
     private void Update() { DetectObject(); }
 
@@ -17,37 +32,67 @@ public class PartDetector : MonoBehaviour
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, rad, LayerMask.GetMask("Parts"));
         bool found = false;
-        
-        //IParts.IEquipable가 detected되면, 실행
+
+        CurrentWeapon = null;
+        CurrentBody = null;
+        CurrentDetectedType = DetectedPartType.None;
+
         foreach (Collider2D hit in hits)
         {
-            if (hit == null)
-            {
-                continue;
-            }
-            if (hit.tag == "Player") continue; 
+            if (!hit || hit.CompareTag("Player")) continue;
 
-            if (hit.tag != "Weapon" && hit.tag != "Body") continue;
-
-            IParts.IEquipable part = hit.gameObject.GetComponent<IParts.IEquipable>();
-
-            if (hit.tag == "Weapon")
+            if (hit.CompareTag("Weapon"))
             {
-                OnWeaponDetected?.Invoke(part as BaseWeapon);
+                var part = hit.GetComponent<IParts.IEquipable>() as BaseWeapon;
+                if (part != null)
+                {
+                    CurrentWeapon = part;
+                    CurrentDetectedType = DetectedPartType.Weapon;
+                    OnWeaponDetected?.Invoke(part);
+                    found = true;
+                    break;
+                }
             }
-            else if (hit.tag == "Body")
+            else if (hit.CompareTag("Body"))
             {
-                OnBodyDetected?.Invoke(part as BaseBody);
+                var part = hit.GetComponent<IParts.IEquipable>() as BaseBody;
+                if (part != null)
+                {
+                    CurrentBody = part;
+                    CurrentDetectedType = DetectedPartType.Body;
+                    OnBodyDetected?.Invoke(part);
+                    found = true;
+                    break;
+                }
             }
-            
-            found = true;
-            break;
         }
-        
-        //IParts.IEquipable가 undetected일때 실행
+
         if (!found)
         {
+            CurrentDetectedType = DetectedPartType.None;
             OnPartNotDetected?.Invoke();
         }
+    }
+    
+    public void ToggleInteractUI()
+    {
+        switch (CurrentDetectedType)
+        {
+            case DetectedPartType.Weapon:
+                OnInteractWeaponUIToggle?.Invoke();
+                break;
+            case DetectedPartType.Body:
+                OnInteractBodyUIToggle?.Invoke();
+                break;
+            default:
+                // 감지된 게 없을 때는 무시하거나 사운드/메시지를 줄 수 있음
+                break;
+        }
+    }
+
+    public void CancelDetect()
+    {
+        OnCancelDetect?.Invoke();
+        
     }
 }

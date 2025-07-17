@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
         _partDetector = gameObject.GetComponent<PartDetector>();
         _playerUIView = GetComponent<PlayerUIView>();
 
-        _playerController.Init(this);
+        _playerController.Init(this, _partDetector, _playerUIView);
         _currentAnimationType = AnimationType.Idle;
         _previousAnimationType = AnimationType.Idle;
     }
@@ -133,4 +133,6 @@ public class Player : MonoBehaviour
     public void OnMove(InputAction.CallbackContext ctx) => _playerController.OnMove(ctx);
     public void OnAttack(InputAction.CallbackContext ctx) => _playerController.OnAttack(ctx);
     public void OnJump(InputAction.CallbackContext ctx) => _playerController.OnJump(ctx);
+    public void OnInteractUI(InputAction.CallbackContext ctx) => _playerController.OnInteractDropUI(ctx);
+    public void OnPressESC(InputAction.CallbackContext ctx) => _playerController.OnCloseUIOrOpenSetting(ctx);
 }

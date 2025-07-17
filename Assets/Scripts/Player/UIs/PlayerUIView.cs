@@ -1,31 +1,41 @@
 using System;
+using System.Text;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class PlayerUIView : MonoBehaviour
 {
+    public event Action OnMoveDropUIPosition; 
+    
     [SerializeField]
     private Canvas _mainCanvas;
+    [SerializeField]
+    private GameObject _partsRootPanel;
+    [SerializeField]
+    private GameObject _interactPanel;
+    [SerializeField]
+    private GameObject _dropPartsCover;
+    [SerializeField]
+    private GameObject _playerWeaponPartsPanel;
+    [SerializeField]
+    private GameObject _playerBodyPartsPanel;
 
-    [SerializeField]
-    private GameObject _partsUIPanel;
-    [SerializeField]
-    private Image _dropPartsImg;
-    [SerializeField]
-    private Image _playerPartsImg;
-    [SerializeField]
-    private TextMeshProUGUI _dropPartsTitleText;
-    [SerializeField]
-    private TextMeshProUGUI _playerPartsTitleText;
-    [SerializeField]
-    private TextMeshProUGUI _dropPartsDescText;
-    [SerializeField]
-    private TextMeshProUGUI _playerPartsDescText;
+    private BasePartsPanel _dropBaseCover;
+    private BasePartsPanel[] _weaponBaseLRCovers;
+    private BasePartsPanel _bodyBaseCover;
+    
+    private readonly WeaponUIPresenter _weaponPresenter = new WeaponUIPresenter();
+    private readonly BodyUIPresenter _bodyPresenter = new BodyUIPresenter();
 
-    private WeaponUIPresenter _weaponPresenter = new WeaponUIPresenter();
-    private BodyUIPresenter _bodyPresenter = new BodyUIPresenter();
-
+    private RectTransform _rootRect;
+    private RectTransform _dropUIRect;
+    private readonly Vector3 _rootBasePosition = new Vector2(0, -250);
+    private readonly Vector3 _rootInteractPosition = new Vector2(0, -500);
+    private readonly Vector3 _dropUILeftPosition;
+    private readonly Vector3 _dropUIRightPosition;
+    
     private void Start()
     {
         Managers.Managers.OnManagerLoadInitialized += Init;
@@ -38,64 +48,79 @@ public class PlayerUIView : MonoBehaviour
         _weaponPresenter.Init(this);
         _bodyPresenter.Init(this);
 
+        _dropBaseCover = _dropPartsCover.GetComponent<BasePartsPanel>();
+        _weaponBaseLRCovers = _playerWeaponPartsPanel.GetComponentsInChildren<BasePartsPanel>();
+        _bodyBaseCover = _playerBodyPartsPanel.GetComponentInChildren<BasePartsPanel>();
+
+        _rootRect = _partsRootPanel.GetComponent<RectTransform>();
+        _dropUIRect = _dropPartsCover.GetComponent<RectTransform>();
+        
         Managers.Managers.OnManagerLoadInitialized -= Init;
     }
 
-    //todo 줄에 맞춰 글자크기 조정
-    public void ChangeDropPartInfo(Image img, TierType tier, string title, string desc)
+    public void ChangeDropInfo(Image img, TierType tier, string title, string desc)
     {
-        _dropPartsImg = img;
-        _dropPartsTitleText.color = ChangeTextColorByTier(tier);
-        _dropPartsTitleText.text = title;
-        _dropPartsDescText.text = desc;
+        _dropBaseCover.ChangePartInfo(img, tier, title, desc);
     }
 
-    //todo 유저가 무기 2개 들고있을때 추가하기 + 줄에 맞춰 글자크기 조정
-    public void ChangePlayerPartInfo(bool isPartsOnlyOne, Image img, TierType tier, string title, string desc)
+    //todo E키 누르면 UI On시키기
+    public void ChangePlayerLeftWeaponInfo(Image img, TierType tier, string title, string desc)
     {
-        if (isPartsOnlyOne)
-        {
-            _playerPartsImg = img;
-            _playerPartsTitleText.color = ChangeTextColorByTier(tier);
-            _playerPartsTitleText.text = title;
-            _playerPartsDescText.text = desc;
-            return;
-        }
-        
-        //todo 무기나  2개일때
+        _weaponBaseLRCovers[0].ChangePartInfo(img, tier, title, desc);
     }
-    
-    public void ChangePlayerPart(bool isPartsOnlyOne, Image img, TierType tier, string title, string desc)
+    public void ChangePlayerRightWeaponInfo(Image img, TierType tier, string title, string desc)
     {
-        if (isPartsOnlyOne)
-        {
-            _playerPartsImg = img;
-            _playerPartsTitleText.color = ChangeTextColorByTier(tier);
-            _playerPartsTitleText.text = title;
-            _playerPartsDescText.text = desc;
-            return;
-        }
-        
-        //todo 무기나  2개일때
+        _weaponBaseLRCovers[1].ChangePartInfo(img, tier, title, desc);
     }
-    
-    
-
-    private Color ChangeTextColorByTier(TierType tier)
+    public void ChangePlayerBodyInfo(Image img, TierType tier, string title, string desc)
     {
-        switch (tier)
-        {
-            //드롭된 파츠의 tier에 따라 글씨색 변경
-            case TierType.Legendary: return Color.crimson;
-            case TierType.Unique: return Color.yellowNice;
-            case TierType.Rare: return Color.deepSkyBlue;
-            case TierType.Common: return Color.gray3;
-            default: throw new ArgumentOutOfRangeException(nameof(tier), tier, null);
-        }
+        _bodyBaseCover.ChangePartInfo(img, tier, title, desc);
     }
 
+    private void SetWeaponUIActive(bool isActive)
+    {
+        _playerWeaponPartsPanel.SetActive(isActive);
+    }
+    private void SetBodyUIActive(bool isActive)
+    {
+        _playerBodyPartsPanel.SetActive(isActive);
+    }
+    private void SetInteractUIActive(bool isActive)
+    {
+        _interactPanel.SetActive(isActive);
+    }
     public void SetPartUIActive(bool isActive)
     {
-        _partsUIPanel.SetActive(isActive);
+        _partsRootPanel.SetActive(isActive);
+    }
+
+    public void PressedInteractKeyOnWeapon()
+    {
+        _rootRect.anchoredPosition = _rootInteractPosition;
+        SetBodyUIActive(false);
+        SetWeaponUIActive(true);
+        SetInteractUIActive(true);
+    }
+    public void PressedInteractKeyOnBody()
+    {
+        _rootRect.anchoredPosition = _rootInteractPosition;
+        SetBodyUIActive(true);
+        SetWeaponUIActive(false);
+        SetInteractUIActive(true);
+    }
+    public void QuitInteractUI()
+    {
+        _rootRect.anchoredPosition = _rootBasePosition;
+        SetBodyUIActive(false);
+        SetWeaponUIActive(false);
+        SetInteractUIActive(false);
+    }
+    public void Undetected()
+    {
+        _rootRect.anchoredPosition = _rootBasePosition;
+        SetBodyUIActive(false);
+        SetWeaponUIActive(false);
+        SetInteractUIActive(false);
+        SetPartUIActive(false);
     }
 }

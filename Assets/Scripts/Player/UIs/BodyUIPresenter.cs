@@ -11,8 +11,7 @@ public class BodyUIPresenter
 
     private PartDetector _detector;
 
-    private StringBuilder dropSB = new StringBuilder();
-    private StringBuilder playerSB = new StringBuilder();
+    private StringBuilder sb = new StringBuilder();
     
     #region BodyPresenter Init시에 BodyModel(_bodyModel)초기화
     
@@ -23,8 +22,11 @@ public class BodyUIPresenter
         InitializeBodyModel(view);
 
         _detector = view.gameObject.GetComponent<PartDetector>();
+        
         _detector.OnBodyDetected += OnBodyDetected;
+        _detector.OnInteractBodyUIToggle += OnInteractBodyUIDetected;
         _detector.OnPartNotDetected += OnPartNotDetected;
+        _detector.OnCancelDetect += OnCloseAllUI;
     }
 
     private void InitializeBodyModel(PlayerUIView view)
@@ -51,55 +53,73 @@ public class BodyUIPresenter
     }
 
     #endregion
+    
+    //todo 게임오브젝트 ui로 img에 넣기
+    private void ChangeDropBodyUI(BaseBody dropBody)
+    {
+        // 제목
+        string title = dropBody.Tier + "\n" + dropBody.BodyName;
 
+        string desc = DrawBodyDescUI(dropBody);
+
+        _view.ChangeDropInfo(null, dropBody.Tier, title, desc);
+    }
+
+    //todo 게임오브젝트 ui로 img에 넣기
+    private void ChangePlayerBodyUI(BaseBody modelBody)
+    {
+        // 제목
+        string title = modelBody.Tier + "\n" + modelBody.BodyName;
+
+        string desc = DrawBodyDescUI(modelBody);
+
+        _view.ChangePlayerBodyInfo(null, modelBody.Tier, title, desc);
+    }
+    
+    private string DrawBodyDescUI(BaseBody body)
+    {
+        sb.Clear();
+        
+        // 체력 및 방어막
+        sb.AppendLine($"체력: {body.Hp}s");
+        sb.AppendLine($"방어막: {body.Shield}");
+
+        // 반감여부
+        sb.AppendLine("반감: " + (body.IsDmgHalf ? "50%" : "100%"));
+
+        return sb.ToString();
+    }
+
+    #region Detector Callback Action
+
+    //파트 감지 후 상호작용 키 누름
+    private void OnInteractBodyUIDetected()
+    {
+        _view.PressedInteractKeyOnBody();
+    }
+
+    //파트 감지 성공
     private void OnBodyDetected(BaseBody body)
     {
+        if (body == null) return;
+        
         ChangeDropBodyUI(body);
         ChangePlayerBodyUI(_body);
         _view.SetPartUIActive(true);
         // 파츠 정보 업데이트
     }
     
-    //todo 게임오브젝트 ui로 img에 넣기
-    private void ChangeDropBodyUI(BaseBody dropBody)
+    //파트 감지 안됨
+    private void OnPartNotDetected()
     {
-        dropSB.Clear();
-        // 제목
-        string title = dropBody.Tier + "\n" + dropBody.BodyName;
-
-        // 체력 및 방어막
-        dropSB.AppendLine($"체력: {dropBody.Hp}s");
-        dropSB.AppendLine($"방어막: {dropBody.Shield}");
-
-        // 반감여부
-        dropSB.AppendLine("반감: " + (dropBody.IsDmgHalf ? "50%" : "100%"));
-        
-
-        string finalText = dropSB.ToString();
-
-        _view.ChangeDropPartInfo(null, dropBody.Tier, title, finalText);
+        sb.Clear();
+        _view.Undetected();
+    }
+    
+    private void OnCloseAllUI()
+    {
+        _view.QuitInteractUI();
     }
 
-    //todo 게임오브젝트 ui로 img에 넣기
-    private void ChangePlayerBodyUI(BaseBody modelBody)
-    {
-        playerSB.Clear();
-        
-        // 제목
-        string title = modelBody.Tier + "\n" + modelBody.BodyName;
-
-        // 체력 및 방어막
-        playerSB.AppendLine($"체력: {modelBody.Hp}s");
-        playerSB.AppendLine($"방어막: {modelBody.Shield}");
-
-        // 반감여부
-        playerSB.AppendLine("반감: " + (modelBody.IsDmgHalf ? "50%" : "100%"));
-        
-
-        string finalText = playerSB.ToString();
-
-        _view.ChangePlayerPartInfo(true, null, modelBody.Tier, title, finalText);
-    }
-
-    private void OnPartNotDetected() { _view.SetPartUIActive(false); }
+    #endregion
 }

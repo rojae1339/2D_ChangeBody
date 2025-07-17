@@ -11,8 +11,7 @@ public class WeaponUIPresenter
 
     private PartDetector _detector;
 
-    StringBuilder dropSB = new StringBuilder();
-    StringBuilder playerSB = new StringBuilder();
+    StringBuilder sb = new StringBuilder();
 
     #region WeaponPresenter Init시에 WeaponModel(_l_weapon, _r_weapon)초기화
     
@@ -23,8 +22,11 @@ public class WeaponUIPresenter
         InitializeWeaponModel(view);
 
         _detector = view.gameObject.GetComponent<PartDetector>();
+        
         _detector.OnWeaponDetected += OnWeaponDetected;
+        _detector.OnInteractWeaponUIToggle += OnInteractWeaponUIDetected;
         _detector.OnPartNotDetected += OnPartNotDetected;
+        _detector.OnCancelDetect += OnCloseAllUI;
     }
 
     private void InitializeWeaponModel(PlayerUIView view)
@@ -57,131 +59,96 @@ public class WeaponUIPresenter
 
     #endregion
 
-    private void OnWeaponDetected(BaseWeapon dropWeapon)
-    {
-        ChangeDropWeaponUI(dropWeapon);
-        ChangePlayerWeaponUI(new BaseWeapon[] {_l_weapon, _r_weapon});
-        _view.SetPartUIActive(true);
-        // 파츠 정보 업데이트
-    }
-
     //todo 게임오브젝트 ui로 img에 넣기
     private void ChangeDropWeaponUI(BaseWeapon dropWeapon)
     {
-        dropSB.Clear();
         // 제목
         string title = dropWeapon.Tier + "\n" + dropWeapon.WeaponName;
 
         // 공격 속도 및 공격력
-        dropSB.AppendLine($"공격 속도: {dropWeapon.AttackSpeed}s");
-        dropSB.AppendLine($"데미지: {dropWeapon.AttackDamage}");
+        string descText = DrawWeaponDescUI(dropWeapon);
 
-        // 공격 타입 (None이면 생략)
-        if (dropWeapon.WeaponAttackType != AttackType.None)
-        {
-            dropSB.AppendLine(dropWeapon.WeaponAttackType == AttackType.SingleAttack ? "단일공격" : "연속공격");
-        }
-
-        // 리로드 속도
-        if (dropWeapon.ReloadSpeed != 0)
-            dropSB.AppendLine($"재장전 속도: {dropWeapon.ReloadSpeed}s");
-
-        // 총알 속도
-        if (dropWeapon.BulletSpeed != 0)
-            dropSB.AppendLine($"총알 속도: {dropWeapon.BulletSpeed}s");
-
-        // 총알 개수
-        if (dropWeapon.MaxBulletCount != 0)
-            dropSB.AppendLine($"탄창: {dropWeapon.MaxBulletCount}개");
-
-        string finalText = dropSB.ToString();
-
-        _view.ChangeDropPartInfo(null, dropWeapon.Tier, title, finalText);
+        _view.ChangeDropInfo(null, dropWeapon.Tier, title, descText);
     }
 
     //todo 게임오브젝트 ui로 img에 넣기 + 무기 한손/양손 ui조정
-    private void ChangePlayerWeaponUI(BaseWeapon[] playerWeapons)
+    private void ChangePlayerLeftWeaponUI(BaseWeapon lWeapon)
     {
-        playerSB.Clear();
+        // 제목
+        string title = lWeapon.Tier + "\n" + lWeapon.WeaponName;
 
-        if (playerWeapons == null || (playerWeapons[0] == null && playerWeapons[1] == null))
-        {
-            _view.ChangePlayerPartInfo(false, null, null, "", "");
-            return;
-        }
+        // 공격 속도 및 공격력
+        string descText = DrawWeaponDescUI(lWeapon);
 
-        // Case 1: 왼손 무기가 존재하고 양손 무기인 경우
-        if (playerWeapons[0] != null && playerWeapons[0].HandType == WeaponHandType.TwoHanded)
-        {
-            DrawWeaponUI(playerWeapons[0], isLeft: true);
-            return;
-        }
-
-        // Case 2: 오른손 무기가 존재하고 양손 무기인 경우
-        if (playerWeapons[1] != null && playerWeapons[1].HandType == WeaponHandType.TwoHanded)
-        {
-            DrawWeaponUI(playerWeapons[1], isLeft: false);
-            return;
-        }
-
-        // Case 3: 두 개 다 한손 무기인 경우 (Dual wield)
-        if (playerWeapons[0] != null && playerWeapons[1] != null)
-        {
-            DrawWeaponUI(playerWeapons[0], isLeft: true);
-            DrawWeaponUI(playerWeapons[1], isLeft: false);
-            return;
-        }
-
-        // Case 4: 한손 무기 하나만 존재하는 경우
-        if (playerWeapons[0] != null)
-        {
-            DrawWeaponUI(playerWeapons[0], isLeft: true);
-            return;
-        }
-
-        if (playerWeapons[1] != null)
-        {
-            DrawWeaponUI(playerWeapons[1], isLeft: false);
-            return;
-        }
+        _view.ChangePlayerLeftWeaponInfo(null, lWeapon.Tier, title, descText);
     }
     
-    private void DrawWeaponUI(BaseWeapon weapon, bool isLeft)
+    private void ChangePlayerRightWeaponUI(BaseWeapon rWeapon)
     {
-        if (weapon == null) return;
+        // 제목
+        string title = rWeapon.Tier + "\n" + rWeapon.WeaponName;
 
-        string title = weapon.Tier + "\n" + weapon.WeaponName;
+        // 공격 속도 및 공격력
+        string descText = DrawWeaponDescUI(rWeapon);
 
-        playerSB.Clear();
-        playerSB.AppendLine($"공격 속도: {weapon.AttackSpeed}s");
-        playerSB.AppendLine($"데미지: {weapon.AttackDamage}");
+        _view.ChangePlayerRightWeaponInfo(null, rWeapon.Tier, title, descText);
+    }
+    
+    private string DrawWeaponDescUI(BaseWeapon weapon)
+    {
+        sb.Clear();
+        
+        sb.AppendLine($"공격 속도: {weapon.AttackSpeed}s");
+        sb.AppendLine($"데미지: {weapon.AttackDamage}");
 
         if (weapon.WeaponAttackType != AttackType.None)
         {
-            playerSB.AppendLine(weapon.WeaponAttackType == AttackType.SingleAttack ? "단일공격" : "연속공격");
+            sb.AppendLine(weapon.WeaponAttackType == AttackType.SingleAttack ? "단일공격" : "연속공격");
         }
 
         if (weapon.ReloadSpeed != 0)
-            playerSB.AppendLine($"재장전 속도: {weapon.ReloadSpeed}s");
+            sb.AppendLine($"재장전 속도: {weapon.ReloadSpeed}s");
 
         if (weapon.BulletSpeed != 0)
-            playerSB.AppendLine($"총알 속도: {weapon.BulletSpeed}s");
+            sb.AppendLine($"총알 속도: {weapon.BulletSpeed}s");
 
         if (weapon.MaxBulletCount != 0)
-            playerSB.AppendLine($"탄창: {weapon.MaxBulletCount}개");
+            sb.AppendLine($"탄창: {weapon.MaxBulletCount}개");
 
-        string finalText = playerSB.ToString();
-
-        // isLeft를 활용해서 왼손/오른손 UI 분기 (또는 통합 UI 처리)
-        _view.ChangePlayerPartInfo(true, null, weapon.Tier, title, finalText);
+        return sb.ToString();
     }
 
+    #region Detector Callback Action
 
-
+    //파트 감지 안됨
     private void OnPartNotDetected()
     {
-        dropSB.Clear();
-        playerSB.Clear();
-        _view.SetPartUIActive(false);
+        sb.Clear();
+        _view.Undetected();
     }
+    
+    //파트 감지 후 상호작용 키 누름
+    private void OnInteractWeaponUIDetected()
+    {
+        _view.PressedInteractKeyOnWeapon();
+    }
+    
+    //파트 감지 성공
+    private void OnWeaponDetected(BaseWeapon dropWeapon)
+    {
+        if (dropWeapon == null) return;
+        
+        ChangeDropWeaponUI(dropWeapon);
+        ChangePlayerLeftWeaponUI(_l_weapon);
+        ChangePlayerRightWeaponUI(_r_weapon);
+        _view.SetPartUIActive(true);
+        // 파츠 정보 업데이트
+    }
+
+    private void OnCloseAllUI()
+    {
+        _view.QuitInteractUI();
+    }
+
+    #endregion
 }

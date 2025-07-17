@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Weapon
   - Body
+  - UI_Img
+  - UI_Title
+  - UI_Desc
+  - Weaea
   layers:
   - Default
   - TransparentFX
