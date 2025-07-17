@@ -59,12 +59,12 @@ public class PlayerUIView : MonoBehaviour
         Managers.Managers.OnManagerLoadInitialized -= Init;
     }
 
+    #region 무기&바디 드랍, 플레이어 UI 변경
+
     public void ChangeDropInfo(Image img, TierType tier, string title, string desc)
     {
         _dropBaseCover.ChangePartInfo(img, tier, title, desc);
     }
-
-    //todo E키 누르면 UI On시키기
     public void ChangePlayerLeftWeaponInfo(Image img, TierType tier, string title, string desc)
     {
         _weaponBaseLRCovers[0].ChangePartInfo(img, tier, title, desc);
@@ -77,6 +77,10 @@ public class PlayerUIView : MonoBehaviour
     {
         _bodyBaseCover.ChangePartInfo(img, tier, title, desc);
     }
+
+    #endregion
+
+    #region UI SetActive변경 로직
 
     private void SetWeaponUIActive(bool isActive)
     {
@@ -94,6 +98,8 @@ public class PlayerUIView : MonoBehaviour
     {
         _partsRootPanel.SetActive(isActive);
     }
+
+    #endregion
 
     public void PressedInteractKeyOnWeapon()
     {
@@ -126,7 +132,6 @@ public class PlayerUIView : MonoBehaviour
         SetInteractUIActive(false);
         SetPartUIActive(false);
     }
-
     public void ChangeDropUIPositionLeft()
     {
         if (_playerBodyPartsPanel.activeSelf == true)
@@ -143,7 +148,6 @@ public class PlayerUIView : MonoBehaviour
             _dropUIRect.anchoredPosition = _dropUILeftPosition;
         }
     }
-    
     public void ChangeDropUIPositionRight()
     {
         if (_playerBodyPartsPanel.activeSelf == true)

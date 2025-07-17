@@ -53,7 +53,9 @@ public class BodyUIPresenter
     }
 
     #endregion
-    
+
+    #region 바디 드랍, 플레이어 UI 변경, todo
+
     //todo 게임오브젝트 ui로 img에 넣기
     private void ChangeDropBodyUI(BaseBody dropBody)
     {
@@ -75,7 +77,45 @@ public class BodyUIPresenter
 
         _view.ChangePlayerBodyInfo(null, modelBody.Tier, title, desc);
     }
-    
+
+    #endregion
+
+    #region Detector Callback Action
+
+    //파트 감지 후 상호작용 키 누름
+
+    private void OnInteractBodyUIDetected()
+    {
+        _view.PressedInteractKeyOnBody();
+    }
+
+    //파트 감지 성공
+
+    private void OnBodyDetected(BaseBody body)
+    {
+        if (body == null) return;
+        
+        ChangeDropBodyUI(body);
+        ChangePlayerBodyUI(_body);
+        _view.SetPartUIActive(true);
+        // 파츠 정보 업데이트
+    }
+
+    //파트 감지 안됨
+
+    private void OnPartNotDetected()
+    {
+        sb.Clear();
+        _view.Undetected();
+    }
+
+    private void OnCloseAllUI()
+    {
+        _view.QuitInteractUI();
+    }
+
+    #endregion
+
     private string DrawBodyDescUI(BaseBody body)
     {
         sb.Clear();
@@ -89,37 +129,4 @@ public class BodyUIPresenter
 
         return sb.ToString();
     }
-
-    #region Detector Callback Action
-
-    //파트 감지 후 상호작용 키 누름
-    private void OnInteractBodyUIDetected()
-    {
-        _view.PressedInteractKeyOnBody();
-    }
-
-    //파트 감지 성공
-    private void OnBodyDetected(BaseBody body)
-    {
-        if (body == null) return;
-        
-        ChangeDropBodyUI(body);
-        ChangePlayerBodyUI(_body);
-        _view.SetPartUIActive(true);
-        // 파츠 정보 업데이트
-    }
-    
-    //파트 감지 안됨
-    private void OnPartNotDetected()
-    {
-        sb.Clear();
-        _view.Undetected();
-    }
-    
-    private void OnCloseAllUI()
-    {
-        _view.QuitInteractUI();
-    }
-
-    #endregion
 }

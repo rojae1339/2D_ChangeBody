@@ -59,6 +59,8 @@ public class WeaponUIPresenter
 
     #endregion
 
+    #region 무기 드랍, 플레이어 UI 변경, todo 
+
     //todo 게임오브젝트 ui로 img에 넣기
     private void ChangeDropWeaponUI(BaseWeapon dropWeapon)
     {
@@ -71,7 +73,7 @@ public class WeaponUIPresenter
         _view.ChangeDropInfo(null, dropWeapon.Tier, title, descText);
     }
 
-    //todo 게임오브젝트 ui로 img에 넣기 + 무기 한손/양손 ui조정
+    //todo 게임오브젝트 ui로 img에 넣기
     private void ChangePlayerLeftWeaponUI(BaseWeapon lWeapon)
     {
         // 제목
@@ -83,6 +85,7 @@ public class WeaponUIPresenter
         _view.ChangePlayerLeftWeaponInfo(null, lWeapon.Tier, title, descText);
     }
     
+    //todo 게임오브젝트 ui로 img에 넣기
     private void ChangePlayerRightWeaponUI(BaseWeapon rWeapon)
     {
         // 제목
@@ -93,30 +96,8 @@ public class WeaponUIPresenter
 
         _view.ChangePlayerRightWeaponInfo(null, rWeapon.Tier, title, descText);
     }
-    
-    private string DrawWeaponDescUI(BaseWeapon weapon)
-    {
-        sb.Clear();
-        
-        sb.AppendLine($"공격 속도: {weapon.AttackSpeed}s");
-        sb.AppendLine($"데미지: {weapon.AttackDamage}");
 
-        if (weapon.WeaponAttackType != AttackType.None)
-        {
-            sb.AppendLine(weapon.WeaponAttackType == AttackType.SingleAttack ? "단일공격" : "연속공격");
-        }
-
-        if (weapon.ReloadSpeed != 0)
-            sb.AppendLine($"재장전 속도: {weapon.ReloadSpeed}s");
-
-        if (weapon.BulletSpeed != 0)
-            sb.AppendLine($"총알 속도: {weapon.BulletSpeed}s");
-
-        if (weapon.MaxBulletCount != 0)
-            sb.AppendLine($"탄창: {weapon.MaxBulletCount}개");
-
-        return sb.ToString();
-    }
+    #endregion
 
     #region Detector Callback Action
 
@@ -151,4 +132,28 @@ public class WeaponUIPresenter
     }
 
     #endregion
+    
+    private string DrawWeaponDescUI(BaseWeapon weapon)
+    {
+        sb.Clear();
+        
+        sb.AppendLine($"공격 속도: {weapon.AttackSpeed}s");
+        sb.AppendLine($"데미지: {weapon.AttackDamage}");
+
+        if (weapon.WeaponAttackType != AttackType.None)
+        {
+            sb.AppendLine(weapon.WeaponAttackType == AttackType.SingleAttack ? "단일공격" : "연속공격");
+        }
+
+        if (weapon.ReloadSpeed != 0)
+            sb.AppendLine($"재장전 속도: {weapon.ReloadSpeed}s");
+
+        if (weapon.BulletSpeed != 0)
+            sb.AppendLine($"총알 속도: {weapon.BulletSpeed}s");
+
+        if (weapon.MaxBulletCount != 0)
+            sb.AppendLine($"탄창: {weapon.MaxBulletCount}개");
+
+        return sb.ToString();
+    }
 }
