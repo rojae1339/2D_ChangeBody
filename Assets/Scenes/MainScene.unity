@@ -3691,6 +3691,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 630486222737346299, guid: 25f9c046efd469e41b4f48ec40752f6b, type: 3}
+      propertyPath: m_text
+      value: "\uC67C\uCABD"
+      objectReference: {fileID: 0}
     - target: {fileID: 810829838392610064, guid: 25f9c046efd469e41b4f48ec40752f6b, type: 3}
       propertyPath: m_Name
       value: PlayerBodyCover
@@ -3710,6 +3714,10 @@ PrefabInstance:
     - target: {fileID: 868754396631164352, guid: 25f9c046efd469e41b4f48ec40752f6b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 965270490903156545, guid: 25f9c046efd469e41b4f48ec40752f6b, type: 3}
+      propertyPath: m_text
+      value: "\uC624\uB978\uCABD"
       objectReference: {fileID: 0}
     - target: {fileID: 983944587662369163, guid: 25f9c046efd469e41b4f48ec40752f6b, type: 3}
       propertyPath: m_Name
@@ -4126,6 +4134,10 @@ PrefabInstance:
     - target: {fileID: 7717749809362873433, guid: 25f9c046efd469e41b4f48ec40752f6b, type: 3}
       propertyPath: m_Name
       value: PlayerR_WeaponCover
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872016837829424648, guid: 25f9c046efd469e41b4f48ec40752f6b, type: 3}
+      propertyPath: m_text
+      value: "\uBC14\uB514"
       objectReference: {fileID: 0}
     - target: {fileID: 7980465448633447907, guid: 25f9c046efd469e41b4f48ec40752f6b, type: 3}
       propertyPath: m_Name

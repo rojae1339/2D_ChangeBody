@@ -49,6 +49,11 @@ public class Player : MonoBehaviour
         _previousAnimationType = AnimationType.Idle;
     }
 
+    private void Start()
+    {
+        Application.targetFrameRate = 60;
+    }
+
     void Update()
     {
         _playerMove.MoveDirection = _moveInput;
