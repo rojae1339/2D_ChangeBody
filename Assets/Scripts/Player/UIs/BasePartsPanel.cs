@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BasePartsPanel : MonoBehaviour
 {
     [SerializeField]
-    private Image _partsImg;
+    private RawImage _partsImg;
     [SerializeField]
     private TextMeshProUGUI _partsTitleText;
     [SerializeField]
@@ -14,7 +14,7 @@ public class BasePartsPanel : MonoBehaviour
 
 
     //todo 유저가 무기 2개 들고있을때 추가하기 + 줄에 맞춰 글자크기 조정
-    public void ChangePartInfo(Image img, TierType tier, string title, string desc)
+    public void ChangePartInfo(RawImage img, TierType tier, string title, string desc)
     {
         _partsImg = img;
         _partsTitleText.color = ChangeTextColorByTier(tier);

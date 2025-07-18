@@ -7,8 +7,6 @@ public class PlayerMove : MonoBehaviour, IParts.IDodgeable
     [SerializeField]
     private float _moveSpeed = 13f;
     
-    
-
     private Rigidbody2D _rigid;
     
     public Vector3 MoveDirection { get; set; } = Vector3.zero;
