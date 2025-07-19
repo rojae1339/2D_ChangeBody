@@ -64,9 +64,9 @@ public class WeaponUIPresenter
     //todo 게임오브젝트 ui로 img에 넣기
     private void ChangeDropWeaponUI(BaseWeapon dropWeapon)
     {
+        
         // 제목
         string title = dropWeapon.Tier + "\n" + dropWeapon.WeaponName;
-
         // 공격 속도 및 공격력
         string descText = DrawWeaponDescUI(dropWeapon);
 
@@ -76,6 +76,7 @@ public class WeaponUIPresenter
     //todo 게임오브젝트 ui로 img에 넣기
     private void ChangePlayerLeftWeaponUI(BaseWeapon lWeapon)
     {
+        
         // 제목
         string title = lWeapon.Tier + "\n" + lWeapon.WeaponName;
 
@@ -88,6 +89,7 @@ public class WeaponUIPresenter
     //todo 게임오브젝트 ui로 img에 넣기
     private void ChangePlayerRightWeaponUI(BaseWeapon rWeapon)
     {
+        
         // 제목
         string title = rWeapon.Tier + "\n" + rWeapon.WeaponName;
 

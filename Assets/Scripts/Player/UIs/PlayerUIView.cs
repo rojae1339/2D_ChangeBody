@@ -61,21 +61,21 @@ public class PlayerUIView : MonoBehaviour
 
     #region 무기&바디 드랍, 플레이어 UI 변경
 
-    public void ChangeDropInfo(RawImage img, TierType tier, string title, string desc)
+    public void ChangeDropInfo(Sprite spr, TierType tier, string title, string desc)
     {
-        _dropBaseCover.ChangePartInfo(img, tier, title, desc);
+        _dropBaseCover.ChangePartInfo(spr, tier, title, desc);
     }
-    public void ChangePlayerLeftWeaponInfo(RawImage img, TierType tier, string title, string desc)
+    public void ChangePlayerLeftWeaponInfo(Sprite spr, TierType tier, string title, string desc)
     {
-        _weaponBaseLRCovers[0].ChangePartInfo(img, tier, title, desc);
+        _weaponBaseLRCovers[0].ChangePartInfo(spr, tier, title, desc);
     }
-    public void ChangePlayerRightWeaponInfo(RawImage img, TierType tier, string title, string desc)
+    public void ChangePlayerRightWeaponInfo(Sprite spr, TierType tier, string title, string desc)
     {
-        _weaponBaseLRCovers[1].ChangePartInfo(img, tier, title, desc);
+        _weaponBaseLRCovers[1].ChangePartInfo(spr, tier, title, desc);
     }
-    public void ChangePlayerBodyInfo(RawImage img, TierType tier, string title, string desc)
+    public void ChangePlayerBodyInfo(Sprite spr, TierType tier, string title, string desc)
     {
-        _bodyBaseCover.ChangePartInfo(img, tier, title, desc);
+        _bodyBaseCover.ChangePartInfo(spr, tier, title, desc);
     }
 
     #endregion
