@@ -24,6 +24,7 @@ namespace Managers
         private readonly PlayerManager _player = new PlayerManager();
         private readonly AddressableManager _addressable = new AddressableManager();
         private readonly PartsDataManager _partsData = new PartsDataManager();
+        private readonly ResourcesFolderManager _resourcesFolder = new ResourcesFolderManager();
 
         public static MapManager Map { get => Instance._map; }
 
@@ -32,6 +33,8 @@ namespace Managers
         public static AddressableManager Addressable { get => Instance._addressable; }
         
         public static PartsDataManager PartsData { get => Instance._partsData; }
+        
+        public static ResourcesFolderManager ResourcesFolder { get => Instance._resourcesFolder; }
 
         void Awake() { Init(); }
 

@@ -13,7 +13,7 @@ public class BasePartsPanel : MonoBehaviour
     private TextMeshProUGUI _partsDescText;
 
 
-    //todo 유저가 무기 2개 들고있을때 추가하기 + 줄에 맞춰 글자크기 조정
+    //todo 상위옵션 화살표 추가
     public void ChangePartInfo(Sprite spr, TierType tier, string title, string desc)
     {
         _partsImg.sprite = spr;
@@ -21,7 +21,6 @@ public class BasePartsPanel : MonoBehaviour
         _partsTitleText.text = title;
         _partsDescText.text = desc;
         
-        //todo 무기나  2개일때
     }
 
     private Color ChangeTextColorByTier(TierType tier)

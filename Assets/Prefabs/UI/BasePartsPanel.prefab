@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e2559610c54f449154428599e7fb48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _partsImg: {fileID: 0}
+  _partsImg: {fileID: 1222990293765173485}
   _partsTitleText: {fileID: 5011394936846929469}
   _partsDescText: {fileID: 3415400143471252959}
 --- !u!1 &2298585583747470723

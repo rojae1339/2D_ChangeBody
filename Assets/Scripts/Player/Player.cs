@@ -24,11 +24,12 @@ public class Player : MonoBehaviour
     
     private PlayerMove _playerMove;
     private PlayerController _playerController;
-    private PlayerAnimation _playerAnimation;
     private PlayerUIView _playerUIView;
     private PartDetector _partDetector;
+    private PlayerAnimation _playerAnimation;
     private AnimationType _currentAnimationType;
     private AnimationType _previousAnimationType; // 추가
+    private PlayerCamera _playerCamera;
     
     private Vector2 _moveInput;
     
@@ -40,9 +41,10 @@ public class Player : MonoBehaviour
     {
         _playerMove = gameObject.AddComponent<PlayerMove>();
         _playerAnimation = gameObject.AddComponent<PlayerAnimation>();
-        _playerController = gameObject.AddComponent<PlayerController>();
+        _playerController = GetComponent<PlayerController>();
         _partDetector = gameObject.GetComponent<PartDetector>();
         _playerUIView = GetComponent<PlayerUIView>();
+        _playerCamera = GetComponent<PlayerCamera>();
 
         _playerController.Init(this, _partDetector, _playerUIView);
         _currentAnimationType = AnimationType.Idle;
@@ -134,14 +136,51 @@ public class Player : MonoBehaviour
         // todo
     }
 
-    // InputSystem 전달만 함
-    public void OnMove(InputAction.CallbackContext ctx) => _playerController.OnMove(ctx);
-    public void OnAttack(InputAction.CallbackContext ctx) => _playerController.OnAttack(ctx);
-    public void OnJump(InputAction.CallbackContext ctx) => _playerController.OnJump(ctx);
-    public void OnInteractUI(InputAction.CallbackContext ctx) => _playerController.OnInteractDropUI(ctx);
-    public void OnPressESC(InputAction.CallbackContext ctx) => _playerController.OnCloseUIOrOpenSetting(ctx);
-    public void OnPressLeftWhileUIInteracted(InputAction.CallbackContext ctx) =>
-        _playerController.OnInteractUIChangeLeft(ctx);
-    public void OnPressRightWhileUIInteracted(InputAction.CallbackContext ctx) =>
-        _playerController.OnInteractUIChangeRight(ctx);
+    //todo
+    public void ChangeParts()
+    {
+        var partType = _partDetector.CurrentDetectedType;
+        
+
+        switch (partType)
+        {
+            case DetectedPartType.Weapon:
+                
+                BaseWeapon detectedWeapon = _partDetector.CurrentWeapon;
+                Rigidbody2D detectedRigid = detectedWeapon.GetComponent<Rigidbody2D>();
+                detectedRigid.bodyType = RigidbodyType2D.Dynamic;
+
+                Debug.Log(detectedWeapon.WeaponName);
+
+                bool isLeft = _playerUIView.IsLeftWeapon;
+                _playerController.InputLocked = false;
+                if (isLeft)
+                {
+                    //todo 교체시 멀리 던져버리기
+                    //todo 먹은 무기랑 바꾸기 view에서, 양손 무기면 양손 모두 떨구기
+                    //todo 만약 무기를 버린다면 view에서 안보이고 못움직이게 하기
+                    //todo right도 만들기
+                    
+                    //rigid.AddForce(l_Weapon.transform.forward * 100f);
+                    var equiped = l_Weapon.transform.GetChild(0);
+                    equiped.transform.parent = null;
+                    /*var equipedRigid = equiped.gameObject.GetComponent<Rigidbody2D>();
+                    equipedRigid.bodyType = RigidbodyType2D.Dynamic;
+                    equipedRigid.AddForce(gameObject.transform.forward * 10000f);
+                    equipedRigid.bodyType = RigidbodyType2D.Kinematic;*/
+                    _playerUIView.QuitInteractUI(); 
+                    Debug.Log("IsLeft = true");
+                    
+                }
+
+                detectedRigid.bodyType = RigidbodyType2D.Static;
+                
+                break;
+            case DetectedPartType.Body:
+                BaseBody detectedBody = _partDetector.CurrentBody;
+                break;
+            default:
+                break;
+        }
+    }
 }

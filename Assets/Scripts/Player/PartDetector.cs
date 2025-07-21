@@ -41,6 +41,8 @@ public class PartDetector : MonoBehaviour
         {
             if (!hit || hit.CompareTag("Player")) continue;
 
+            if (hit.transform.IsChildOf(gameObject.transform)) continue;
+
             if (hit.CompareTag("Weapon"))
             {
                 var part = hit.GetComponent<IParts.IEquipable>() as BaseWeapon;

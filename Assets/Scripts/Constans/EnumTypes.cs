@@ -1,3 +1,9 @@
+public enum PartsType
+{
+    Weapon,
+    Body
+}
+
 public enum TierType
 {
     Unknown = 0,

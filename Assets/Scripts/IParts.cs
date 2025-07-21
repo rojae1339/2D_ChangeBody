@@ -24,7 +24,7 @@ public class IParts
 
     public interface IEquipable : IUpgradable, IChangeable
     {
-        
+        //public bool IsEquiped { get; set; }
     }
 
     //todo

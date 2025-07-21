@@ -1,15 +1,24 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 using System.IO;
+using TMPro;
 
 public enum SavePathType
 {
     Asset, // \Asset
     Resources, // \Asset\Resources
     PersistentPath, //C:\Users\[user name]\AppData\LocalLow\[company name]\[product name]
+}
+
+public enum ExtensionType
+{
+    png,
+    jpg,
+    jpeg
 }
 
 public enum Tier
@@ -31,14 +40,20 @@ public enum RTSizeType
 
 public class Capture : MonoBehaviour
 {
-    
-    
     public Camera cam;
     public RenderTexture rt;
     public Image bg;
     public SavePathType saveSavePathType;
     public Tier tierType;
     public RTSizeType sizeType;
+
+    public TMP_InputField inputField;
+    private string captureName = "";
+
+    public TMP_Dropdown dropdown;
+    public Image dropdownBG;
+    public TMP_Dropdown extensionDropdown;
+    private ExtensionType extension;
 
     public GameObject[] obj;
     private int count = 0;
@@ -48,19 +63,65 @@ public class Capture : MonoBehaviour
         cam = Camera.main;
         SetColor();
         SetSize();
+        PopulateTierDropdown();
+        inputField.onValueChanged.AddListener(ChangeInput);
+        dropdown.onValueChanged.AddListener(ChangeTier);
+        extensionDropdown.onValueChanged.AddListener(ChangeExtension);
     }
 
     public void Create()
     {
         StartCoroutine(CaptureImage());
-        
     }
-
+    
     public void CreateAll()
     {
         StartCoroutine(CaptureAllImage());
     }
 
+    void ChangeInput(string text)
+    {
+        captureName = text;
+    }
+
+    void PopulateTierDropdown()
+    {
+        if (dropdown == null) return;
+
+        dropdown.ClearOptions();
+        extensionDropdown.ClearOptions();
+
+        var tierNames = Enum.GetNames(typeof(Tier)); // ["Common","Rare","Unique","Legendary"]
+        var extenstionNames = Enum.GetNames(typeof(ExtensionType));
+        
+        var optionDataList = new List<TMP_Dropdown.OptionData>(tierNames.Length);
+        var extensionList = new List<TMP_Dropdown.OptionData>(extenstionNames.Length);
+        foreach (var n in tierNames)
+            optionDataList.Add(new TMP_Dropdown.OptionData(n));
+
+        foreach (var n in extenstionNames)
+            extensionList.Add(new TMP_Dropdown.OptionData(n));
+        
+        dropdown.AddOptions(optionDataList);
+        extensionDropdown.AddOptions(extensionList);
+        
+        dropdown.SetValueWithoutNotify((int)tierType);
+        extensionDropdown.SetValueWithoutNotify((int)extension);
+    }
+    
+    void ChangeTier(int index)
+    {
+        tierType = (Tier)index;
+        SetColor();
+        Debug.Log($"Tier changed to: {tierType}");
+    }
+    
+    void ChangeExtension(int index)
+    {
+        extension = (ExtensionType)index;
+        Debug.Log($"Extension changed to: {extension}");
+    }
+    
     //capture by 1 object
     IEnumerator CaptureImage()
     {
@@ -73,8 +134,8 @@ public class Capture : MonoBehaviour
         yield return null;
 
         var data = tex.EncodeToPNG();
-        string name = $"Thumbnail";
-        string extension = ".png";
+        string name = $"Thumbnail_{tierType}_{captureName}";
+        string ex = "." + extension.ToString();
 
         string basePath;
         switch (saveSavePathType)
@@ -96,7 +157,7 @@ public class Capture : MonoBehaviour
         if (!Directory.Exists(basePath))
             Directory.CreateDirectory(basePath);
 
-        string filePath = Path.Combine(basePath, name + extension);
+        string filePath = Path.Combine(basePath, name + ex);
         
         File.WriteAllBytes(filePath, data);
         
@@ -126,7 +187,7 @@ public class Capture : MonoBehaviour
 
             var data = tex.EncodeToPNG();
             string name = $"Thumbnail_{tierType}_{obj[count].gameObject.name}";
-            string extension = ".png";
+            string ex = "." + extension.ToString();
 
             string basePath;
             switch (saveSavePathType)
@@ -148,7 +209,7 @@ public class Capture : MonoBehaviour
             if (!Directory.Exists(basePath))
                 Directory.CreateDirectory(basePath);
 
-            string filePath = Path.Combine(basePath, name + extension);
+            string filePath = Path.Combine(basePath, name + ex);
         
             File.WriteAllBytes(filePath, data);
         
@@ -163,28 +224,26 @@ public class Capture : MonoBehaviour
         }
     }
     
+    // --- Tier 컬러 매핑 ---------------------------------------
+    Color GetTierColor(Tier t)
+    {
+        switch (t)
+        {
+            case Tier.Common:    return Color.gray;
+            case Tier.Rare:      return new Color32(110, 180, 255, 255);
+            case Tier.Unique:    return new Color32(255, 215,   0, 255);
+            case Tier.Legendary: return new Color32(220,  20,  60, 255);
+            default:             return Color.white;
+        }
+    }
+
+// --- SetColor 사용 ----------------------------------------
     void SetColor()
     {
-        switch (tierType)
-        {
-            case Tier.Common: 
-                cam.backgroundColor = Color.gray;
-                bg.color = Color.gray;
-                break;
-            case Tier.Rare: 
-                cam.backgroundColor = Color.skyBlue;
-                bg.color = Color.skyBlue;
-                break;
-            case Tier.Unique: 
-                cam.backgroundColor = Color.gold;
-                bg.color = Color.gold;
-                break;
-            case Tier.Legendary: 
-                cam.backgroundColor = Color.crimson;
-                bg.color = Color.crimson;
-                break;
-            default: break;
-        }
+        var c = GetTierColor(tierType);
+        if (cam != null) cam.backgroundColor = c;
+        if (bg != null)  bg.color = c;
+        if (dropdownBG != null)  dropdownBG.color = c;
     }
 
     void SetSize()
@@ -219,5 +278,6 @@ public class Capture : MonoBehaviour
 
         if (cam) cam.targetTexture = rt;
     }
-
+    
+    
 }

@@ -61,7 +61,6 @@ public class WeaponUIPresenter
 
     #region 무기 드랍, 플레이어 UI 변경, todo 
 
-    //todo 게임오브젝트 ui로 img에 넣기
     private void ChangeDropWeaponUI(BaseWeapon dropWeapon)
     {
         
@@ -70,10 +69,13 @@ public class WeaponUIPresenter
         // 공격 속도 및 공격력
         string descText = DrawWeaponDescUI(dropWeapon);
 
-        _view.ChangeDropInfo(null, dropWeapon.Tier, title, descText);
+        Sprite spr =
+            Managers.Managers.ResourcesFolder.LoadThumbnailSprite(PartsType.Weapon, dropWeapon.Tier,
+                dropWeapon.WeaponName);
+
+        _view.ChangeDropInfo(spr, dropWeapon.Tier, title, descText);
     }
 
-    //todo 게임오브젝트 ui로 img에 넣기
     private void ChangePlayerLeftWeaponUI(BaseWeapon lWeapon)
     {
         
@@ -82,11 +84,14 @@ public class WeaponUIPresenter
 
         // 공격 속도 및 공격력
         string descText = DrawWeaponDescUI(lWeapon);
+        
+        Sprite spr =
+            Managers.Managers.ResourcesFolder.LoadThumbnailSprite(PartsType.Weapon, lWeapon.Tier,
+                lWeapon.WeaponName);
 
-        _view.ChangePlayerLeftWeaponInfo(null, lWeapon.Tier, title, descText);
+        _view.ChangePlayerLeftWeaponInfo(spr, lWeapon.Tier, title, descText);
     }
     
-    //todo 게임오브젝트 ui로 img에 넣기
     private void ChangePlayerRightWeaponUI(BaseWeapon rWeapon)
     {
         
@@ -95,8 +100,12 @@ public class WeaponUIPresenter
 
         // 공격 속도 및 공격력
         string descText = DrawWeaponDescUI(rWeapon);
+        
+        Sprite spr =
+            Managers.Managers.ResourcesFolder.LoadThumbnailSprite(PartsType.Weapon, rWeapon.Tier,
+                rWeapon.WeaponName);
 
-        _view.ChangePlayerRightWeaponInfo(null, rWeapon.Tier, title, descText);
+        _view.ChangePlayerRightWeaponInfo(spr, rWeapon.Tier, title, descText);
     }
 
     #endregion

@@ -56,7 +56,6 @@ public class BodyUIPresenter
 
     #region 바디 드랍, 플레이어 UI 변경, todo
 
-    //todo 게임오브젝트 ui로 img에 넣기
     private void ChangeDropBodyUI(BaseBody dropBody)
     {
         // 제목
@@ -64,18 +63,23 @@ public class BodyUIPresenter
 
         string desc = DrawBodyDescUI(dropBody);
 
-        _view.ChangeDropInfo(null, dropBody.Tier, title, desc);
+        Sprite spr =
+            Managers.Managers.ResourcesFolder.LoadThumbnailSprite(PartsType.Body, dropBody.Tier, dropBody.BodyName);
+
+        _view.ChangeDropInfo(spr, dropBody.Tier, title, desc);
     }
 
-    //todo 게임오브젝트 ui로 img에 넣기
     private void ChangePlayerBodyUI(BaseBody modelBody)
     {
         // 제목
         string title = modelBody.Tier + "\n" + modelBody.BodyName;
 
         string desc = DrawBodyDescUI(modelBody);
+        
+        Sprite spr =
+            Managers.Managers.ResourcesFolder.LoadThumbnailSprite(PartsType.Body, modelBody.Tier, modelBody.BodyName);
 
-        _view.ChangePlayerBodyInfo(null, modelBody.Tier, title, desc);
+        _view.ChangePlayerBodyInfo(spr, modelBody.Tier, title, desc);
     }
 
     #endregion

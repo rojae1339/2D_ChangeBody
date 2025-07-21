@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Text;
 using TMPro;
 using UnityEngine;
@@ -34,6 +35,13 @@ public class PlayerUIView : MonoBehaviour
     private Vector2 _dropUIBasePosition;
     private readonly Vector2 _dropUILeftPosition = new Vector2(282.5f, -240);
     private readonly Vector2 _dropUIRightPosition = new Vector2(917.5f, -240);
+
+    //todo 좌우 선택됐을때만 되도록... 선택이 안됐는데 e키 눌림
+    public bool IsLeftWeapon { get; private set; } = false;
+
+    [SerializeField] 
+    private float _uiMoveDuration = 0.3f; // 이동 시간
+    private Coroutine _uiMoveCoroutine;
     
     private void Start()
     {
@@ -132,36 +140,70 @@ public class PlayerUIView : MonoBehaviour
         SetInteractUIActive(false);
         SetPartUIActive(false);
     }
+
+    #region Weapon UI 변경시 lerp애니메이션
+
+    // 왼쪽으로 토글
     public void ChangeDropUIPositionLeft()
     {
-        if (_playerBodyPartsPanel.activeSelf == true)
-        {
-            return;
-        }
-        
+        if (_playerBodyPartsPanel.activeSelf) return;
+        Vector2 targetPos;
         if (_dropUIRect.anchoredPosition.Equals(_dropUILeftPosition))
         {
-            _dropUIRect.anchoredPosition = _dropUIRightPosition;
+            targetPos = _dropUIRightPosition;
+            IsLeftWeapon = false;
         }
         else
         {
-            _dropUIRect.anchoredPosition = _dropUILeftPosition;
+            targetPos = _dropUILeftPosition;
+            IsLeftWeapon = true;
         }
+
+        StartMoveUI(targetPos);
     }
+
+    // 오른쪽으로 토글
     public void ChangeDropUIPositionRight()
     {
-        if (_playerBodyPartsPanel.activeSelf == true)
-        {
-            return;
-        }
-        
+        if (_playerBodyPartsPanel.activeSelf) return;
+        Vector2 targetPos;
         if (_dropUIRect.anchoredPosition.Equals(_dropUIRightPosition))
         {
-            _dropUIRect.anchoredPosition = _dropUILeftPosition;
+            targetPos = _dropUILeftPosition;
+            IsLeftWeapon = true;
         }
         else
         {
-            _dropUIRect.anchoredPosition = _dropUIRightPosition;
+            targetPos = _dropUIRightPosition;
+            IsLeftWeapon = false;
         }
+
+        StartMoveUI(targetPos);
     }
+
+    private void StartMoveUI(Vector2 target)
+    {
+        // 이전 이동 중이면 중단
+        if (_uiMoveCoroutine != null)
+            StopCoroutine(_uiMoveCoroutine);
+
+        _uiMoveCoroutine = StartCoroutine(LerpUIPosition(_dropUIRect.anchoredPosition, target));
+    }
+
+    private IEnumerator LerpUIPosition(Vector2 start, Vector2 end)
+    {
+        float elapsed = 0f;
+
+        while (elapsed < _uiMoveDuration)
+        {
+            elapsed += Time.deltaTime;
+            _dropUIRect.anchoredPosition = Vector2.Lerp(start, end, elapsed / _uiMoveDuration);
+            yield return null;
+        }
+
+        _dropUIRect.anchoredPosition = end;
+        _uiMoveCoroutine = null;
+    }
+
+    #endregion
 }
