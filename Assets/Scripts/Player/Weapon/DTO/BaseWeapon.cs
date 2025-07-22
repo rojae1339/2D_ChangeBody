@@ -20,8 +20,6 @@ using UnityEngine;public abstract class BaseWeapon : MonoBehaviour, IWeapon
     public int UpgradeFleshCount { get; private set; }
     [field: SerializeField]
     public float PartDropProbability { get; private set; }
-    [field: SerializeField]
-    public WeaponHandType HandType { get; private set; }
 
     public PartsTierFeatureSO so;
 
@@ -40,7 +38,6 @@ using UnityEngine;public abstract class BaseWeapon : MonoBehaviour, IWeapon
         MaxBulletCount = dto.MaxBulletCount;
         UpgradeFleshCount = dto.UpgradeFleshCount;
         PartDropProbability = (float)dto.PartDropProbability;
-        HandType = dto.HandType;
     }
 
     public BaseWeapon Init(WeaponDTO dto)
@@ -55,7 +52,6 @@ using UnityEngine;public abstract class BaseWeapon : MonoBehaviour, IWeapon
         MaxBulletCount = dto.MaxBulletCount;
         UpgradeFleshCount = dto.UpgradeFleshCount;
         PartDropProbability = (float)dto.PartDropProbability;
-        HandType = dto.HandType;
         return this;
     }
 

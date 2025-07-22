@@ -5,16 +5,16 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     private Player _player;
+    private PlayerInput _input;
     private PartDetector _detector;
     private PlayerUIView _view;
 
     private bool _inputLocked = false;
-    
-    public bool InputLocked { get => _inputLocked; set => _inputLocked = value; }
 
     public void Init(Player player, PartDetector det, PlayerUIView view)
     {
         _player = player;
+        _input = gameObject.GetComponent<PlayerInput>();
         _detector = det;
         _view = view;
     }
@@ -49,23 +49,34 @@ public class PlayerController : MonoBehaviour
     public void OnInteractDropUI(InputAction.CallbackContext ctx)
     {
         if (!ctx.performed) return;
+        
         if (_detector == null) return;
 
         //UI 인터랙션 전
-        if (!_inputLocked)
+        if (_inputLocked == false)
         {
             if (_detector.CurrentDetectedType == DetectedPartType.None) return; // 감지 없으면 무시
 
             _detector.ToggleInteractUI();
             _player.SetMoveInput(Vector2.zero);
+            
+            //인터랙션시 인풋맵 UI로 변경
+            _input.SwitchCurrentActionMap("UI");
 
             _inputLocked = true;
-            return;
         }
-
-        
         //UI 인터랙션 후 무기교체
-        _player.ChangeParts();
+        else if (_inputLocked == true)
+        {
+            if (_view.UIUIPosOnPosition == UIOnPosition.None)
+            {
+                return;
+            }
+            
+            _player.ChangeParts();
+            _input.SwitchCurrentActionMap("Player");
+            _inputLocked = false;
+        }
     }
 
     public void OnInteractUIChangeLeft(InputAction.CallbackContext ctx)
@@ -74,7 +85,6 @@ public class PlayerController : MonoBehaviour
 
         if (ctx.performed)
         {
-            Debug.Log("UI켜진후 좌우 눌림");
             _view.ChangeDropUIPositionLeft();
         }
     }
@@ -85,7 +95,6 @@ public class PlayerController : MonoBehaviour
 
         if (ctx.performed)
         {
-            Debug.Log("UI켜진후 좌우 눌림");
             _view.ChangeDropUIPositionRight();
         }
     }
@@ -94,11 +103,13 @@ public class PlayerController : MonoBehaviour
     {
         if (ctx.performed)
         {
-            Debug.Log("ESC");
             if (_inputLocked)
             {
-                Debug.Log("UI켜진후 ESC눌림");
                 _detector.CancelDetect();
+                
+                //인터랙션 아웃시 인풋맵 player로 변경
+                _input.SwitchCurrentActionMap("Player");
+                
                 _inputLocked = false;
                 return;
             }

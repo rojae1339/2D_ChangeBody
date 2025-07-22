@@ -146,7 +146,6 @@ MonoBehaviour:
   <WeaponAttackType>k__BackingField: 0
   <UpgradeFleshCount>k__BackingField: 0
   <PartDropProbability>k__BackingField: 0
-  <HandType>k__BackingField: 0
   so: {fileID: 0}
 --- !u!50 &3984874182919896490
 Rigidbody2D:
@@ -186,7 +185,7 @@ GameObject:
   - component: {fileID: 4379379725296028338}
   - component: {fileID: 9000085906603238715}
   m_Layer: 9
-  m_Name: R_Weapon (1)
+  m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

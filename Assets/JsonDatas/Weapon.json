@@ -9,8 +9,7 @@
       "reloadSpeed": null,
       "maxBulletCount": null,
       "upgradeFleshCount": 999999999,
-      "partDropProbability": 0.1,
-      "weaponHandType": "OneHanded"
+      "partDropProbability": 0.1
     },
     {
       "tier": "Unique",
@@ -21,8 +20,7 @@
       "reloadSpeed": null,
       "maxBulletCount": null,
       "upgradeFleshCount": 50,
-      "partDropProbability": 5.0,
-      "weaponHandType": "OneHanded"
+      "partDropProbability": 5.0
     },
     {
       "tier": "Rare",
@@ -33,8 +31,7 @@
       "reloadSpeed": null,
       "maxBulletCount": null,
       "upgradeFleshCount": 25,
-      "partDropProbability": 30.0,
-      "weaponHandType": "OneHanded"
+      "partDropProbability": 30.0
     },
     {
       "tier": "Common",
@@ -45,8 +42,7 @@
       "reloadSpeed": null,
       "maxBulletCount": null,
       "upgradeFleshCount": 10,
-      "partDropProbability": 60.0,
-      "weaponHandType": "OneHanded"
+      "partDropProbability": 60.0
     }
   ],
   "shortSword": [
@@ -59,8 +55,7 @@
       "reloadSpeed": null,
       "maxBulletCount": null,
       "upgradeFleshCount": 999999999,
-      "partDropProbability": 0.1,
-      "weaponHandType": "OneHanded"
+      "partDropProbability": 0.1
     },
     {
       "tier": "Unique",
@@ -71,8 +66,7 @@
       "reloadSpeed": null,
       "maxBulletCount": null,
       "upgradeFleshCount": 60.0,
-      "partDropProbability": 4.17,
-      "weaponHandType": "OneHanded"
+      "partDropProbability": 4.17
     },
     {
       "tier": "Rare",
@@ -83,8 +77,7 @@
       "reloadSpeed": null,
       "maxBulletCount": null,
       "upgradeFleshCount": 30.0,
-      "partDropProbability": 25.0,
-      "weaponHandType": "OneHanded"
+      "partDropProbability": 25.0
     },
     {
       "tier": "Common",
@@ -95,8 +88,7 @@
       "reloadSpeed": null,
       "maxBulletCount": null,
       "upgradeFleshCount": 12,
-      "partDropProbability": 50.0,
-      "weaponHandType": "OneHanded"
+      "partDropProbability": 50.0
     }
   ],
   "longSword": [
@@ -109,8 +101,7 @@
       "reloadSpeed": null,
       "maxBulletCount": null,
       "upgradeFleshCount": 999999999,
-      "partDropProbability": 0.1,
-      "weaponHandType": "TwoHanded"
+      "partDropProbability": 0.1
     },
     {
       "tier": "Unique",
@@ -121,8 +112,7 @@
       "reloadSpeed": null,
       "maxBulletCount": null,
       "upgradeFleshCount": 70,
-      "partDropProbability": 3.57,
-      "weaponHandType": "TwoHanded"
+      "partDropProbability": 3.57
     },
     {
       "tier": "Rare",
@@ -133,8 +123,7 @@
       "reloadSpeed": null,
       "maxBulletCount": null,
       "upgradeFleshCount": 35,
-      "partDropProbability": 21.43,
-      "weaponHandType": "TwoHanded"
+      "partDropProbability": 21.43
     },
     {
       "tier": "Common",
@@ -145,8 +134,7 @@
       "reloadSpeed": null,
       "maxBulletCount": null,
       "upgradeFleshCount": 14,
-      "partDropProbability": 42.86,
-      "weaponHandType": "TwoHanded"
+      "partDropProbability": 42.86
     }
   ],
   "bow": [
@@ -159,8 +147,7 @@
       "reloadSpeed": null,
       "maxBulletCount": null,
       "upgradeFleshCount": 999999999,
-      "partDropProbability": 0.1,
-      "weaponHandType": "TwoHanded"
+      "partDropProbability": 0.1
     },
     {
       "tier": "Unique",
@@ -171,8 +158,7 @@
       "reloadSpeed": null,
       "maxBulletCount": null,
       "upgradeFleshCount": 80,
-      "partDropProbability": 3.12,
-      "weaponHandType": "TwoHanded"
+      "partDropProbability": 3.12
     },
     {
       "tier": "Rare",
@@ -183,8 +169,7 @@
       "reloadSpeed": null,
       "maxBulletCount": null,
       "upgradeFleshCount": 40,
-      "partDropProbability": 18.75,
-      "weaponHandType": "TwoHanded"
+      "partDropProbability": 18.75
     },
     {
       "tier": "Common",
@@ -195,8 +180,7 @@
       "reloadSpeed": null,
       "maxBulletCount": null,
       "upgradeFleshCount": 16,
-      "partDropProbability": 37.5,
-      "weaponHandType": "TwoHanded"
+      "partDropProbability": 37.5
     }
   ],
   "pistol": [
@@ -209,8 +193,7 @@
       "reloadSpeed": 0.5,
       "maxBulletCount": null,
       "upgradeFleshCount": 999999999,
-      "partDropProbability": 0.1,
-      "weaponHandType": "OneHanded"
+      "partDropProbability": 0.1
     },
     {
       "tier": "Unique",
@@ -221,8 +204,7 @@
       "reloadSpeed": 0.5,
       "maxBulletCount": null,
       "upgradeFleshCount": 90,
-      "partDropProbability": 2.78,
-      "weaponHandType": "OneHanded"
+      "partDropProbability": 2.78
     },
     {
       "tier": "Rare",
@@ -233,8 +215,7 @@
       "reloadSpeed": 0.5,
       "maxBulletCount": null,
       "upgradeFleshCount": 45,
-      "partDropProbability": 16.67,
-      "weaponHandType": "OneHanded"
+      "partDropProbability": 16.67
     },
     {
       "tier": "Common",
@@ -245,8 +226,7 @@
       "reloadSpeed": 0.5,
       "maxBulletCount": null,
       "upgradeFleshCount": 18,
-      "partDropProbability": 33.33,
-      "weaponHandType": "OneHanded"
+      "partDropProbability": 33.33
     }
   ],
   "rifle": [
@@ -259,8 +239,7 @@
       "reloadSpeed": 0.0,
       "maxBulletCount": 999999999,
       "upgradeFleshCount": 999999999,
-      "partDropProbability": 0.1,
-      "weaponHandType": "TwoHanded"
+      "partDropProbability": 0.1
     },
     {
       "tier": "Unique",
@@ -271,8 +250,7 @@
       "reloadSpeed": 0.8,
       "maxBulletCount": 50,
       "upgradeFleshCount": 100,
-      "partDropProbability": 2.5,
-      "weaponHandType": "TwoHanded"
+      "partDropProbability": 2.5
     },
     {
       "tier": "Rare",
@@ -283,8 +261,7 @@
       "reloadSpeed": 1.0,
       "maxBulletCount": 50,
       "upgradeFleshCount": 50,
-      "partDropProbability": 15.0,
-      "weaponHandType": "TwoHanded"
+      "partDropProbability": 15.0
     },
     {
       "tier": "Common",
@@ -295,8 +272,7 @@
       "reloadSpeed": 1.1,
       "maxBulletCount": 30,
       "upgradeFleshCount": 20,
-      "partDropProbability": 30.0,
-      "weaponHandType": "TwoHanded"
+      "partDropProbability": 30.0
     }
   ]
 }

@@ -20,12 +20,6 @@ public enum AttackType
     DoubleAttack,
 }
 
-public enum WeaponHandType
-{
-    OneHanded,
-    TwoHanded,
-}
-
 public enum DifficultyType
 {
     Easy,

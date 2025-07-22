@@ -6,6 +6,14 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
+public enum UIOnPosition
+{
+    None,
+    Left,
+    Right,
+    Body
+}
+
 public class PlayerUIView : MonoBehaviour
 {
     [SerializeField]
@@ -25,8 +33,10 @@ public class PlayerUIView : MonoBehaviour
     private BasePartsPanel[] _weaponBaseLRCovers;
     private BasePartsPanel _bodyBaseCover;
     
-    private readonly WeaponUIPresenter _weaponPresenter = new WeaponUIPresenter();
-    private readonly BodyUIPresenter _bodyPresenter = new BodyUIPresenter();
+    private WeaponUIPresenter _weaponPresenter = new WeaponUIPresenter();
+    public WeaponUIPresenter WeaponPresenter { get => _weaponPresenter; set => _weaponPresenter = value; }
+    private BodyUIPresenter _bodyPresenter = new BodyUIPresenter();
+    public BodyUIPresenter BodyPresenter { get => _bodyPresenter; set => _bodyPresenter = value; }
 
     private RectTransform _rootRect;
     private RectTransform _dropUIRect;
@@ -36,8 +46,8 @@ public class PlayerUIView : MonoBehaviour
     private readonly Vector2 _dropUILeftPosition = new Vector2(282.5f, -240);
     private readonly Vector2 _dropUIRightPosition = new Vector2(917.5f, -240);
 
-    //todo 좌우 선택됐을때만 되도록... 선택이 안됐는데 e키 눌림
     public bool IsLeftWeapon { get; private set; } = false;
+    public UIOnPosition UIUIPosOnPosition { get; set; }
 
     [SerializeField] 
     private float _uiMoveDuration = 0.3f; // 이동 시간
@@ -119,6 +129,7 @@ public class PlayerUIView : MonoBehaviour
     public void PressedInteractKeyOnBody()
     {
         _rootRect.anchoredPosition = _rootInteractPosition;
+        UIUIPosOnPosition = UIOnPosition.Body;
         SetBodyUIActive(true);
         SetWeaponUIActive(false);
         SetInteractUIActive(true);
@@ -127,6 +138,7 @@ public class PlayerUIView : MonoBehaviour
     {
         _rootRect.anchoredPosition = _rootBasePosition;
         _dropUIRect.anchoredPosition = _dropUIBasePosition;
+        UIUIPosOnPosition = UIOnPosition.None;
         SetBodyUIActive(false);
         SetWeaponUIActive(false);
         SetInteractUIActive(false);
@@ -135,6 +147,7 @@ public class PlayerUIView : MonoBehaviour
     {
         _rootRect.anchoredPosition = _rootBasePosition;
         _dropUIRect.anchoredPosition = _dropUIBasePosition;
+        UIUIPosOnPosition = UIOnPosition.None;
         SetBodyUIActive(false);
         SetWeaponUIActive(false);
         SetInteractUIActive(false);
@@ -151,12 +164,12 @@ public class PlayerUIView : MonoBehaviour
         if (_dropUIRect.anchoredPosition.Equals(_dropUILeftPosition))
         {
             targetPos = _dropUIRightPosition;
-            IsLeftWeapon = false;
+            UIUIPosOnPosition = UIOnPosition.Right;
         }
         else
         {
             targetPos = _dropUILeftPosition;
-            IsLeftWeapon = true;
+            UIUIPosOnPosition = UIOnPosition.Left;
         }
 
         StartMoveUI(targetPos);
@@ -170,12 +183,12 @@ public class PlayerUIView : MonoBehaviour
         if (_dropUIRect.anchoredPosition.Equals(_dropUIRightPosition))
         {
             targetPos = _dropUILeftPosition;
-            IsLeftWeapon = true;
+            UIUIPosOnPosition = UIOnPosition.Left;
         }
         else
         {
             targetPos = _dropUIRightPosition;
-            IsLeftWeapon = false;
+            UIUIPosOnPosition = UIOnPosition.Right;
         }
 
         StartMoveUI(targetPos);

@@ -65,7 +65,6 @@ namespace Managers
                 AttackDamage = Convert.ToDouble(dict[WeaponKeys.AttackDamage]),
                 AttackSpeed = Convert.ToDouble(dict[WeaponKeys.AttackSpeed]),
                 BulletSpeed = dict.TryGetValue(WeaponKeys.BulletSpeed, out var value) ? Convert.ToDouble(value) : (double?)null,
-                HandType = (WeaponHandType)Enum.Parse(typeof(WeaponHandType), dict[WeaponKeys.WeaponHandType].ToString()),
                 WeaponAttackType = (AttackType)Enum.Parse(typeof(AttackType), dict[WeaponKeys.AttackType].ToString()),
                 MaxBulletCount = dict.TryGetValue(WeaponKeys.MaxBulletCount, out var value1) ? Convert.ToInt32(value1) : (int?)null,
                 ReloadSpeed = dict.TryGetValue(WeaponKeys.ReloadSpeed, out var value2) ? Convert.ToDouble(value2) : (double?)null,

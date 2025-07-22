@@ -32,6 +32,13 @@ public class Player : MonoBehaviour
     private PlayerCamera _playerCamera;
     
     private Vector2 _moveInput;
+
+    private readonly Vector3 _leftPosition = new Vector3(-0.08f, 0, 0);
+    private readonly Vector3 _rightPosition = new Vector3(0.03f, -0.03f, 0);
+    private readonly Vector3 _bodyPosition = new Vector3(0, 0, 0);
+
+    [SerializeField]
+    private float _throwPower = 5f;
     
     public GameObject L_Weapon { get => l_Weapon; private set => l_Weapon = value; }
     public GameObject R_Weapon { get => r_Weapon; private set => r_Weapon = value; }
@@ -141,46 +148,120 @@ public class Player : MonoBehaviour
     {
         var partType = _partDetector.CurrentDetectedType;
         
-
         switch (partType)
         {
+            //드롭된 아이템 감지된 타입 == 무기 
             case DetectedPartType.Weapon:
                 
+                //감지된 무기
                 BaseWeapon detectedWeapon = _partDetector.CurrentWeapon;
-                Rigidbody2D detectedRigid = detectedWeapon.GetComponent<Rigidbody2D>();
-                detectedRigid.bodyType = RigidbodyType2D.Dynamic;
 
-                Debug.Log(detectedWeapon.WeaponName);
-
-                bool isLeft = _playerUIView.IsLeftWeapon;
-                _playerController.InputLocked = false;
-                if (isLeft)
-                {
-                    //todo 교체시 멀리 던져버리기
-                    //todo 먹은 무기랑 바꾸기 view에서, 양손 무기면 양손 모두 떨구기
-                    //todo 만약 무기를 버린다면 view에서 안보이고 못움직이게 하기
-                    //todo right도 만들기
-                    
-                    //rigid.AddForce(l_Weapon.transform.forward * 100f);
-                    var equiped = l_Weapon.transform.GetChild(0);
-                    equiped.transform.parent = null;
-                    /*var equipedRigid = equiped.gameObject.GetComponent<Rigidbody2D>();
-                    equipedRigid.bodyType = RigidbodyType2D.Dynamic;
-                    equipedRigid.AddForce(gameObject.transform.forward * 10000f);
-                    equipedRigid.bodyType = RigidbodyType2D.Kinematic;*/
-                    _playerUIView.QuitInteractUI(); 
-                    Debug.Log("IsLeft = true");
-                    
-                }
-
-                detectedRigid.bodyType = RigidbodyType2D.Static;
+                //현재 UI상의 드랍된 무기 위치(왼, 오)
+                UIOnPosition uiPos = _playerUIView.UIUIPosOnPosition;
                 
+                //현재 왼손무기
+                var currentLeftWeapon = l_Weapon.transform.GetChild(0);
+                //현재 오른손 무기
+                var currentRightWeapon = r_Weapon.transform.GetChild(0);
+
+                switch (uiPos)
+                {
+                    //UI가 왼쪽에 있을 경우 -> 왼쪽 무기 선택
+                    case UIOnPosition.Left:
+                        currentLeftWeapon.transform.parent = null;
+                        
+                        StartCoroutine(ResetToKinematic(currentLeftWeapon.gameObject, 1f));
+                        
+                        //바꿀 무기가 왼쪽 선택
+                        detectedWeapon.transform.SetParent(l_Weapon.transform,false);
+                        detectedWeapon.transform.localPosition = _leftPosition;
+                        detectedWeapon.transform.localRotation = Quaternion.identity;
+                        detectedWeapon.transform.localScale = new Vector3(1, 1, 1);
+                        detectedWeapon.GetComponent<SpriteRenderer>().sortingOrder = 10;
+                        if (detectedWeapon.transform.GetChild(0).name == detectedWeapon.name)
+                        {
+                            detectedWeapon.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 10;
+                        }
+                        
+                        //파티클 끄기
+                        detectedWeapon.transform.GetChild(detectedWeapon.transform.childCount - 1).gameObject.SetActive(false);
+                        
+
+                        _playerUIView.WeaponPresenter.RefreshWeaponModel();
+                        break;
+                    
+                    //UI가 오른쪽에 있을 경우 -> 오른쪽 무기 선택
+                    case UIOnPosition.Right: 
+                        currentRightWeapon.transform.parent = null;
+                        
+                        StartCoroutine(ResetToKinematic(currentRightWeapon.gameObject, 1f));
+                        
+                        //바꿀 무기가 오른쪽 선택
+                        detectedWeapon.transform.SetParent(r_Weapon.transform, false);
+                        detectedWeapon.transform.localPosition = _rightPosition;
+                        detectedWeapon.transform.localRotation = Quaternion.identity;
+                        detectedWeapon.transform.localScale = new Vector3(1, 1, 1);
+                        detectedWeapon.GetComponent<SpriteRenderer>().sortingOrder = -10;
+                        if (detectedWeapon.transform.GetChild(0).name == detectedWeapon.name)
+                        {
+                            detectedWeapon.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 10;
+                        }
+                        
+                        //파티클 끄기
+                        detectedWeapon.transform.GetChild(detectedWeapon.transform.childCount - 1).gameObject.SetActive(false);
+
+                        _playerUIView.WeaponPresenter.RefreshWeaponModel();
+                        break;
+                }
                 break;
+            
+            //드롭된 아이템 감지된 타입 == 몸통
             case DetectedPartType.Body:
+                //감지된 몸통
                 BaseBody detectedBody = _partDetector.CurrentBody;
-                break;
-            default:
+
+                var parent = body.transform.parent;
+                
+                body.transform.parent = null;
+                
+                StartCoroutine(ResetToKinematic(body, 1f));
+                        
+                //바꿀 무기가 왼쪽 선택
+                
+                detectedBody.transform.SetParent(parent,false);
+                detectedBody.transform.localPosition = _bodyPosition;
+                detectedBody.transform.localRotation = Quaternion.identity;
+                detectedBody.transform.localScale = new Vector3(1, 1, 1);
+                detectedBody.GetComponent<SpriteRenderer>().sortingOrder = -1;
+
+                body = detectedBody.gameObject;
+                
+                //파티클 끄기
+                detectedBody.transform.GetChild(detectedBody.transform.childCount - 1).gameObject.SetActive(false);
+
+                _playerUIView.WeaponPresenter.RefreshWeaponModel();
                 break;
         }
+        
+        _playerUIView.QuitInteractUI();
+    }
+    
+    private IEnumerator ResetToKinematic(GameObject current, float delay)
+    {
+        //Throwing Layer
+        current.layer = 11;
+        
+        var rigidbody = current.GetComponent<Rigidbody2D>();
+        rigidbody.bodyType = RigidbodyType2D.Dynamic;
+        
+        Debug.Log($"{gameObject.transform.position}");
+        rigidbody.AddForce(gameObject.transform.up * _throwPower, ForceMode2D.Impulse);
+        
+        yield return new WaitForSeconds(delay);
+        
+        rigidbody.linearVelocity = Vector2.zero;
+        rigidbody.angularVelocity = 0f;
+        rigidbody.bodyType = RigidbodyType2D.Kinematic;
+        current.layer = 9;
     }
 }

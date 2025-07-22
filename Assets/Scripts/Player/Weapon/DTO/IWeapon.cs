@@ -1,7 +1,6 @@
 public interface IWeapon : IParts.IAttackable, IParts.IEquipable
 {
-    string WeaponName { get; }               // 예: "pistol", "bow", "longSword" 등
-    WeaponHandType HandType { get; }   // OneHanded 또는 TwoHanded
+    string WeaponName { get; }          
 
     AttackType WeaponAttackType { get; }              // SingleAttack, DoubleAttack 등 (근접/원거리 무기 모두에 사용됨)
 

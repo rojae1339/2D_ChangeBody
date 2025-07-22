@@ -595,15 +595,6 @@
                     "processors": "",
                     "interactions": "Tap",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "E",
-                    "type": "Button",
-                    "id": "6c3f9773-d130-4d30-acc4-fdb7a37663a8",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "Tap",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1055,17 +1046,6 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "D",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "251efbef-df31-4d29-a210-3efdb77adeed",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "E",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

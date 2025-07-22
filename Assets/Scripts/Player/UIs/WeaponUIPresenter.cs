@@ -1,3 +1,4 @@
+using System;
 using System.Text;
 using UnityEngine;
 
@@ -13,13 +14,13 @@ public class WeaponUIPresenter
 
     StringBuilder sb = new StringBuilder();
 
-    #region WeaponPresenter Init시에 WeaponModel(_l_weapon, _r_weapon)초기화
+    #region WeaponPresenter Init시에 WeaponModel(_l_weapon, _r_weapon)초기화, refresh로직
     
     public void Init(PlayerUIView view)
     {
         _view = view;
         
-        InitializeWeaponModel(view);
+        InitializeWeaponModel();
 
         _detector = view.gameObject.GetComponent<PartDetector>();
         
@@ -29,9 +30,9 @@ public class WeaponUIPresenter
         _detector.OnCancelDetect += OnCloseAllUI;
     }
 
-    private void InitializeWeaponModel(PlayerUIView view)
+    private void InitializeWeaponModel()
     {
-        Player _player = view.gameObject.GetComponent<Player>();
+        Player _player = _view.gameObject.GetComponent<Player>();
 
         var lWeapon = _player.L_Weapon.transform.GetChild(0).GetComponent<BaseWeapon>();
         var rWeapon = _player.R_Weapon.transform.GetChild(0).GetComponent<BaseWeapon>();;
@@ -55,6 +56,23 @@ public class WeaponUIPresenter
 
         _l_weapon = lWeapon;
         _r_weapon = rWeapon;
+    }
+
+    public void RefreshWeaponModel()
+    {
+        Player _player = _view.gameObject.GetComponent<Player>();
+        
+        var lWeapon = _player.L_Weapon.transform.GetChild(0).GetComponent<BaseWeapon>();
+        var rWeapon = _player.R_Weapon.transform.GetChild(0).GetComponent<BaseWeapon>();
+
+        _l_weapon = lWeapon;
+        _r_weapon = rWeapon;
+        
+        // UI 갱신
+        ChangePlayerLeftWeaponUI(_l_weapon);
+        ChangePlayerRightWeaponUI(_r_weapon);
+        
+        OnCloseAllUI();
     }
 
     #endregion
