@@ -1,14 +1,14 @@
 # 2D 파츠교체 with UI Interaction
 
-## 🎮 Project Introduction
+## Project Introduction
 파츠교환을 통해 플레이어의 능력치 변화등을 줄 수 있다.
 
 가까운 파츠를 탐지 후, 인터랙션 키를 통해 현재 보유중인 파츠와 교체한다.
 
-## 📆 Development Period
+## Development Period
 2025-06-22 ~ 2025-07-20
 
-## 💎 Development Environment
+## Development Environment
 Language : C#
 
 Engine : Unity6
