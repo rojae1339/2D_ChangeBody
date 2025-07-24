@@ -1,13 +1,10 @@
-# 파츠교체 시스템
-파츠교환을 통해 플레이어의 능력치 변화, 공격 스타일 변화등을 줄 수 있다.
+# 2D 파츠교체 with UI Interaction
+
+## 🖥️ Project Introduction
+파츠교환을 통해 플레이어의 능력치 변화등을 줄 수 있다.
 가까운 파츠를 탐지 후, 인터랙션 키를 통해 현재 보유중인 파츠와 교체한다.
 MVP 패턴을 통해 UI와 데이터 사이의 결합성을 낮춰주었다.
 또한 데이터는 json파일에서 알맞는 데이터를 dto로 파싱한 후 일반 엔티티객체로 변환시켜줬다.
-
-## 🖥️ Project Introduction
-스파르타코딩클럽 내일배움캠프 - 게임 기초 프로젝트
-[111%] Random Dice : Defense / JUSDICE Like Game
-
 
 ## 🕰️ Development Period
 2025-06-22 ~ 2025-07-20
