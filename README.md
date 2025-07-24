@@ -4,6 +4,18 @@
 MVP 패턴을 통해 UI와 데이터 사이의 결합성을 낮춰주었다.
 또한 데이터는 json파일에서 알맞는 데이터를 dto로 파싱한 후 일반 엔티티객체로 변환시켜줬다.
 
+## 🖥️ Project Introduction
+스파르타코딩클럽 내일배움캠프 - 게임 기초 프로젝트
+[111%] Random Dice : Defense / JUSDICE Like Game
+
+
+## 🕰️ Development Period
+2025-06-22 ~ 2025-07-20
+## ⚙️ Development Environment
+Language : C#
+Engine : Unity6
+IDE : Rider
+
 ## What's important system?
 - 파츠교환 시스템
     - 델리게이트와 MVP패턴을 사용한 이벤트 등록형 UI
