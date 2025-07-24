@@ -33,10 +33,10 @@ IDE : Rider
 
 ### 4. [게임오브젝트 to png/jpg/jpeg 캡쳐 시스템](https://github.com/rojae1339/2D_ChangeBody/wiki/4.-%EA%B2%8C%EC%9E%84%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8-%EC%BA%A1%EC%B3%90-%EC%8B%9C%EC%8A%A4%ED%85%9C)
 
-- 개별 사진 캡쳐
+- 개별 게임오브젝트 캡쳐
     - <img src="https://github.com/user-attachments/assets/c3544521-577b-4b45-97fe-85409a8e1cc7" width="800" height="800"/>
 
-- 단체 사진 캡쳐
+- 단체 게임오브젝트 캡쳐
     - <img src="https://github.com/user-attachments/assets/3d58cf3f-73af-49ef-b881-ec26a4668561" width="800" height="800"/>
 
 ---
