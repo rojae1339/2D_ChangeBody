@@ -9,7 +9,6 @@ MVP 패턴을 통해 UI와 데이터 사이의 결합성을 낮춰주었다.
     - 델리게이트와 MVP패턴을 사용한 이벤트 등록형 UI
 - json to object (json -> DTO -> Object)
 - Addressable
-
 - 게임오브젝트 to png/jpg/jpeg 캡쳐 시스템
 
 ---
@@ -184,4 +183,14 @@ public void LoadAllByLabelsAsync<T>(string[] labels, Action onComplete) where T 
     }
 }
 ```
+
+# 게임오브젝트 캡쳐 시스템
+
+부가적인 시스템이다.
+현재 파츠 시스템은 4개 티어별로 총 10개 가량의 파츠가 존재한다.
+따라서 이에 따른 무기의 썸네일을 구해야했는데, 직접 무기의 티어 색에 맞춰 사진을 찍어줬다.
+
+[Capture.cs](https://github.com/rojae1339/2D_ChangeBody/blob/main/Assets/RenderTexture/Capture.cs)
+
+유니티 UI의 RawImage를 이용해서 RenderTexture를 사용해 캡쳐시스템을 구축했다.
 
