@@ -39,4 +39,8 @@ IDE : Rider
 - 단체 게임오브젝트 캡쳐
     - <img src="https://github.com/user-attachments/assets/3d58cf3f-73af-49ef-b881-ec26a4668561" width="800" height="800"/>
 
+
+## 트러블 슈팅
+
+[트러블 슈팅 WIKI](https://github.com/rojae1339/2D_ChangeBody/wiki/%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85)
 ---
