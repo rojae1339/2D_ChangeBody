@@ -19,7 +19,7 @@ IDE : Rider
 ### 0. [기본 싱글톤 매니저](https://github.com/rojae1339/2D_ChangeBody/wiki/0.-Singleton-Manager)
 
 ### 1. [파츠교환 시스템](https://github.com/rojae1339/2D_ChangeBody/wiki/1.-%ED%8C%8C%EC%B8%A0-%EA%B5%90%EC%B2%B4-%EC%8B%9C%EC%8A%A4%ED%85%9C-(UI-Interaction,-MVP-%ED%8C%A8%ED%84%B4))
-델리게이트와 MVP패턴을 사용한 이벤트 등록형 UI
+- 델리게이트와 MVP패턴을 사용한 이벤트 등록형 UI
 
 
 ### 2. [Json to Object (json -> DTO -> Object) / DataManager WIKI](https://github.com/rojae1339/2D_ChangeBody/wiki/2.-json-to-Object)
