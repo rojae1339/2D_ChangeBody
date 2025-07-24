@@ -20,7 +20,7 @@ public class PartDetector : MonoBehaviour
 
     [SerializeField]
     private float rad = 2f;
-    
+
     // 현재 감지 상태
     public DetectedPartType CurrentDetectedType { get; private set; } = DetectedPartType.None;
     public BaseWeapon CurrentWeapon { get; private set; }
@@ -28,7 +28,7 @@ public class PartDetector : MonoBehaviour
 
     private void Update() { DetectObject(); }
 
-    /*private void DetectObject()
+    private void DetectObject()
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, rad, LayerMask.GetMask("Parts"));
         bool found = false;
@@ -37,36 +37,56 @@ public class PartDetector : MonoBehaviour
         CurrentBody = null;
         CurrentDetectedType = DetectedPartType.None;
 
+        BaseWeapon closestWeapon = null;
+        BaseBody closestBody = null;
+        float closestWeaponDistanceSqr = float.MaxValue;
+        float closestBodyDistanceSqr = float.MaxValue;
+
+        Vector2 playerPos = transform.position;
+
         foreach (Collider2D hit in hits)
         {
             if (!hit || hit.CompareTag("Player")) continue;
 
             if (hit.transform.IsChildOf(gameObject.transform)) continue;
 
+            // 제곱 거리로 계산 (Sqrt 연산 생략으로 성능 향상)
+            float distanceSqr = (playerPos - (Vector2)hit.transform.position).sqrMagnitude;
+
             if (hit.CompareTag("Weapon"))
             {
                 var part = hit.GetComponent<IParts.IEquipable>() as BaseWeapon;
-                if (part != null)
+                if (part != null && distanceSqr < closestWeaponDistanceSqr)
                 {
-                    CurrentWeapon = part;
-                    CurrentDetectedType = DetectedPartType.Weapon;
-                    OnWeaponDetected?.Invoke(part);
-                    found = true;
-                    break;
+                    closestWeapon = part;
+                    closestWeaponDistanceSqr = distanceSqr;
                 }
             }
             else if (hit.CompareTag("Body"))
             {
                 var part = hit.GetComponent<IParts.IEquipable>() as BaseBody;
-                if (part != null)
+                if (part != null && distanceSqr < closestBodyDistanceSqr)
                 {
-                    CurrentBody = part;
-                    CurrentDetectedType = DetectedPartType.Body;
-                    OnBodyDetected?.Invoke(part);
-                    found = true;
-                    break;
+                    closestBody = part;
+                    closestBodyDistanceSqr = distanceSqr;
                 }
             }
+        }
+
+        // 가장 가까운 아이템 중에서 우선순위 결정 (Weapon 우선)
+        if (closestWeapon != null && (closestBody == null || closestWeaponDistanceSqr <= closestBodyDistanceSqr))
+        {
+            CurrentWeapon = closestWeapon;
+            CurrentDetectedType = DetectedPartType.Weapon;
+            OnWeaponDetected?.Invoke(closestWeapon);
+            found = true;
+        }
+        else if (closestBody != null)
+        {
+            CurrentBody = closestBody;
+            CurrentDetectedType = DetectedPartType.Body;
+            OnBodyDetected?.Invoke(closestBody);
+            found = true;
         }
 
         if (!found)
@@ -74,76 +94,8 @@ public class PartDetector : MonoBehaviour
             CurrentDetectedType = DetectedPartType.None;
             OnPartNotDetected?.Invoke();
         }
-    }*/
-    
-    private void DetectObject()
-{
-    Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, rad, LayerMask.GetMask("Parts"));
-    bool found = false;
-
-    CurrentWeapon = null;
-    CurrentBody = null;
-    CurrentDetectedType = DetectedPartType.None;
-
-    BaseWeapon closestWeapon = null;
-    BaseBody closestBody = null;
-    float closestWeaponDistanceSqr = float.MaxValue;
-    float closestBodyDistanceSqr = float.MaxValue;
-    
-    Vector2 playerPos = transform.position;
-
-    foreach (Collider2D hit in hits)
-    {
-        if (!hit || hit.CompareTag("Player")) continue;
-
-        if (hit.transform.IsChildOf(gameObject.transform)) continue;
-
-        // 제곱 거리로 계산 (Sqrt 연산 생략으로 성능 향상)
-        float distanceSqr = (playerPos - (Vector2)hit.transform.position).sqrMagnitude;
-
-        if (hit.CompareTag("Weapon"))
-        {
-            var part = hit.GetComponent<IParts.IEquipable>() as BaseWeapon;
-            if (part != null && distanceSqr < closestWeaponDistanceSqr)
-            {
-                closestWeapon = part;
-                closestWeaponDistanceSqr = distanceSqr;
-            }
-        }
-        else if (hit.CompareTag("Body"))
-        {
-            var part = hit.GetComponent<IParts.IEquipable>() as BaseBody;
-            if (part != null && distanceSqr < closestBodyDistanceSqr)
-            {
-                closestBody = part;
-                closestBodyDistanceSqr = distanceSqr;
-            }
-        }
     }
 
-    // 가장 가까운 아이템 중에서 우선순위 결정 (Weapon 우선)
-    if (closestWeapon != null && (closestBody == null || closestWeaponDistanceSqr <= closestBodyDistanceSqr))
-    {
-        CurrentWeapon = closestWeapon;
-        CurrentDetectedType = DetectedPartType.Weapon;
-        OnWeaponDetected?.Invoke(closestWeapon);
-        found = true;
-    }
-    else if (closestBody != null)
-    {
-        CurrentBody = closestBody;
-        CurrentDetectedType = DetectedPartType.Body;
-        OnBodyDetected?.Invoke(closestBody);
-        found = true;
-    }
-
-    if (!found)
-    {
-        CurrentDetectedType = DetectedPartType.None;
-        OnPartNotDetected?.Invoke();
-    }
-}
-    
     public void ToggleInteractUI()
     {
         switch (CurrentDetectedType)
@@ -160,8 +112,5 @@ public class PartDetector : MonoBehaviour
         }
     }
 
-    public void CancelDetect()
-    {
-        OnCancelDetect?.Invoke();
-    }
+    public void CancelDetect() { OnCancelDetect?.Invoke(); }
 }
